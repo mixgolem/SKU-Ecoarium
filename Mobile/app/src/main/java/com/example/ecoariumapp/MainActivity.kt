@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val loginButton: Button = findViewById(R.id.loginButton)
+        val registerButton: Button = findViewById(R.id.registerButton) // 회원가입 버튼 추가
         val usernameEditText: EditText = findViewById(R.id.usernameEditText)
         val passwordEditText: EditText = findViewById(R.id.passwordEditText)
 
@@ -30,6 +31,12 @@ class MainActivity : AppCompatActivity() {
                 // 검증이 실패하면 오류 메시지 표시
                 Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        registerButton.setOnClickListener {
+            // 회원가입 버튼 클릭 시 RegisterActivity로 이동
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 
