@@ -3,13 +3,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-    <ImageView
-            android:id="@+id/qrCodeImageView"
+    <Button
+            android:id="@+id/QRcodeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/welcomeTextView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"/>
+            android:text="QR 코드 확인하기"
+            android:layout_above="@+id/welcomeTextView"/>
 
     <TextView
             android:id="@+id/welcomeTextView"
