@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+    <EditText
+            android:id="@+id/usernameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="아이디"
+            android:layout_marginBottom="16dp"/>
+
+    <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="비밀번호"
+            android:inputType="textPassword"
+            android:layout_below="@id/usernameEditText"
+            android:layout_marginBottom="16dp"/>
+
+    <EditText
+            android:id="@+id/passwordVerificationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="비밀번호 확인 "
+            android:inputType="textPassword"
+            android:layout_below="@id/passwordEditText"
+            android:layout_marginBottom="16dp"/>
+
+    <EditText
+            android:id="@+id/nicknameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="닉네임"
+            android:layout_below="@id/passwordVerificationEditText"
+            android:layout_marginBottom="16dp"/>
+
+    <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="가입하기"
+            android:layout_below="@id/nicknameEditText"/>
+
+</RelativeLayout>
