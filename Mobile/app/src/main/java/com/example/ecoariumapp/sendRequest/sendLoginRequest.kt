@@ -1,10 +1,11 @@
-package com.example.ecoariumapp
+package com.example.ecoariumapp.sendRequest
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import com.example.ecoariumapp.HomeActivity
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -65,7 +66,7 @@ public fun sendLoginRequest(activity: Activity, username: String, password: Stri
 
     // POST 요청 생성
     val request = Request.Builder()
-        .url("http://192.168.93.42:8000/auth/loginMobile")
+        .url("http://192.168.94.42:8000/auth/loginMobile")
         .post(body)
         .build()
 
