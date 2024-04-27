@@ -1,4 +1,4 @@
-package com.example.ecoariumapp
+package com.example.ecoariumapp.sendRequest
 
 import android.app.Activity
 import android.graphics.Bitmap
@@ -15,7 +15,7 @@ import java.io.IOException
 
 public fun sendQRcodeRequest(activity: Activity, imageView: ImageView) {
     val request = Request.Builder()
-        .url("http://192.168.93.42:8000/main/createQR")
+        .url("http://192.168.94.42:8000/main/createQR")
         .get()
         .build()
 

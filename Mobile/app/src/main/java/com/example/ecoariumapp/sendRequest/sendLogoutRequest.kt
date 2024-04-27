@@ -1,7 +1,8 @@
-package com.example.ecoariumapp
+package com.example.ecoariumapp.sendRequest
 
 import android.app.Activity
 import android.content.Intent
+import com.example.ecoariumapp.MainActivity
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Request
@@ -10,7 +11,7 @@ import java.io.IOException
 
 public fun sendLogoutRequest(activity: Activity) {
     val request = Request.Builder()
-        .url("http://192.168.93.42:8000/auth/logout")
+        .url("http://192.168.94.42:8000/auth/logout")
         .get()
         .build()
 
