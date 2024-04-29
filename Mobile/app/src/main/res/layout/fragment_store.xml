@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/fragmentTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/green">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="포인트 스토어"
+                android:fontFamily="@font/jua"
+                android:textColor="@color/white"
+                android:textSize="28sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+            android:id="@+id/storeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragmentTitle"
+            android:text="Store Page"
+            android:textSize="24sp"
+            android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

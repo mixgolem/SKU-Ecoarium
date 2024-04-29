@@ -15,7 +15,7 @@
             android:layout_height="56dp"
             android:layout_alignParentBottom="true"
             app:menu="@menu/menu_bottom_nav"
-            app:labelVisibilityMode="labeled"
-            app:itemTextColor="@color/black"
-            app:itemIconTint="#2196F3"/>
+            app:labelVisibilityMode="unlabeled"
+            app:itemTextColor="@drawable/bottom_navigation_color"
+            app:itemIconTint="@drawable/bottom_navigation_color"/>
 </RelativeLayout>

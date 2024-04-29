@@ -1,39 +1,73 @@
 package com.example.ecoariumapp
 
+import HomeFragment
+import InventoryFragment
+import MypageFragment
+import QRcodeFragment
+import StoreFragment
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
+import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ecoariumapp.sendRequest.sendLoginRequest
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItemSelectedListener{
+
+    private lateinit var homeFragment: HomeFragment
+    private lateinit var inventoryFragment: InventoryFragment
+    private lateinit var mypageFragment: MypageFragment
+    private lateinit var qrcodeFragment: QRcodeFragment
+    private lateinit var storeFragment: StoreFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.view_bottom_nav)
 
-        // UI 요소 참조
-        val loginButton: Button = findViewById(R.id.loginButton)
-        val registerButton: Button = findViewById(R.id.registerButton)
+        val sharedPref = getSharedPreferences("login", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
 
-        val usernameEditText: EditText = findViewById(R.id.usernameEditText)
-        val passwordEditText: EditText = findViewById(R.id.passwordEditText)
-
-        // 로그인 버튼 클릭 이벤트 설정
-        loginButton.setOnClickListener {
-            // 사용자 이름과 비밀번호 가져오기
-            val username = usernameEditText.text.toString()
-            val password = passwordEditText.text.toString()
-
-            // 로그인 요청 보내기
-            sendLoginRequest(this, username, password)
-        }
-
-        // 회원가입 버튼 클릭 이벤트 설정
-        registerButton.setOnClickListener {
-            // RegisterActivity로 이동
-            val intent = Intent(this, RegisterActivity::class.java)
+        if (!isLoggedIn) {
+            // 로그인 상태가 아니므로 LoginActivity로 이동
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
+
+        val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation_view)
+        bottomNav.setOnNavigationItemSelectedListener(this)
+
+        homeFragment = HomeFragment.newInstance()
+        // 처음에는 add로 추가해서 셋팅해주고
+        supportFragmentManager.beginTransaction().add(R.id.fragmentContainer, homeFragment).commit()
+
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        // 클릭하면 계속 교체 replace
+        when(item.itemId) {
+            R.id.fragmentHome -> {
+                homeFragment = HomeFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, homeFragment).commit()
+            }
+            R.id.fragmentInventory -> {
+                inventoryFragment = InventoryFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, inventoryFragment).commit()
+            }
+            R.id.fragmentMypage -> {
+                mypageFragment = MypageFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, mypageFragment).commit()
+            }
+            R.id.fragmentStore -> {
+                storeFragment = StoreFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, storeFragment).commit()
+            }
+            R.id.fragmentQRcode -> {
+                qrcodeFragment = QRcodeFragment.newInstance()
+                supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, qrcodeFragment).commit()
+            }
+        }
+
+        return true
     }
 }

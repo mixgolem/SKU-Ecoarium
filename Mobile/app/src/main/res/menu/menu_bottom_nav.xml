@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
             android:id="@+id/fragmentHome"
+            app:showAsAction="always"
             android:title="홈"
-            android:icon="@drawable/home"/>
+            android:icon="@drawable/home_icon"/>
     <item
             android:id="@+id/fragmentStore"
+            app:showAsAction="always"
             android:title="스토어"
-            android:icon="@drawable/store"/>
+            android:icon="@drawable/store_icon"/>
     <item
             android:id="@+id/fragmentQRcode"
+            app:showAsAction="always"
             android:title="QR코드"
-            android:icon="@drawable/qrcode"/>
+            android:icon="@drawable/qrcode_icon"/>
     <item
             android:id="@+id/fragmentInventory"
+            app:showAsAction="always"
             android:title="보관함"
-            android:icon="@drawable/inventory"/>
+            android:icon="@drawable/inventory_icon"/>
     <item
             android:id="@+id/fragmentMypage"
+            app:showAsAction="always"
             android:title="마이페이지"
-            android:icon="@drawable/mypage"/>
+            android:icon="@drawable/mypage_icon"/>
 </menu>

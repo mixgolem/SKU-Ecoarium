@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/fragmentTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/green">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Ecoarium"
+                android:fontFamily="@font/jua"
+                android:textColor="@color/white"
+                android:textSize="30sp"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+            android:layout_width="370dp"
+            android:layout_height="260dp"
+            android:layout_below="@id/fragmentTitle"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true">
+
+        <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                app:tabBackground="@drawable/tab_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerEvent"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_above="@id/tab_layout"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
