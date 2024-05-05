@@ -1,6 +1,5 @@
 package com.example.ecoariumapp.sendRequests
 
-import android.util.Log
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.ecoariumapp.IpConfig
@@ -10,7 +9,7 @@ import org.json.JSONObject
 import java.io.IOException
 
 // 프로필 불러오기 요청
-fun sendMypageRequest(fragment: Fragment) {
+fun sendProfileRequest(fragment: Fragment) {
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/mypage/load-profile")
         .get()
@@ -27,21 +26,16 @@ fun sendMypageRequest(fragment: Fragment) {
             if (response.isSuccessful) {
                 val responseBody: ResponseBody? = response.body
                 val jsonData: String = responseBody?.string() ?: ""
-                Log.d("MypageFragment", "response: $jsonData")
 
                 val jsonObject = JSONObject(jsonData)
                 val userObject = jsonObject.getJSONObject("user")   //user
                 val id = userObject.getString("username")           //id
                 val nickname = userObject.getString("nickname")     //nickname
-                val points = jsonObject.getInt("points")            //point
 
-                val pointTextView = fragment.view?.findViewById<TextView>(R.id.pointTextView)
                 val idTextView = fragment.view?.findViewById<TextView>(R.id.idTextView)
                 val nicknameTextView = fragment.view?.findViewById<TextView>(R.id.nicknameTextView)
 
                 fragment.activity?.runOnUiThread {
-                    Log.d("MypageFragment", "id: $id, nickname: $nickname, points: $points")
-                    pointTextView?.text = fragment.getString(R.string.point, points)
                     idTextView?.text = fragment.getString(R.string.id, id)
                     nicknameTextView?.text = fragment.getString(R.string.nickname, nickname)
                 }

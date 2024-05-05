@@ -1,14 +1,15 @@
+
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.example.ecoariumapp.ProfileFragment
 import com.example.ecoariumapp.R
 import com.example.ecoariumapp.sendRequests.sendLogoutRequest
-import com.example.ecoariumapp.sendRequests.sendProfileRequest
+import com.example.ecoariumapp.sendRequests.sendMypageRequest
 
 class MypageFragment: Fragment() {
 
@@ -36,12 +37,15 @@ class MypageFragment: Fragment() {
     ): View? {
         // 레이아웃과 조각을 서로 연결
         val view = inflater.inflate(R.layout.fragment_mypage, container, false)
-        sendProfileRequest(this)
+        sendMypageRequest(this)
 
         val editProfileButton = view.findViewById<Button>(R.id.editProfileButton)
         val logoutButton = view.findViewById<Button>(R.id.logoutButton)
 
         editProfileButton.setOnClickListener {
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.fragmentContainer, ProfileFragment.newInstance())
+            transaction?.commit()
         }
 
         logoutButton.setOnClickListener {

@@ -64,6 +64,7 @@ public fun sendLoginRequest(activity: Activity, username: String, password: Stri
     json.put("username", username)
     json.put("password", password)
 
+    Log.d("LoginActivity", "로그인 정보: $json")
     // JSON을 RequestBody로 변환
     val mediaType = "application/json; charset=utf-8".toMediaTypeOrNull()
     val body = json.toString().toRequestBody(mediaType)
@@ -83,6 +84,7 @@ public fun sendLoginRequest(activity: Activity, username: String, password: Stri
 
         override fun onResponse(call: Call, response: Response) {
             val responseBody = response.body?.string()
+            Log.d("LoginActivity", "서버로부터 받은 응답: $responseBody")
             // 로그인 성공 시 MainActivity로 이동
             if (responseBody == "true") {
                 Handler(Looper.getMainLooper()).post {
