@@ -33,7 +33,8 @@ fun sendQRcodeRequest(fragment: Fragment, imageView: ImageView) {
                 if (responseBody != null) {
                     // QR 코드 생성
                     val barcodeEncoder = BarcodeEncoder()
-                    val bitmap: Bitmap = barcodeEncoder.encodeBitmap(responseBody, BarcodeFormat.QR_CODE, 400, 400)
+                    val bitmap: Bitmap = barcodeEncoder.encodeBitmap(
+                        responseBody, BarcodeFormat.QR_CODE, 400, 400)
 
                     // UI 업데이트는 메인 스레드에서 수행해야 하므로 runOnUiThread를 사용
                     fragment.activity?.runOnUiThread {

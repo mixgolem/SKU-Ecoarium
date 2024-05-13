@@ -4,9 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.Toast
 import com.example.ecoariumapp.IpConfig
-import com.example.ecoariumapp.LoginActivity
+import com.example.ecoariumapp.activities.LoginActivity
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -36,11 +37,9 @@ public fun sendRegisterRequest(activity: Activity, username: String, password: S
         }
 
         override fun onResponse(call: Call, response: Response) {
-            println("원본 = " + response.body)
             val responseBody = response.body?.string()
 
-
-            // 로그인 성공 시 HomeActivity로 이동
+            // 로그인 성공 시 LoginActivity로 이동
             if (responseBody == "true") {
                 Handler(Looper.getMainLooper()).post {
                     val intent = Intent(activity, LoginActivity::class.java)
@@ -51,6 +50,7 @@ public fun sendRegisterRequest(activity: Activity, username: String, password: S
                 // 로그인 실패 시 토스트 메시지 표시
                 Handler(Looper.getMainLooper()).post {
                     Toast.makeText(activity, responseBody, Toast.LENGTH_SHORT).show()
+                    Log.d("RegisterActivity", responseBody.toString())
                 }
             }
         }

@@ -22,7 +22,7 @@ public fun sendModifyRequest(fragment: Fragment,nickname: String) {
 
 
     val request = Request.Builder()
-        .url("http://${IpConfig.serverIp}:8000/profileModification/modify")
+        .url("http://${IpConfig.serverIp}:8000/auth/modify")
         .put(body)
         .build()
 

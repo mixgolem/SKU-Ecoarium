@@ -8,7 +8,7 @@ import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import com.example.ecoariumapp.IpConfig
-import com.example.ecoariumapp.MainActivity
+import com.example.ecoariumapp.activities.MainActivity
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ecoariumapp.R
-import com.example.ecoariumapp.ViewPagerAdapter
+import com.example.ecoariumapp.adapters.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -50,6 +50,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getEventList(): ArrayList<Int> {
-        return arrayListOf<Int>(R.drawable.event1, R.drawable.event2, R.drawable.event3, R.drawable.event4)
+        return arrayListOf<Int>(R.drawable.event1,
+            R.drawable.event2, R.drawable.event3, R.drawable.event4)
     }
 }

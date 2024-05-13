@@ -49,34 +49,3 @@ fun sendMypageRequest(fragment: Fragment) {
         }
     })
 }
-
-/*
-// 전체 기록 불러오기 요청
-fun sendAllLogsRequest(activity: Activity, callback: Callback) {
-    val request = Request.Builder()
-        .url("http://192.168.94.42:8000/load-all-logs")
-        .get()
-        .build()
-
-    client.newCall(request).enqueue(callback)
-}
-
-// 획득 기록 불러오기 요청
-fun sendEarningsLogsRequest(activity: Activity, callback: Callback) {
-    val request = Request.Builder()
-        .url("http://192.168.94.42:8000/load-earnings-logs")
-        .get()
-        .build()
-
-    client.newCall(request).enqueue(callback)
-}
-
-// 사용 기록 불러오기 요청
-fun sendUsagesLogsRequest(activity: Activity, callback: Callback) {
-    val request = Request.Builder()
-        .url("http://192.168.94.42:8000/load-usages-logs")
-        .get()
-        .build()
-
-    client.newCall(request).enqueue(callback)
-}*/

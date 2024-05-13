@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.ecoariumapp.IpConfig
-import com.example.ecoariumapp.LoginActivity
+import com.example.ecoariumapp.activities.LoginActivity
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -24,7 +24,7 @@ public fun sendDeleteRequest(fragment: Fragment,password: String) {
     val body = json.toString().toRequestBody(mediaType)
 
     val request = Request.Builder()
-        .url("http://${IpConfig.serverIp}:8000/auth/withdrawal")
+        .url("http://${IpConfig.serverIp}:8000/auth/withdrawalMobile")
         .post(body)
         .build()
 

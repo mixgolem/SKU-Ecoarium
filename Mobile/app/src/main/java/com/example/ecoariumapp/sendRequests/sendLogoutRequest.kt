@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import com.example.ecoariumapp.IpConfig
-import com.example.ecoariumapp.LoginActivity
+import com.example.ecoariumapp.activities.LoginActivity
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Request

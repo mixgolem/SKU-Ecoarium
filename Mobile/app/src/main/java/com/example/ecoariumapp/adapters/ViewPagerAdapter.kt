@@ -1,10 +1,11 @@
-package com.example.ecoariumapp
+package com.example.ecoariumapp.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ecoariumapp.R
 
 class ViewPagerAdapter (eventList: ArrayList<Int>):RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder>(){
     var item = eventList

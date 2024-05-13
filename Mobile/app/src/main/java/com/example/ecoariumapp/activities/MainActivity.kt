@@ -1,4 +1,4 @@
-package com.example.ecoariumapp
+package com.example.ecoariumapp.activities
 
 import HomeFragment
 import InventoryFragment
@@ -10,6 +10,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ecoariumapp.ProfileFragment
+import com.example.ecoariumapp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItemSelectedListener{
@@ -67,5 +69,15 @@ class MainActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
             }
         }
         return true
+    }
+
+    override fun onBackPressed() {
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
+
+        if (currentFragment is ProfileFragment) {
+            // ProfileFragment에서 뒤로가기 버튼이 눌렸을 때 MypageFragment로 이동
+            val mypageFragment = MypageFragment.newInstance()
+            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, mypageFragment).commit()
+        }
     }
 }

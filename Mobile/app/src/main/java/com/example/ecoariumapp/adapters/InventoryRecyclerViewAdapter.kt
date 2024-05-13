@@ -1,3 +1,5 @@
+package com.example.ecoariumapp.adapters
+
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,12 +15,12 @@ import com.bumptech.glide.request.RequestListener
 import com.example.ecoariumapp.IpConfig
 import com.example.ecoariumapp.R
 
-class RecyclerViewAdapter(private val itemList: List<List<String>>) : RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>() {
+class InventoryRecyclerViewAdapter(private val itemList: List<List<String>>) : RecyclerView.Adapter<InventoryRecyclerViewAdapter.RecyclerViewHolder>() {
 
     inner class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val ItemImage: ImageView = view.findViewById(R.id.itemImage)
-        val ItemName: TextView = view.findViewById(R.id.itemName)
-        val ItemMessage: TextView = view.findViewById(R.id.itemMessage)
+        val ItemImage: ImageView = view.findViewById(R.id.stampImage)
+        val ItemName: TextView = view.findViewById(R.id.stampName)
+        val ItemMessage: TextView = view.findViewById(R.id.stampMessage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {

@@ -1,12 +1,12 @@
 package com.example.ecoariumapp.sendRequests
 
-import RecyclerViewAdapter
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecoariumapp.IpConfig
 import com.example.ecoariumapp.R
+import com.example.ecoariumapp.adapters.InventoryRecyclerViewAdapter
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
@@ -64,18 +64,12 @@ fun sendInventoryRequest(fragment: Fragment) {
                         }
                     }
                 }
-
-/*
-
-                val itemImageView = fragment.view?.findViewById<ImageView>(R.id.itemImage)
-                val itemNameTextView = fragment.view?.findViewById<TextView>(R.id.itemName)
-                val itemMessageTextView = fragment.view?.findViewById<TextView>(R.id.itemMessage)
-*/
+                Log.d("combinedList", "combinedList: $combinedList")
 
                 fragment.activity?.runOnUiThread {
                     val recyclerView = fragment.view?.findViewById<RecyclerView>(R.id.recyclerView)
                     recyclerView?.layoutManager = LinearLayoutManager(fragment.context)
-                    recyclerView?.adapter = RecyclerViewAdapter(combinedList)
+                    recyclerView?.adapter = InventoryRecyclerViewAdapter(combinedList)
                 }
             }
         }

@@ -3,7 +3,8 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".LoginActivity">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                tools:context=".activities.LoginActivity">
 
     <ImageView
             android:id="@+id/logoImageView"
@@ -21,33 +22,58 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
-            android:hint="Username"
+            android:hint="아이디"
             android:inputType="text"
             android:padding="10dp"/>
 
-    <EditText
-            android:id="@+id/passwordEditText"
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/usernameEditText"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="10dp"/>
-
+            android:id="@+id/passwordLinearLayout"
+            android:layout_below="@+id/usernameEditText"
+            android:orientation="horizontal">
+        <FrameLayout
+                android:id="@+id/password_case"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password_case">
+            <EditText
+                    android:id="@id/passwordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/usernameEditText"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:hint="비밀번호"
+                    android:inputType="textPassword"
+                    android:padding="10dp"/>
+            <ImageButton
+                    android:id="@+id/showPasswordButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:scaleType="centerInside"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/show_password_selector"
+                    android:background="@color/white"
+                    android:text="asd"/>
+        </FrameLayout>
+    </LinearLayout>
     <Button
+            android:fontFamily="@font/jua"
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/passwordEditText"
+            android:layout_below="@id/passwordLinearLayout"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:text="Login"/>
 
     <Button
+            android:fontFamily="@font/jua"
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
