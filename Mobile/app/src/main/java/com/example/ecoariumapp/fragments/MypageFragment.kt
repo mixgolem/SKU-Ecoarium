@@ -68,14 +68,14 @@ class MypageFragment: Fragment() {
         }
 
         accumulationButton.setOnClickListener {
-            sendEarnLogsRequest(this)
+            sendStampLogsRequest(this)
             allButton.isSelected = false
             accumulationButton.isSelected = true
             usageButton.isSelected = false
         }
 
         usageButton.setOnClickListener {
-            sendUsageLogsRequest(this)
+            sendItemsLogsRequest(this)
             allButton.isSelected = false
             accumulationButton.isSelected = false
             usageButton.isSelected = true

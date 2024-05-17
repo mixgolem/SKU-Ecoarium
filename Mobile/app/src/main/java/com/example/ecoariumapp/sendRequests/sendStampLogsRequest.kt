@@ -47,7 +47,7 @@ fun sendAllLogsRequest(fragment: Fragment) {
     })
 }
 
-fun sendEarnLogsRequest(fragment: Fragment) {
+fun sendStampLogsRequest(fragment: Fragment) {
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/mypage/load-earnings-logs")
         .get()
@@ -69,7 +69,7 @@ fun sendEarnLogsRequest(fragment: Fragment) {
 
                 val jsonObject = JSONObject(jsonData)
                 val pointEarningArray = jsonObject.getJSONArray("point_earnings")
-                val itemsArray = jsonObject.getJSONArray("items")
+                val itemsArray = JSONArray()
 
                 // Create the adapter
                 val adapter = StampRecyclerViewAdapter(pointEarningArray, itemsArray)
@@ -84,7 +84,7 @@ fun sendEarnLogsRequest(fragment: Fragment) {
     })
 }
 
-fun sendUsageLogsRequest(fragment: Fragment) {
+fun sendItemsLogsRequest(fragment: Fragment) {
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/mypage/load-usages-logs")
         .get()
@@ -111,9 +111,7 @@ fun sendUsageLogsRequest(fragment: Fragment) {
                 val usedItemsArray = JSONArray()
                 for (i in 0 until pointUsageArray.length()) {
                     val log = pointUsageArray.getJSONObject(i)
-                    if (log.optString("delatedAt") != "") {
-                        usedItemsArray.put(log)
-                    }
+                    usedItemsArray.put(log)
                 }
 
                 // Create the adapter with the used items
