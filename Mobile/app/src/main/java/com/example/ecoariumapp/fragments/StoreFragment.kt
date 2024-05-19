@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.ecoariumapp.R
+import com.example.ecoariumapp.sendRequests.sendLoadItemsRequest
 
 class StoreFragment: Fragment() {
 
@@ -32,6 +33,8 @@ class StoreFragment: Fragment() {
     ): View? {
         // 레이아웃과 조각을 서로 연결
         val view = inflater.inflate(R.layout.fragment_store, container, false)
+        sendLoadItemsRequest(this)
+
         return view
     }
 

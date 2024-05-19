@@ -38,8 +38,8 @@ class MypageFragment: Fragment() {
     ): View? {
         // 레이아웃과 조각을 서로 연결
         val view = inflater.inflate(R.layout.fragment_mypage, container, false)
-        sendMypageRequest(this)
         sendAllLogsRequest(this)
+        sendMypageRequest(this)
 
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.stampRecyclerView)
@@ -87,6 +87,10 @@ class MypageFragment: Fragment() {
         }
 
         return view
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        sendMypageRequest(this)
     }
 
 }

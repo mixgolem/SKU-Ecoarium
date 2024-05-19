@@ -15,9 +15,9 @@ import org.json.JSONArray
 class StampRecyclerViewAdapter(private val allLogs: JSONArray, private val items: JSONArray) :
     RecyclerView.Adapter<StampRecyclerViewAdapter.RecyclerViewHolder>() {
     inner class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val stampImage: ImageView = view.findViewById(R.id.stampImage)
-        val stampName: TextView = view.findViewById(R.id.stampName)
-        val stampMessage: TextView = view.findViewById(R.id.stampMessage)
+        val stampImage: ImageView = view.findViewById(R.id.itemImage)
+        val stampName: TextView = view.findViewById(R.id.itemName)
+        val stampMessage: TextView = view.findViewById(R.id.itemPrice)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {

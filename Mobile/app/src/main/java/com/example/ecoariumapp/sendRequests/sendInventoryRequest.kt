@@ -67,7 +67,7 @@ fun sendInventoryRequest(fragment: Fragment) {
                 Log.d("combinedList", "combinedList: $combinedList")
 
                 fragment.activity?.runOnUiThread {
-                    val recyclerView = fragment.view?.findViewById<RecyclerView>(R.id.recyclerView)
+                    val recyclerView = fragment.view?.findViewById<RecyclerView>(R.id.inventoryRecyclerView)
                     recyclerView?.layoutManager = LinearLayoutManager(fragment.context)
                     recyclerView?.adapter = InventoryRecyclerViewAdapter(combinedList)
                 }

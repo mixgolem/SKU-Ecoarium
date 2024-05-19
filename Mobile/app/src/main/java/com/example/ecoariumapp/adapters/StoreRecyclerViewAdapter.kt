@@ -15,34 +15,33 @@ import com.bumptech.glide.request.RequestListener
 import com.example.ecoariumapp.IpConfig
 import com.example.ecoariumapp.R
 
-class InventoryRecyclerViewAdapter(private val itemList: List<List<String>>) :
-    RecyclerView.Adapter<InventoryRecyclerViewAdapter.RecyclerViewHolder>() {
+class StoreRecyclerViewAdapter(private val itemList: List<List<String>>) :
+    RecyclerView.Adapter<StoreRecyclerViewAdapter.RecyclerViewHolder>() {
 
     inner class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val ItemImage: ImageView = view.findViewById(R.id.stampImage)
-        val ItemName: TextView = view.findViewById(R.id.stampName)
-        val ItemMessage: TextView = view.findViewById(R.id.stampMessage)
+        val ItemImage: ImageView = view.findViewById(R.id.itemImage)
+        val ItemName: TextView = view.findViewById(R.id.itemName)
+        val ItemPrice: TextView = view.findViewById(R.id.itemPrice)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_inventory_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_store_item, parent, false)
         return RecyclerViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         val itemData = itemList[position]
-        Log.d("InventoryRecyclerViewAdapter", "Item data: $itemData")
 
         // Assuming that the second element in the list is the item message
-        val itemMessage = itemData[1]
-        holder.ItemMessage.text = itemMessage
+        val itemPrice = "${itemData[3]}개"
+        holder.ItemPrice.text = itemPrice
 
         // Assuming that the third element in the list is the item name
-        val itemName = itemData[2]
+        val itemName = itemData[1]
         holder.ItemName.text = itemName
 
         // Assuming that the fourth element in the list is the item image file name
-        val itemImageFileName = itemData[3]
+        val itemImageFileName = itemData[2]
         val itemImageURL = "http://${IpConfig.serverIp}:8000/uploads/$itemImageFileName"
         Glide.with(holder.ItemImage.context)
             .load(itemImageURL)
