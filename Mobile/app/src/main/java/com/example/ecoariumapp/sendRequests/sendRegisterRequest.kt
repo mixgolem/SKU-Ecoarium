@@ -14,12 +14,13 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.io.IOException
 
-public fun sendRegisterRequest(activity: Activity, username: String, password: String, passwordVerification: String, nickname: String) {
+public fun sendRegisterRequest(activity: Activity, username: String, password: String, passwordVerification: String, nickname: String, email: String) {
         val json = JSONObject()
         json.put("username", username)
         json.put("password", password)
         json.put("password_verification", passwordVerification)
         json.put("nickname", nickname)
+        json.put("email", email)
 
         val mediaType = "application/json; charset=utf-8".toMediaTypeOrNull()
         val body = json.toString().toRequestBody(mediaType)

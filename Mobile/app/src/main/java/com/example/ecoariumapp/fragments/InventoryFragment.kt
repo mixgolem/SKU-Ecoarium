@@ -3,9 +3,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.ecoariumapp.R
-import com.example.ecoariumapp.sendRequests.sendInventoryRequest
+import com.example.ecoariumapp.sendRequests.sendAvailableItemRequest
+import com.example.ecoariumapp.sendRequests.sendCompletedItemRequest
 
 class InventoryFragment: Fragment() {
 
@@ -34,7 +36,23 @@ class InventoryFragment: Fragment() {
         // 레이아웃과 조각을 서로 연결
         val view = inflater.inflate(R.layout.fragment_inventory, container, false)
 
-        sendInventoryRequest(this)
+        val buttonAvailable: Button = view.findViewById(R.id.buttonAvailable)
+        val buttonCompleted: Button = view.findViewById(R.id.buttonCompleted)
+
+        buttonAvailable.isSelected = true
+        sendAvailableItemRequest(this)
+
+        buttonAvailable.setOnClickListener {
+            buttonAvailable.isSelected = true
+            buttonCompleted.isSelected = false
+            sendAvailableItemRequest(this)
+        }
+
+        buttonCompleted.setOnClickListener {
+            buttonAvailable.isSelected = false
+            buttonCompleted.isSelected = true
+            sendCompletedItemRequest(this)
+        }
 
         return view
     }

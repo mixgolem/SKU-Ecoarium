@@ -1,16 +1,21 @@
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecoariumapp.ProfileFragment
 import com.example.ecoariumapp.R
 import com.example.ecoariumapp.sendRequests.*
+import java.io.InputStream
 
 class MypageFragment: Fragment() {
 
@@ -90,7 +95,28 @@ class MypageFragment: Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sendMypageRequest(this)
-    }
 
+        // Mypage 요청을 보냅니다.
+        sendMypageRequest(this)
+
+        // SharedPrefManager 인스턴스를 생성합니다.
+        val sharedPrefManager = SharedPrefManager(requireContext())
+        // SharedPreferences에서 "profileImage" 키에 해당하는 값을 가져옵니다.
+        val imageUriString = sharedPrefManager.getSharedPrefereces().getString("profileImage", "")
+        Log.d("MypageFragment", "imageUriString: $imageUriString")
+
+        val imageView: ImageView = view.findViewById(R.id.mypageImageView) // 여기에 ImageView의 실제 ID를 사용하세요.
+
+        if (imageUriString!!.startsWith("/")) {
+            // If the imageUriString is a file path
+            val bitmap = BitmapFactory.decodeFile(imageUriString)
+            imageView.setImageBitmap(bitmap)
+        } else if (imageUriString.startsWith("android.resource://")) {
+            // If the imageUriString is a resource identifier
+            val imageUri = Uri.parse(imageUriString)
+            val imageStream: InputStream? = context?.contentResolver?.openInputStream(imageUri)
+            val bitmap = BitmapFactory.decodeStream(imageStream)
+            imageView.setImageBitmap(bitmap)
+        }
+    }
 }

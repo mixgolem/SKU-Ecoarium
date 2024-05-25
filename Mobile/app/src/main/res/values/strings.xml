@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">EcoariumApp</string>
     <string name="point">%d개의 스탬프를 모았어요!</string>
+    <string name="qr_timer">%d초 이후 인증이 만료됩니다.</string>
     <string name="nickname">%s 님</string>
+    <string name="stack">%d 개</string>
     <string name="id">%s</string>
 </resources>

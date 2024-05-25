@@ -21,6 +21,7 @@ class RegisterActivity : AppCompatActivity() {
         val passwordEditText: EditText = findViewById(R.id.passwordEditText)
         val passwordVerificationEditText: EditText = findViewById(R.id.passwordVerificationEditText)
         val nicknameEditText: EditText = findViewById(R.id.nicknameEditText)
+        val emailEditText: EditText = findViewById(R.id.emailEditText)
         val showPasswordButton: ImageButton = findViewById(R.id.showPasswordButton)
         val showPasswordVerificationButton: ImageButton = findViewById(R.id.showPasswordVerificationButton)
 
@@ -54,8 +55,9 @@ class RegisterActivity : AppCompatActivity() {
             val password = passwordEditText.text.toString()
             val passwordVerification = passwordVerificationEditText.text.toString()
             val nickname = nicknameEditText.text.toString()
+            val email = emailEditText.text.toString()
 
-            sendRegisterRequest(this, username, password, passwordVerification, nickname)
+            sendRegisterRequest(this, username, password, passwordVerification, nickname, email)
         }
     }
 }

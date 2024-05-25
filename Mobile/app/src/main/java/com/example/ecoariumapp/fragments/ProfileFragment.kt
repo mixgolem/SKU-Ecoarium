@@ -1,7 +1,12 @@
 // ProfileFragment.kt
 package com.example.ecoariumapp
 
+import MypageFragment
+import SharedPrefManager
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,8 +14,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.ecoariumapp.sendRequests.*
+import com.google.android.material.button.MaterialButton
+import java.io.InputStream
 
 class ProfileFragment : Fragment() {
     companion object {
@@ -33,6 +42,8 @@ class ProfileFragment : Fragment() {
 
         sendProfileRequest(this)
 
+        val imageView: ImageView = view.findViewById(R.id.profileImageView) //
+        val profileImageEditButton: MaterialButton = view.findViewById(R.id.profileImageEditButton)
         val nicknameChangeButton: Button = view.findViewById(R.id.nicknameChangeButton)
         val nicknameConfirmButton: Button = view.findViewById(R.id.nicknameConfirmButton)
         val logoutButton : Button = view.findViewById(R.id.logoutButton)
@@ -43,7 +54,6 @@ class ProfileFragment : Fragment() {
         val deleteAccountConfirmButton : Button = view.findViewById(R.id.deleteAccountConfirmButton)
         val deleteAccountEditText : EditText = view.findViewById(R.id.deleteAccountEditText)
 
-
         val passwordChangeButton: Button = view.findViewById(R.id.passwordChangeButton)
         val passwordConfirmButton: Button = view.findViewById(R.id.passwordConfirmButton)
         val currentPasswordEditText: EditText = view.findViewById(R.id.currentPasswordEditText)
@@ -52,6 +62,60 @@ class ProfileFragment : Fragment() {
         val showCurrentPasswordButton: ImageButton = view.findViewById(R.id.showCurrentPasswordButton)
         val showNewPasswordButton: ImageButton = view.findViewById(R.id.showNewPasswordButton)
         val showNewPasswordVerificationButton: ImageButton = view.findViewById(R.id.showNewPasswordVerificationButton)
+        val sharedPrefManager = SharedPrefManager(requireContext())
+        val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                val bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, it)
+                val sharedPrefManager = SharedPrefManager(requireContext())
+                // Get the current image Uri
+                val currentImageUri = Uri.parse(sharedPrefManager.getSharedPrefereces().getString("profileImage", ""))
+                Log.d("ProfileFragment", "currentImageUri: $currentImageUri")
+                // Delete the current image from internal storage
+                sharedPrefManager.deleteImageFromInternalStorage(currentImageUri)
+                // Save the new image to internal storage
+                val savedImageUri = sharedPrefManager.saveImageToInternalStorage(bitmap, requireContext())
+                Log.d("ProfileFragment", "savedImageUri: $savedImageUri")
+                // Set the new image
+                sharedPrefManager.setImageView(savedImageUri)
+
+                // MypageFragment로 이동
+                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                transaction?.replace(R.id.fragmentContainer, MypageFragment.newInstance())
+                transaction?.commit()
+            }
+        }
+
+        // SharedPreferences에서 "profileImage" 키에 해당하는 값을 가져옵니다.
+        val imageUriString = sharedPrefManager.getSharedPrefereces().getString("profileImage", "")
+        if (imageUriString!!.startsWith("/")) {
+            // If the imageUriString is a file path
+            val bitmap = BitmapFactory.decodeFile(imageUriString)
+            imageView.setImageBitmap(bitmap)
+        } else if (imageUriString.startsWith("android.resource://")) {
+            // If the imageUriString is a resource identifier
+            val imageUri = Uri.parse(imageUriString)
+            val imageStream: InputStream? = context?.contentResolver?.openInputStream(imageUri)
+            val bitmap = BitmapFactory.decodeStream(imageStream)
+            imageView.setImageBitmap(bitmap)
+        }
+
+        profileImageEditButton.setOnClickListener {
+            AlertDialog.Builder(requireContext())
+                .setTitle("프로필 이미지 변경")
+                .setItems(arrayOf("기본 이미지로 변경", "새로운 이미지로 변경")) { dialog, which ->
+                    when (which) {
+                        0 -> {
+                            sharedPrefManager.setImageViewDefault()
+                            // MypageFragment로 이동
+                            val transaction = activity?.supportFragmentManager?.beginTransaction()
+                            transaction?.replace(R.id.fragmentContainer, MypageFragment.newInstance())
+                            transaction?.commit()
+                        }
+                        1 -> getContent.launch("image/*")
+                    }
+                }
+                .show()
+        }
 
         showCurrentPasswordButton.setOnClickListener {
             togglePasswordVisibility(currentPasswordEditText, showCurrentPasswordButton)
@@ -64,6 +128,7 @@ class ProfileFragment : Fragment() {
         showNewPasswordVerificationButton.setOnClickListener {
             togglePasswordVisibility(newPasswordVerificationEditText, showNewPasswordVerificationButton)
         }
+
         nicknameChangeButton.setOnClickListener {
             // TextView를 숨기고 EditText를 보이게 함
             nicknameTextView.visibility = View.GONE
@@ -154,6 +219,7 @@ class ProfileFragment : Fragment() {
             val passwordConfirm = deleteAccountEditText.text.toString()
             sendDeleteRequest(this,passwordConfirm)
         }
+
         Log.d("ProfileFragment", "onViewCreated 완료")
     }
 

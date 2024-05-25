@@ -3,6 +3,7 @@ package com.example.ecoariumapp.sendRequests
 import android.graphics.Bitmap
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.ecoariumapp.IpConfig
 import com.google.zxing.BarcodeFormat
@@ -13,7 +14,7 @@ import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
 
-fun sendQRcodeRequest(fragment: Fragment, imageView: ImageView) {
+fun sendQRcodeRequest(fragment: Fragment, imageView: ImageView, textView: TextView) {
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/main/createQR")
         .get()
@@ -40,6 +41,7 @@ fun sendQRcodeRequest(fragment: Fragment, imageView: ImageView) {
                     fragment.activity?.runOnUiThread {
                         // QR 코드 표시
                         imageView.setImageBitmap(bitmap)
+                        textView.text = responseBody
                     }
                 }
             }

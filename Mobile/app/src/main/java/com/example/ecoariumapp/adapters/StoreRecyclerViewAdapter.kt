@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -14,11 +16,14 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.example.ecoariumapp.IpConfig
 import com.example.ecoariumapp.R
+import com.example.ecoariumapp.sendRequests.sendExchangeRequest
 
 class StoreRecyclerViewAdapter(private val itemList: List<List<String>>) :
     RecyclerView.Adapter<StoreRecyclerViewAdapter.RecyclerViewHolder>() {
 
+
     inner class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val exchangeButton: Button = view.findViewById(R.id.exchangeButton)
         val ItemImage: ImageView = view.findViewById(R.id.itemImage)
         val ItemName: TextView = view.findViewById(R.id.itemName)
         val ItemPrice: TextView = view.findViewById(R.id.itemPrice)
@@ -56,6 +61,19 @@ class StoreRecyclerViewAdapter(private val itemList: List<List<String>>) :
                 }
             })
             .into(holder.ItemImage)
+
+        holder.exchangeButton.setOnClickListener {
+            val builder = AlertDialog.Builder(it.context)
+            builder.setTitle("교환 확인")
+            builder.setMessage("해당 상품을 교환하시겠습니까?")
+            builder.setPositiveButton("예") { dialog, which ->
+                sendExchangeRequest(itemList[position][0].toInt()) // 상품 ID를 인자로 교환 함수를 호출
+            }
+            builder.setNegativeButton("아니오") { dialog, which ->
+                // '아니오'를 선택했을 때는 아무런 동작도 수행하지 않습니다.
+            }
+            builder.show()
+        }
     }
 
     override fun getItemCount(): Int {

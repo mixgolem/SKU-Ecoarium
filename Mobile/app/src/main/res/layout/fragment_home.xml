@@ -20,12 +20,18 @@
     </androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
+            android:id="@+id/viewPagerLayout"
             android:layout_width="370dp"
             android:layout_height="260dp"
             android:layout_below="@id/fragmentTitle"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
             android:layout_centerHorizontal="true">
+        <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerEvent"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_above="@id/tab_layout"/>
 
         <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
@@ -35,13 +41,201 @@
                 app:tabBackground="@drawable/tab_selector"
                 app:tabGravity="center"
                 app:tabIndicatorHeight="0dp"/>
-
-        <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerEvent"
-                android:layout_width="match_parent"
-                android:layout_height="230dp"
-                android:layout_above="@id/tab_layout"/>
-
     </RelativeLayout>
 
+    <RelativeLayout
+            android:layout_below="@id/viewPagerLayout"
+            android:id="@+id/profileRelativeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginBottom="7dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_centerInParent="true">
+        <LinearLayout
+                android:id="@+id/profileLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <LinearLayout
+                    android:id="@+id/profileInfoLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <androidx.cardview.widget.CardView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        app:cardCornerRadius="16dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/homeImageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/green"
+                            android:scaleType="fitCenter"
+                            android:adjustViewBounds="true"/>
+                </androidx.cardview.widget.CardView>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                    <TextView
+                            android:id="@+id/nicknameTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:textSize="40sp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/jua"
+                            android:padding="5dp"/>
+                    <View
+                            android:id="@+id/homeDivider"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"/>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <View
+                                android:id="@+id/pointDivider"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1"/>
+                        <TextView
+                                android:id="@+id/pointIntTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:textSize="30sp"
+                                android:gravity="center_horizontal"
+                                android:textColor="@color/black"
+                                android:padding="15dp"/>
+                        <TextView
+                                android:id="@+id/pointStringTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/jua"
+                                android:text="stamps"
+                                android:gravity="center_horizontal"
+                                android:textColor="@color/black"
+                                android:padding="15dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_below="@+id/profileLinearLayout"
+                android:id="@+id/plasticsLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <ImageView
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/plasticsImageView"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/plastics">
+            </ImageView>
+            <View
+                    android:id="@+id/plasticsDivider1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <TextView
+                        android:id="@+id/plasticsTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/jua"
+                        android:text="JT를 통해 수거된 플라스틱의 갯수"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/gray"
+                        android:padding="15dp"/>
+                <TextView
+                        android:id="@+id/plasticsIntTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/jua"
+                        android:text="1,500 개"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:layout_gravity="right"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_below="@+id/plasticsLinearLayout"
+                android:id="@+id/plasticLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="15dp"
+                    android:id="@+id/plasticImageView"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/plastic">
+            </ImageView>
+            <View
+                    android:id="@+id/plasticDivider1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <TextView
+                        android:id="@+id/plasticTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/jua"
+                        android:text="내가 반납한 플라스틱의 갯수"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/gray"
+                        android:padding="15dp"/>
+                <TextView
+                        android:id="@+id/plasticIntTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/jua"
+                        android:text="10 개"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/black"
+                        android:padding="10dp"
+                        android:layout_gravity="right"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

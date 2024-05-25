@@ -1,5 +1,6 @@
 package com.example.ecoariumapp.sendRequests
 
+import SharedPrefManager
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -57,7 +58,7 @@ val client = OkHttpClient.Builder()
     }
     .build()
 
-public fun sendLoginRequest(activity: Activity, username: String, password: String) {
+public fun sendLoginRequest(activity: Activity, username: String, password: String, keepLogin: Boolean = false) {
     // 로그인 정보를 JSON 형태로 변환
 
     val json = JSONObject()
@@ -92,8 +93,9 @@ public fun sendLoginRequest(activity: Activity, username: String, password: Stri
                     val intent = Intent(activity, MainActivity::class.java)
                     activity.startActivity(intent)
                     activity.finish()
-
                     // 로그인 상태 저장
+                    val sharedPrefManager = SharedPrefManager(activity)
+                    if (keepLogin) sharedPrefManager.saveLoginDetails(username, password)
                     val sharedPref = activity.getSharedPreferences("login", Context.MODE_PRIVATE)
                     with (sharedPref.edit()) {
                         putBoolean("isLoggedIn", true)

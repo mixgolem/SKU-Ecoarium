@@ -13,7 +13,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="보관함"
+                android:text="상점"
                 android:fontFamily="@font/jua"
                 android:textColor="@color/white"
                 android:textSize="28sp"/>

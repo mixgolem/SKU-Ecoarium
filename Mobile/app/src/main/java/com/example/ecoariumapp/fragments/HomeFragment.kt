@@ -1,3 +1,4 @@
+
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ecoariumapp.R
 import com.example.ecoariumapp.adapters.ViewPagerAdapter
+import com.example.ecoariumapp.sendRequests.sendHomeRequest
+import com.example.ecoariumapp.sendRequests.sendStacksRequest
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -36,7 +39,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         viewPager = view.findViewById(R.id.viewPagerEvent)
         val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
@@ -48,6 +50,13 @@ class HomeFragment : Fragment() {
 
         return view
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        sendHomeRequest(this)
+        sendStacksRequest(this)
+    }
+
+
 
     private fun getEventList(): ArrayList<Int> {
         return arrayListOf<Int>(R.drawable.event1,

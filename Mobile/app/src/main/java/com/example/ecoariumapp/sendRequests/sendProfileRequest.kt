@@ -1,5 +1,6 @@
 package com.example.ecoariumapp.sendRequests
 
+import android.util.Log
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.ecoariumapp.IpConfig
@@ -11,7 +12,7 @@ import java.io.IOException
 // 프로필 불러오기 요청
 fun sendProfileRequest(fragment: Fragment) {
     val request = Request.Builder()
-        .url("http://${IpConfig.serverIp}:8000/mypage/load-profile")
+        .url("http://${IpConfig.serverIp}:8000/auth/loadProfile")
         .get()
         .build()
 
@@ -29,14 +30,19 @@ fun sendProfileRequest(fragment: Fragment) {
 
                 val jsonObject = JSONObject(jsonData)
                 val userObject = jsonObject.getJSONObject("user")   //user
+                Log.d("ProfileFragment", "서버로부터 받은 응답: $userObject")
+
                 val id = userObject.getString("username")           //id
                 val nickname = userObject.getString("nickname")     //nickname
+                val email = userObject.getString("email")           //email
 
                 val idTextView = fragment.view?.findViewById<TextView>(R.id.idTextView)
+                val emailTextView = fragment.view?.findViewById<TextView>(R.id.emailTextView)
                 val nicknameTextView = fragment.view?.findViewById<TextView>(R.id.nicknameTextView)
 
                 fragment.activity?.runOnUiThread {
                     idTextView?.text = fragment.getString(R.string.id, id)
+                    emailTextView?.text = fragment.getString(R.string.id, email)
                     nicknameTextView?.text = fragment.getString(R.string.nickname, nickname)
                 }
             }

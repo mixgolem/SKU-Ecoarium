@@ -61,12 +61,20 @@
                     android:text="asd"/>
         </FrameLayout>
     </LinearLayout>
+    <CheckBox
+            android:layout_below="@id/passwordLinearLayout"
+            android:id="@+id/keepLoginCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            android:text="로그인 유지" />
     <Button
             android:fontFamily="@font/jua"
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/passwordLinearLayout"
+            android:layout_below="@id/keepLoginCheckBox"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"

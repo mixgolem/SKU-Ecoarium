@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ecoariumapp.IpConfig
 import com.example.ecoariumapp.R
+import com.example.ecoariumapp.convertIsoToCustomFormat
 import org.json.JSONArray
 
 class StampRecyclerViewAdapter(private val allLogs: JSONArray, private val items: JSONArray) :
@@ -26,19 +27,51 @@ class StampRecyclerViewAdapter(private val allLogs: JSONArray, private val items
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
+        Log.d("StampRecyclerViewAdapter", "allLogs: $allLogs")
+        Log.d("StampRecyclerViewAdapter", "items: $items")
         val log = allLogs.getJSONObject(position)
 
+        var isLocation: Boolean = true
+        var isType: Boolean = true
         // Check if the log JSONObject has the 'location' field
-        val isStamp = log.has("location")
+        isType = (log.has("type"))
+        isLocation = (log.has("location"))
 
-        // If it's a stamp, get the 'location' field. Otherwise, get the 'name' field.
-        val stampName = if (isStamp) log.getString("location") else getItemName(log.getInt("itemId"))
+        val stampName =
+
+            if (isType) {
+                if (log.getString("type") == "point_earning") {
+                    log.getString("detail")
+                } else {
+                    getItemName(log.getInt("detail"))
+                }
+            } else {
+                if (isLocation) {
+                    log.getString("location")
+                } else {
+                    getItemName(log.getInt("itemId"))
+                }
+            }
+        Log.d("StampRecyclerViewAdapter", "Stamp name: $stampName")
 
         // If it's a stamp, get the 'createdAt' field. Otherwise, get the 'message' field.
-        val stampMessage =log.optString("createdAt")
+        val stampMessage = convertIsoToCustomFormat(log.optString("createdAt"))
 
         // If it's a stamp, use the 'stamp' image from @drawable. Otherwise, get the 'img' field.
-        val stampImage = if (isStamp) R.drawable.stamp else getItemImage(log.getInt("itemId"))
+        var stampImage =
+            if (isType) {
+                if (log.getString("type") == "point_earning") {
+                    R.drawable.stamp
+                } else {
+                    getItemImage(log.getInt("detail"))
+                }
+            } else {
+                if (isLocation) {
+                    R.drawable.stamp
+                } else {
+                    getItemImage(log.getInt("itemId"))
+                }
+            }
 
         // Set the image, name, and message to the views
         // Use Glide to load the image from a URL or resource, and use the 'stamp' image as the error fallback

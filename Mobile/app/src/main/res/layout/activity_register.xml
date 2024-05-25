@@ -85,11 +85,20 @@
             android:layout_below="@id/passwordVerificationLinearLayout"
             android:layout_marginBottom="16dp"/>
 
+    <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="이메일"
+            android:inputType="text"
+            android:layout_below="@id/nicknameEditText"
+            android:layout_marginBottom="16dp"/>
+
     <Button
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="가입하기"
-            android:layout_below="@id/nicknameEditText"/>
+            android:layout_below="@id/emailEditText"/>
 
 </RelativeLayout>

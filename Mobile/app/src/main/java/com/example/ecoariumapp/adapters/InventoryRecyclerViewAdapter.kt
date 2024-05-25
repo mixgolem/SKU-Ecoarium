@@ -14,6 +14,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.example.ecoariumapp.IpConfig
 import com.example.ecoariumapp.R
+import com.example.ecoariumapp.convertIsoToCustomFormat
 
 class InventoryRecyclerViewAdapter(private val itemList: List<List<String>>) :
     RecyclerView.Adapter<InventoryRecyclerViewAdapter.RecyclerViewHolder>() {
@@ -35,7 +36,7 @@ class InventoryRecyclerViewAdapter(private val itemList: List<List<String>>) :
 
         // Assuming that the second element in the list is the item message
         val itemMessage = itemData[1]
-        holder.ItemMessage.text = itemMessage
+        holder.ItemMessage.text = convertIsoToCustomFormat(itemMessage)
 
         // Assuming that the third element in the list is the item name
         val itemName = itemData[2]
