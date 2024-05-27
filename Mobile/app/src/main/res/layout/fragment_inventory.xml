@@ -27,7 +27,7 @@
             android:orientation="horizontal">
 
         <Button
-                android:layout_margin="1dp"
+                android:layout_margin="2dp"
                 android:id="@+id/buttonAvailable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
         <Button
-                android:layout_margin="1dp"
+                android:layout_margin="2dp"
                 android:id="@+id/buttonCompleted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

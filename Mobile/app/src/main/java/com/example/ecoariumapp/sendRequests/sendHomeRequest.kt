@@ -37,7 +37,8 @@ fun sendHomeRequest(fragment: Fragment) {
                 val userObject = jsonObject.getJSONObject("user")   //user
                 val nickname = userObject.getString("nickname")     //nickname
                 val points = jsonObject.getInt("points")            //point
-                val imageUriString = sharedPrefManager.getSharedPrefereces().getString("profileImage", "")
+                val imageUriString = sharedPrefManager.getSharedPrefereces()
+                    .getString("profileImage", "")
 
                 val pointTextView = fragment.view?.findViewById<TextView>(R.id.pointIntTextView)
                 val nicknameTextView = fragment.view?.findViewById<TextView>(R.id.nicknameTextView)

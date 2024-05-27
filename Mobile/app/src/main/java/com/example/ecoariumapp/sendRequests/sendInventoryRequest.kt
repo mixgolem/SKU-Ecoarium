@@ -27,24 +27,20 @@ fun sendAvailableItemRequest(fragment: Fragment) {
             if (response.isSuccessful) {
                 val responseBody: ResponseBody? = response.body
                 val jsonData: String = responseBody?.string() ?: ""
-
                 val jsonObject = JSONObject(jsonData)
-                val availableObject = jsonObject.getJSONArray("available_items")
-                Log.d("availableobj", "available: $availableObject")
-                val itemObject = jsonObject.getJSONArray("items")
-                Log.d("itemobj", "item: $itemObject")
 
                 val availableArray = jsonObject.getJSONArray("available_items")
                 val itemArray = jsonObject.getJSONArray("items")
 
-                val availableList = mutableListOf<Pair<String, String>>()
+                val availableList = mutableListOf<Triple<String, String, String>>()
                 val itemList = mutableListOf<Triple<String, String, String>>()
 
                 for (i in 0 until availableArray.length()) {
                     val availableObject = availableArray.getJSONObject(i)
                     val itemId = availableObject.getString("itemId")
                     val createdAt = availableObject.getString("createdAt")
-                    availableList.add(Pair(itemId, createdAt))
+                    val code = availableObject.getString("code")
+                    availableList.add(Triple(itemId, createdAt, code))
                 }
 
                 for (i in 0 until itemArray.length()) {
@@ -60,7 +56,7 @@ fun sendAvailableItemRequest(fragment: Fragment) {
                 for (i in 0 until availableArray.length()) {
                     for (j in 0 until itemArray.length()) {
                         if(availableList[i].first == itemList[j].first){
-                            combinedList.add(listOf(availableList[i].first, availableList[i].second, itemList[j].second, itemList[j].third))
+                            combinedList.add(listOf(availableList[i].first, availableList[i].second, itemList[j].second, itemList[j].third, availableList[i].third))
                         }
                     }
                 }
@@ -90,24 +86,20 @@ fun sendCompletedItemRequest(fragment: Fragment) {
             if (response.isSuccessful) {
                 val responseBody: ResponseBody? = response.body
                 val jsonData: String = responseBody?.string() ?: ""
-
                 val jsonObject = JSONObject(jsonData)
-                val completedObject = jsonObject.getJSONArray("completed_items")
-                Log.d("availableobj", "available: $completedObject")
-                val itemObject = jsonObject.getJSONArray("items")
-                Log.d("itemobj", "item: $itemObject")
 
                 val completedArray = jsonObject.getJSONArray("completed_items")
                 val itemArray = jsonObject.getJSONArray("items")
 
-                val completedList = mutableListOf<Pair<String, String>>()
+                val completedList = mutableListOf<Triple<String, String,String>>()
                 val itemList = mutableListOf<Triple<String, String, String>>()
 
                 for (i in 0 until completedArray.length()) {
                     val completedObject = completedArray.getJSONObject(i)
                     val itemId = completedObject.getString("itemId")
                     val createdAt = completedObject.getString("createdAt")
-                    completedList.add(Pair(itemId, createdAt))
+                    val code = completedObject.getString("code")
+                    completedList.add(Triple(itemId, createdAt, code))
                 }
 
                 for (i in 0 until itemArray.length()) {
@@ -123,7 +115,7 @@ fun sendCompletedItemRequest(fragment: Fragment) {
                 for (i in 0 until completedArray.length()) {
                     for (j in 0 until itemArray.length()) {
                         if(completedList[i].first == itemList[j].first){
-                            combinedList.add(listOf(completedList[i].first, completedList[i].second, itemList[j].second, itemList[j].third))
+                            combinedList.add(listOf(completedList[i].first, completedList[i].second, itemList[j].second, itemList[j].third, completedList[i].third))
                         }
                     }
                 }

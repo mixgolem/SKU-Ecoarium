@@ -62,12 +62,12 @@ class StoreRecyclerViewAdapter(private val itemList: List<List<String>>) :
             })
             .into(holder.ItemImage)
 
-        holder.exchangeButton.setOnClickListener {
-            val builder = AlertDialog.Builder(it.context)
+        holder.exchangeButton.setOnClickListener { view ->
+            val builder = AlertDialog.Builder(view.context)
             builder.setTitle("교환 확인")
             builder.setMessage("해당 상품을 교환하시겠습니까?")
             builder.setPositiveButton("예") { dialog, which ->
-                sendExchangeRequest(itemList[position][0].toInt()) // 상품 ID를 인자로 교환 함수를 호출
+                sendExchangeRequest(view.context, itemList[position][0].toInt())
             }
             builder.setNegativeButton("아니오") { dialog, which ->
                 // '아니오'를 선택했을 때는 아무런 동작도 수행하지 않습니다.

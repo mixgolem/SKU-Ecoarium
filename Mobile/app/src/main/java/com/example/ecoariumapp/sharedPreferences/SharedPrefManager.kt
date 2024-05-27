@@ -92,7 +92,8 @@ class SharedPrefManager(context: Context) {
         editor.putBoolean("isLogin", false)
         editor.apply()
         val id = sharedPreferences.getString("Id", "")
-        return id!!.isEmpty()
+        val password = sharedPreferences.getString("Password", "")
+        return id != null && password != null
     }
 
     fun getSavedId(): String? {

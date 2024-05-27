@@ -36,6 +36,7 @@
             android:layout_below="@id/qrNumberTextView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
+            android:fontFamily="@font/jua"
             android:textSize="30sp"
             android:textColor="@android:color/black" />
 
@@ -46,6 +47,7 @@
             android:layout_below="@id/qrCodeImageView"
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/gray"
+            android:fontFamily="@font/jua"
             android:layout_marginTop="20dp"
             android:textSize="20sp"
             android:textColor="@android:color/black" />

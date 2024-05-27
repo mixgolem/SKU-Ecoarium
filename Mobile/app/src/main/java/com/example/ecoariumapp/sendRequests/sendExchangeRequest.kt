@@ -1,5 +1,9 @@
 package com.example.ecoariumapp.sendRequests
 
+import android.content.Context
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import com.example.ecoariumapp.IpConfig
 import okhttp3.Call
 import okhttp3.Callback
@@ -11,7 +15,7 @@ import org.json.JSONObject
 import java.io.IOException
 
 // 서버에서 아이템 리스트 가져오기
-fun sendExchangeRequest(itemId: Int) {
+fun sendExchangeRequest(context: Context, itemId: Int) {
     val json = JSONObject()
     json.put("itemId", itemId)
     val mediaType = "application/json; charset=utf-8".toMediaTypeOrNull()
@@ -28,9 +32,12 @@ fun sendExchangeRequest(itemId: Int) {
             e.printStackTrace()
         }
         override fun onResponse(call: Call, response: Response) {
+            val responseBody = response.body?.string()
             // 프로필 요청 성공 처리
-            if (response.isSuccessful) {
-
+            if (responseBody == "false") {
+                Handler(Looper.getMainLooper()).post {
+                    Toast.makeText(context, "스탬프가 부족합니다", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     })
