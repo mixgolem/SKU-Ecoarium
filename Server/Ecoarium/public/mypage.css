@@ -1,0 +1,216 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f5;
+}
+
+.header{
+    background-color: #ffffff;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.layout{
+    max-width: 700px;
+    padding-top: 17px;
+    margin: 0 auto 50px auto;
+    background-color: #ffffff;
+    color: #ffffff00;
+}
+
+#logo{
+    margin-left:20px;
+    background-color: #ffffff00;
+    color:#000000;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    float: left;
+}
+#text{
+    margin: 5px 10px 10px 10px;
+    font-size: 20px;
+    float: left;
+    color:#000000;
+}
+
+#store{
+    margin: 7px 20px;
+    font-size: 17px;
+    float: right;
+    color:#000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#line {
+    margin-top: 10px;
+    padding: 10px 0;
+    background-color: #ffffff;
+    border-left: 1px solid #dfdfdf;
+    float: right;
+}
+
+#mypage{
+    margin: 7px 20px 0 20px;
+    font-size: 17px;
+    float: right;
+    color:#000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.main{
+    max-width: 700px;
+    margin: 30px auto 0px auto;
+}
+
+.container-name{
+    margin: 5px 0 10px 10px;
+    font-size: 25px;
+    float: left;
+    color:#000000;
+}
+.container {
+    margin: 0px 10px 20px 10px;
+    padding: 10px 20px 0px 20px;
+    background-color: #ffffff;
+    border: 1px solid #dfdfdf;
+    border-radius: 13px;
+    box-sizing: border-box;
+    clear: both;
+}
+
+#area1 {
+    padding: 10px 0 60px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+#nickname{
+    margin: 5px 0 0 10px;
+    float: left;
+    font-size: 25px;
+    color:#000000;
+}
+#user-id{
+    margin: 12px 0 0 20px;
+    float: left;
+    font-size: 15px;
+    color:#8f8f8f;
+}
+.logout-btn{
+    margin: 5px 2px;
+    padding: 7px 13px;
+    float: right;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #5c5c5c;
+    cursor: pointer;
+}
+.logout-btn:hover{
+    background-color: #f1f1f1;
+}
+
+#area2{
+    padding: 50px 0 50px;
+    border-bottom: 1px solid #e7e7e7;
+    font-size: 25px;
+    clear: both;
+    color:#000000;
+    display: flex;
+    justify-content: space-around;
+}
+#area3 {
+    display: flex;
+    justify-content: space-between;
+}
+#stamp-btn{
+    flex: 1;
+    padding: 15px 0; /* 상하 패딩을 적당히 설정 */
+    text-align: center; /* 텍스트를 중앙에 배치 */
+    border: 0px;
+    background-color: #ffffff;
+    font-size: 20px;
+    color:#000000;
+    cursor: pointer;
+}
+#btn-line {
+    margin: 15px 0;
+    background-color: #ffffff;
+    border-left: 1px solid #dfdfdf;
+}
+#inventory-btn{
+    flex: 1;
+    padding: 15px 0; /* 상하 패딩을 적당히 설정 */
+    text-align: center; /* 텍스트를 중앙에 배치 */
+    border: 0;
+    background-color: #ffffff;
+    font-size: 20px;
+    color:#000000;
+    cursor: pointer;
+}
+
+#buttons{
+    padding: 0 0 5px 10px;
+    clear: both;
+}
+.filter-btn{
+    margin: 0px 1px 10px 0;
+    padding: 7px 13px;
+    background-color: #ffffff;
+    border: 1px solid #d6d6d6;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #797979;
+    cursor: pointer;
+}
+.filter-clicked-btn{
+    margin: 0px 1px 10px 0;
+    padding: 7px 13px;
+    background-color: #01977F;
+    border: 1px solid #01977F;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.log{
+    margin: 20px 0;
+    display: flex;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e7e7e7;
+}
+.item-img {
+    width: 80px;
+    height: 80px;
+}
+.log-location{
+    margin: 15px 0 10px 20px;
+    font-size: 17px;
+    font-weight: 600;
+    float: left;
+    color:#000000;
+}
+.log-name{
+    margin: 2px 0 6px 20px;
+    font-size: 17px;
+    font-weight: 600;
+    float: left;
+    color:#000000;
+}
+.log-price{
+    margin: 0px 0 6px 20px;
+    font-size: 17px;
+    float: left;
+    color:#000000;
+    clear: both;
+}
+.log-time{
+    margin-left: 20px;
+    font-size: 15px;
+    float: left;
+    color:#9c9c9c;
+    clear: both;
+}
