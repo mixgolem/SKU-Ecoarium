@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Ecoarium - 회원가입</title>
+    <link rel="stylesheet" href="public/auth.css">
+</head>
+<body>
+    <div class="layout">
+        <a href="/"><button id="logo">Ecoarium</button></a>
+    </div>
+</body>
+<body>
+    <div class="login-container">
+        <div class="text">회원가입</div>
+        <form action="/auth/join" method="post">
+            <input class="typing-container" type="text" name="username" placeholder="아이디" required autofocus>
+            <input class="typing-container" type="password" name="password" placeholder="비밀번호">
+            <input class="typing-container" type="password" name="password_verification" placeholder="비밀번호 확인">
+            <% if (typeof messages !== 'undefined' && messages.joinError) { %>
+                <div class="error-message"><%= messages.joinError %></div>
+            <% } %>
+            <input class="typing-container" type="email" name="email" placeholder="이메일">
+            <input class="typing-container" type="text" name="nickname" placeholder="닉네임">
+            <button id="joinsubmit-button" type="submit">가입하기</button>
+        </form>
+        <a href="/"><button id="backtologin-button">로그인</button></a>
+
+    </div>
+</body>
+</html>
