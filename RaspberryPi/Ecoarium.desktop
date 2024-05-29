@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Version=0.1
-Name=Ecoarium Smart Recycling System
-Comment=Ecoarium Smart Recycling System
-Exec=python3 /home/pi/Ecoarium/ecosys.py
-Icon=utilities-terminal
-Terminal=true
-Type=Application
