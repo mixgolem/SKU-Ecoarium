@@ -1,1 +1,1 @@
-![ecosys_ecoarium](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/3672a7d5-cba4-4cd8-ae80-c8c3518f9633)
+![ecosys_ecoarium](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/771cbbe8-66df-462c-b2a7-5c5c65a6e05c)
