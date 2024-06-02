@@ -5,144 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="619e70ec-9d76-45e6-8d83-dd448dbb87e8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Ecoarium.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/androidTest/java/com/example/ecoariumapp/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/Ipconfig.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/TimeConverter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/activities/LoginActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/activities/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/activities/RegisterActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/adapters/InventoryRecyclerViewAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/adapters/StampRecyclerViewAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/adapters/StoreRecyclerViewAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/adapters/ViewPagerAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/fragments/HomeFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/fragments/InventoryFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/fragments/MypageFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/fragments/ProfileFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/fragments/QRcodeFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/fragments/StoreFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendChangePasswordRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendDeleteRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendExchangeRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendHomeRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendInventoryRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendLoginRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendLogoutRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendModifyRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendMypageRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendProfileRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendQRcodeRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendRegisterRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendStacksRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendStampLogsRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendStoreRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/java/com/example/ecoariumapp/sharedPreferences/SharedPrefManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/baseline_eye.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/baseline_home.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/baseline_inventory.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/baseline_mypage.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/baseline_qrcode.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/baseline_store.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/bottom_navigation_color.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/button_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/button_background_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/button_color_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/default_dot.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/event1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/event2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/event3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/event4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/gray_border.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/green.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/home_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/inventory_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/mypage_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/one.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/outline_eye.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/outline_home.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/outline_inventory.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/outline_mypage.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/outline_qrcode.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/outline_store.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/plastic.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/plastics.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/qrcode_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/selected_dot.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/show_password_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/stamp.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/store_icon.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/tab_selector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/three.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/two.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/drawable/white_border.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/font/jua.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/activity_register.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/fragment_inventory.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/fragment_mypage.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/fragment_qrcode.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/fragment_store.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/layout_event.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/layout_inventory_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/layout_stamp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/layout_store_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/layout/view_bottom_nav.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/menu/menu_bottom_nav.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/main/res/xml/file_paths.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/app/src/test/java/com/example/ecoariumapp/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mobile/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test2.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,8 +55,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "android.gradle.sync.needed": "true",
-    "git-widget-placeholder": "Merging KTH",
-    "last_opened_file_path": "C:/saddsa/SKU-Ecoarium/Mobile"
+    "git-widget-placeholder": "KTH",
+    "last_opened_file_path": "C:/saddsa"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
