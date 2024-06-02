@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:padding="16dp">
+
+    <EditText
+            android:fontFamily="@font/jua"
+            android:id="@+id/usernameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="아이디"
+            android:layout_marginBottom="16dp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/passwordLinearLayout"
+            android:layout_below="@+id/usernameEditText"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+        <FrameLayout
+                android:id="@+id/password_case"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password_case">
+            <EditText
+                    android:id="@+id/passwordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="비밀번호"
+                    android:inputType="textPassword"/>
+            <ImageButton
+                    android:id="@+id/showPasswordButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/show_password_selector"
+                    android:background="@color/white"
+            />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/passwordVerificationLinearLayout"
+            android:layout_below="@+id/passwordLinearLayout"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+        <FrameLayout
+                android:id="@+id/passwordVerification_case"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password_case">
+            <EditText
+                    android:id="@+id/passwordVerificationEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="비밀번호 확인"
+                    android:inputType="textPassword"/>
+            <ImageButton
+                    android:id="@+id/showPasswordVerificationButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/show_password_selector"
+                    android:background="@color/white"
+                    />
+        </FrameLayout>
+    </LinearLayout>
+
+    <EditText
+            android:id="@+id/nicknameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="닉네임"
+            android:inputType="text"
+            android:layout_below="@id/passwordVerificationLinearLayout"
+            android:layout_marginBottom="16dp"/>
+
+    <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="이메일"
+            android:inputType="text"
+            android:layout_below="@id/nicknameEditText"
+            android:layout_marginBottom="16dp"/>
+
+    <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="가입하기"
+            android:layout_below="@id/emailEditText"/>
+
+</RelativeLayout>
