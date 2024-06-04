@@ -18,7 +18,7 @@ location = "JT_0"
 ecosys_path = "/home/pi/Ecoarium"
 
 # Server INFO
-server_addr = "http://222.101.3.165:8000"
+server_addr = "http://172.20.10.10:8000"
 server_addr_qrcode = server_addr + "/jt/QRCode"
 server_addr_img = server_addr + "/jt/determine"
 server_pw = "q1w2e3"
@@ -129,6 +129,10 @@ def on_window_close(window, callback):
 
 # DEF: IMG CAPTURE
 def capture_image():
+    #LED ON
+    command = f"sudo python3 {ecosys_path}/led.py 1"
+    subprocess.run(command, shell=True)
+
     # 현재 시간 정보 가져오기
     current_time = time.strftime("%Y%m%d-%H%M%S")
     
@@ -137,6 +141,10 @@ def capture_image():
 
     # 콘솔 명령어 실행하여 사진 촬영
     command = f"libcamera-still -o {ecosys_path}/img/{image_name}"
+    subprocess.run(command, shell=True)
+
+    #LED OFF
+    command = f"sudo python3 {ecosys_path}/led.py 0"
     subprocess.run(command, shell=True)
 
     # 이미지 파일의 전체 경로 반환
