@@ -34,7 +34,7 @@ JT기기에서 유저가 투입한 컵을 촬영한 사진과 유저 테이블Id
 ![image](https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/30cf9f52-bb62-4b3c-9c85-929bb3d8fd45)
 ![image](https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/7323eb77-3e50-4b86-9280-1264cbd80afe)<br>
 로그인, 회원가입 페이지. passport 모듈을 사용해 로그인 기능을 구현하였습니다.
-회원가입 성공시 DB 유저 테이블에는 아이디와 비밀번호, 이메일, 닉네임이 저장됩니다.
+회원가입 성공 시 DB 유저 테이블에는 아이디와 비밀번호, 이메일, 닉네임이 저장됩니다.
 
 
 
