@@ -12,23 +12,23 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 - 환경 정보 : 현재 진행중인 환경 관련 캠페인, 이벤트 등을 확인할 수 있고 폐기물 수거 현황 등을 모니터링할 수 있습니다.
 
 ## 설치 및 실행
-> 본 Application은 Android 환경의 Mobile Device에 설치 가능합니다.
-
-### APK 설치 및 실행 방법:
+> ⚠️ **경고:** 본 Application은 Android 환경의 Mobile Device에 설치 가능합니다.
+### APK 설치 및 실행 방법
 - Repository에 첨부 된 APK 파일을 다운로드 받습니다.
 - APK 파일을 Android 기기에 전송합니다.
 - 기기에서 파일 관리자를 열고, APK 파일을 찾습니다.
 - APK 파일을 클릭하여 설치를 시작합니다. (설치 전, 기기의 설정에서 '알 수 없는 앱'에 대한 설치를 허용해야 할 수 있습니다.)
 - 설치가 완료되면 앱을 실행하여 사용을 시작합니다.
+
   
-### 가상머신 사용 방법 (Android 환경이 아닌 경우):
+### 가상머신 사용 방법 (Android 환경이 아닌 경우)
 - GitHub 저장소에서 프로젝트를 클론합니다.
 - Android Studio에서 'Run' > 'Run 'app''을 선택합니다.
 - Android Studio를 열고, 'File' > 'Open'을 선택하여 클론한 프로젝트를 엽니다.
 - 연결된 Android 기기를 선택하거나, 새 Android Virtual Device를 생성합니다.
 - 'OK'를 클릭하여 앱을 실행합니다.
 
-### APK 생성 및 실행 방법 (APK 설치 과정에서 오류가 발생한 경우):
+### APK 생성 및 실행 방법 (APK 설치 과정에서 오류가 발생한 경우)
 - GitHub 저장소에서 프로젝트를 클론합니다.
 - Android Studio를 열고, 'File' > 'Open'을 선택하여 클론한 프로젝트를 엽니다.
 - 'Build' > 'Build Bundle(s) / APK(s)' > 'Build APK(s)'를 선택하여 APK를 빌드합니다.
