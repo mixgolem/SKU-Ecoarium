@@ -11,7 +11,7 @@ import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
 
-// 서버에서 아이템 리스트 가져오기
+// 서버에서 사용 가능한 아이템 리스트를 가져오는 함수
 fun sendAvailableItemRequest(fragment: Fragment) {
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/inventory/available")
@@ -23,7 +23,7 @@ fun sendAvailableItemRequest(fragment: Fragment) {
             e.printStackTrace()
         }
         override fun onResponse(call: Call, response: Response) {
-            // 프로필 요청 성공 처리
+            // 요청 성공 처리
             if (response.isSuccessful) {
                 val responseBody: ResponseBody? = response.body
                 val jsonData: String = responseBody?.string() ?: ""
@@ -35,6 +35,7 @@ fun sendAvailableItemRequest(fragment: Fragment) {
                 val availableList = mutableListOf<Triple<String, String, String>>()
                 val itemList = mutableListOf<Triple<String, String, String>>()
 
+                // 사용 가능한 아이템 정보 파싱
                 for (i in 0 until availableArray.length()) {
                     val availableObject = availableArray.getJSONObject(i)
                     val itemId = availableObject.getString("itemId")
@@ -43,6 +44,7 @@ fun sendAvailableItemRequest(fragment: Fragment) {
                     availableList.add(Triple(itemId, createdAt, code))
                 }
 
+                // 아이템 정보 파싱
                 for (i in 0 until itemArray.length()) {
                     val itemObject = itemArray.getJSONObject(i)
                     val id = itemObject.getString("id")
@@ -52,6 +54,7 @@ fun sendAvailableItemRequest(fragment: Fragment) {
                     itemList.add(Triple(id, name, img))
                 }
 
+                // 사용 가능한 아이템과 아이템 정보를 결합
                 val combinedList = mutableListOf<List<String>>()
                 for (i in 0 until availableArray.length()) {
                     for (j in 0 until itemArray.length()) {
@@ -62,6 +65,7 @@ fun sendAvailableItemRequest(fragment: Fragment) {
                 }
                 Log.d("combinedList", "combinedList: $combinedList")
 
+                // UI 업데이트
                 fragment.activity?.runOnUiThread {
                     val recyclerView = fragment.view?.findViewById<RecyclerView>(R.id.inventoryRecyclerView)
                     recyclerView?.layoutManager = LinearLayoutManager(fragment.context)
@@ -71,6 +75,8 @@ fun sendAvailableItemRequest(fragment: Fragment) {
         }
     })
 }
+
+// 서버에서 완료된 아이템 리스트를 가져오는 함수
 fun sendCompletedItemRequest(fragment: Fragment) {
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/inventory/completed")
@@ -82,7 +88,7 @@ fun sendCompletedItemRequest(fragment: Fragment) {
             e.printStackTrace()
         }
         override fun onResponse(call: Call, response: Response) {
-            // 프로필 요청 성공 처리
+            // 요청 성공 처리
             if (response.isSuccessful) {
                 val responseBody: ResponseBody? = response.body
                 val jsonData: String = responseBody?.string() ?: ""
@@ -94,6 +100,7 @@ fun sendCompletedItemRequest(fragment: Fragment) {
                 val completedList = mutableListOf<Triple<String, String,String>>()
                 val itemList = mutableListOf<Triple<String, String, String>>()
 
+                // 완료된 아이템 정보 파싱
                 for (i in 0 until completedArray.length()) {
                     val completedObject = completedArray.getJSONObject(i)
                     val itemId = completedObject.getString("itemId")
@@ -102,6 +109,7 @@ fun sendCompletedItemRequest(fragment: Fragment) {
                     completedList.add(Triple(itemId, createdAt, code))
                 }
 
+                // 아이템 정보 파싱
                 for (i in 0 until itemArray.length()) {
                     val itemObject = itemArray.getJSONObject(i)
                     val id = itemObject.getString("id")
@@ -111,6 +119,7 @@ fun sendCompletedItemRequest(fragment: Fragment) {
                     itemList.add(Triple(id, name, img))
                 }
 
+                // 완료된 아이템과 아이템 정보를 결합
                 val combinedList = mutableListOf<List<String>>()
                 for (i in 0 until completedArray.length()) {
                     for (j in 0 until itemArray.length()) {
@@ -121,6 +130,7 @@ fun sendCompletedItemRequest(fragment: Fragment) {
                 }
                 Log.d("combinedList", "combinedList: $combinedList")
 
+                // UI 업데이트
                 fragment.activity?.runOnUiThread {
                     val recyclerView = fragment.view?.findViewById<RecyclerView>(R.id.inventoryRecyclerView)
                     recyclerView?.layoutManager = LinearLayoutManager(fragment.context)

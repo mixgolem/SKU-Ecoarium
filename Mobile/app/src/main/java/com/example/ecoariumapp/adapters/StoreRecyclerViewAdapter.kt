@@ -18,10 +18,11 @@ import com.example.ecoariumapp.IpConfig
 import com.example.ecoariumapp.R
 import com.example.ecoariumapp.sendRequests.sendExchangeRequest
 
+// 상점 아이템을 표시하는 RecyclerView 어댑터
 class StoreRecyclerViewAdapter(private val itemList: List<List<String>>) :
     RecyclerView.Adapter<StoreRecyclerViewAdapter.RecyclerViewHolder>() {
 
-
+    // 뷰 홀더 정의
     inner class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val exchangeButton: Button = view.findViewById(R.id.exchangeButton)
         val ItemImage: ImageView = view.findViewById(R.id.itemImage)
@@ -29,23 +30,25 @@ class StoreRecyclerViewAdapter(private val itemList: List<List<String>>) :
         val ItemPrice: TextView = view.findViewById(R.id.itemPrice)
     }
 
+    // 뷰 홀더 생성
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_store_item, parent, false)
         return RecyclerViewHolder(view)
     }
 
+    // 뷰 홀더에 데이터 바인딩
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         val itemData = itemList[position]
 
-        // Assuming that the second element in the list is the item message
+        // 아이템 가격 설정
         val itemPrice = "${itemData[3]}개"
         holder.ItemPrice.text = itemPrice
 
-        // Assuming that the third element in the list is the item name
+        // 아이템 이름 설정
         val itemName = itemData[1]
         holder.ItemName.text = itemName
 
-        // Assuming that the fourth element in the list is the item image file name
+        // 아이템 이미지 설정
         val itemImageFileName = itemData[2]
         val itemImageURL = "http://${IpConfig.serverIp}:8000/uploads/$itemImageFileName"
         Glide.with(holder.ItemImage.context)
@@ -62,6 +65,7 @@ class StoreRecyclerViewAdapter(private val itemList: List<List<String>>) :
             })
             .into(holder.ItemImage)
 
+        // 교환 버튼 클릭 이벤트 핸들러 설정
         holder.exchangeButton.setOnClickListener { view ->
             val builder = AlertDialog.Builder(view.context)
             builder.setTitle("교환 확인")
@@ -70,12 +74,12 @@ class StoreRecyclerViewAdapter(private val itemList: List<List<String>>) :
                 sendExchangeRequest(view.context, itemList[position][0].toInt())
             }
             builder.setNegativeButton("아니오") { dialog, which ->
-                // '아니오'를 선택했을 때는 아무런 동작도 수행하지 않습니다.
             }
             builder.show()
         }
     }
 
+    // 아이템 개수 반환
     override fun getItemCount(): Int {
         return itemList.size
     }

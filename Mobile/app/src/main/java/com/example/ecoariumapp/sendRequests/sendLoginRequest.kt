@@ -58,42 +58,35 @@ val client = OkHttpClient.Builder()
     }
     .build()
 
+// 로그인 정보를 JSON 형태로 변환하고 서버에 POST 요청을 보내는 함수
 public fun sendLoginRequest(activity: Activity, username: String, password: String, keepLogin: Boolean = false) {
-    // 로그인 정보를 JSON 형태로 변환
-
     val json = JSONObject()
     json.put("username", username)
     json.put("password", password)
 
     Log.d("LoginActivity", "로그인 정보: $json")
-    // JSON을 RequestBody로 변환
     val mediaType = "application/json; charset=utf-8".toMediaTypeOrNull()
     val body = json.toString().toRequestBody(mediaType)
 
-    // POST 요청 생성
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/auth/loginMobile")
         .post(body)
         .build()
 
-    // 요청을 보내고 응답을 처리
     client.newCall(request).enqueue(object : Callback {
         override fun onFailure(call: Call, e: IOException) {
-            // 네트워크 오류 처리
             e.printStackTrace()
         }
 
         override fun onResponse(call: Call, response: Response) {
             val responseBody = response.body?.string()
             Log.d("LoginActivity", "서버로부터 받은 응답: $responseBody")
-            // 로그인 성공 시 MainActivity로 이동
             if (responseBody == "true") {
                 Handler(Looper.getMainLooper()).post {
                     Log.d("LoginActivity", "Main 액티비티 실행 완료")
                     val intent = Intent(activity, MainActivity::class.java)
                     activity.startActivity(intent)
                     activity.finish()
-                    // 로그인 상태 저장
                     val sharedPrefManager = SharedPrefManager(activity)
                     if (keepLogin) sharedPrefManager.saveLoginDetails(username, password)
                     val sharedPref = activity.getSharedPreferences("login", Context.MODE_PRIVATE)
@@ -104,7 +97,6 @@ public fun sendLoginRequest(activity: Activity, username: String, password: Stri
                 }
             }
             else {
-                // 로그인 실패 시 토스트 메시지 표시
                 Handler(Looper.getMainLooper()).post {
                     Toast.makeText(activity, "Login failed", Toast.LENGTH_SHORT).show()
                 }

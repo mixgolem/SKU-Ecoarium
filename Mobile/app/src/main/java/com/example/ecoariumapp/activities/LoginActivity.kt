@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.ecoariumapp.R
 import com.example.ecoariumapp.sendRequests.sendLoginRequest
 
+// 로그인 화면을 관리하는 액티비티
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,29 +21,29 @@ class LoginActivity : AppCompatActivity() {
         // UI 요소 참조
         val loginButton: Button = findViewById(R.id.loginButton)
         val registerButton: Button = findViewById(R.id.registerButton)
-
         val usernameEditText: EditText = findViewById(R.id.usernameEditText)
         val passwordEditText: EditText = findViewById(R.id.passwordEditText)
         val showPasswordButton: ImageButton = findViewById(R.id.showPasswordButton)
         val keepLoginCheckBox: CheckBox = findViewById(R.id.keepLoginCheckBox)
 
+        // 비밀번호 표시/숨김 버튼 클릭 이벤트 설정
         showPasswordButton.setOnClickListener {
             if (passwordEditText.transformationMethod is PasswordTransformationMethod) {
-                // 비밀번호가 숨겨져 있을 때는 보이게 합니다.
                 passwordEditText.transformationMethod = null
-                showPasswordButton.isSelected = true // 상태를 변경합니다.
+                showPasswordButton.isSelected = true
             } else {
-                // 비밀번호가 보이는 상태일 때는 숨깁니다.
                 passwordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
-                showPasswordButton.isSelected = false // 상태를 변경합니다.
+                showPasswordButton.isSelected = false
             }
         }
 
         val sharedPrefManager = SharedPrefManager(this)
 
+        // 자동 로그인 체크 확인
         if (sharedPrefManager.isCheckAutoLogin()) {
             val username = sharedPrefManager.getSavedId()
             val password = sharedPrefManager.getSavedPassword()
+            // 로그인 요청 보내기
             sendLoginRequest(this, username!!, password!!)
         }
 

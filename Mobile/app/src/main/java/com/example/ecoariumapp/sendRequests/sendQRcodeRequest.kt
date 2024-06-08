@@ -14,12 +14,15 @@ import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
 
+// QR 코드 요청 보내기
 fun sendQRcodeRequest(fragment: Fragment, imageView: ImageView, textView: TextView) {
+    // 요청 객체 생성
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/main/createQR")
         .get()
         .build()
 
+    // 요청 전송
     client.newCall(request).enqueue(object : Callback {
         override fun onFailure(call: Call, e: IOException) {
             // 네트워크 오류 처리
@@ -27,6 +30,7 @@ fun sendQRcodeRequest(fragment: Fragment, imageView: ImageView, textView: TextVi
         }
 
         override fun onResponse(call: Call, response: Response) {
+            // 요청 성공 처리
             if (response.isSuccessful) {
                 val responseBody = response.body?.string()
                 Log.d("QRcodeFragment", "response: $responseBody")

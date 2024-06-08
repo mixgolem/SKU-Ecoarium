@@ -21,23 +21,23 @@ import com.example.ecoariumapp.sendRequests.*
 import com.google.android.material.button.MaterialButton
 import java.io.InputStream
 
+// 사용자 프로필 프래그먼트
 class ProfileFragment : Fragment() {
     companion object {
         fun newInstance() = ProfileFragment()
     }
 
+    // 프래그먼트 뷰 생성
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("ProfileFragment", "onCreateView 시작")
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        Log.d("ProfileFragment", "onCreateView 완료")
         return view
     }
 
+    // 뷰 생성 후 초기화 및 이벤트 핸들러 설정
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d("ProfileFragment", "onViewCreated 시작")
         super.onViewCreated(view, savedInstanceState)
 
         sendProfileRequest(this)
@@ -67,15 +67,13 @@ class ProfileFragment : Fragment() {
             uri?.let {
                 val bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, it)
                 val sharedPrefManager = SharedPrefManager(requireContext())
-                // Get the current image Uri
+                // 현재 이미지 Uri 가져오기
                 val currentImageUri = Uri.parse(sharedPrefManager.getSharedPrefereces().getString("profileImage", ""))
-                Log.d("ProfileFragment", "currentImageUri: $currentImageUri")
-                // Delete the current image from internal storage
+                // 내부 저장소에서 현재 이미지 삭제
                 sharedPrefManager.deleteImageFromInternalStorage(currentImageUri)
-                // Save the new image to internal storage
+                // 새 이미지를 내부 저장소에 저장
                 val savedImageUri = sharedPrefManager.saveImageToInternalStorage(bitmap, requireContext())
-                Log.d("ProfileFragment", "savedImageUri: $savedImageUri")
-                // Set the new image
+                // 새 이미지 설정
                 sharedPrefManager.setImageView(savedImageUri)
 
                 // MypageFragment로 이동
@@ -85,20 +83,21 @@ class ProfileFragment : Fragment() {
             }
         }
 
-        // SharedPreferences에서 "profileImage" 키에 해당하는 값을 가져옵니다.
+        // SharedPreferences에서 "profileImage" 키에 해당하는 값 가져오기
         val imageUriString = sharedPrefManager.getSharedPrefereces().getString("profileImage", "")
         if (imageUriString!!.startsWith("/")) {
-            // If the imageUriString is a file path
+            // imageUriString이 파일 경로인 경우
             val bitmap = BitmapFactory.decodeFile(imageUriString)
             imageView.setImageBitmap(bitmap)
         } else if (imageUriString.startsWith("android.resource://")) {
-            // If the imageUriString is a resource identifier
+            // imageUriString이 리소스 URI인 경우
             val imageUri = Uri.parse(imageUriString)
             val imageStream: InputStream? = context?.contentResolver?.openInputStream(imageUri)
             val bitmap = BitmapFactory.decodeStream(imageStream)
             imageView.setImageBitmap(bitmap)
         }
 
+        // 프로필 이미지 변경 버튼 이벤트 핸들러
         profileImageEditButton.setOnClickListener {
             AlertDialog.Builder(requireContext())
                 .setTitle("프로필 이미지 변경")
@@ -117,6 +116,7 @@ class ProfileFragment : Fragment() {
                 .show()
         }
 
+        // 비밀번호 표시/숨김 버튼 이벤트 핸들러
         showCurrentPasswordButton.setOnClickListener {
             togglePasswordVisibility(currentPasswordEditText, showCurrentPasswordButton)
         }
@@ -129,6 +129,7 @@ class ProfileFragment : Fragment() {
             togglePasswordVisibility(newPasswordVerificationEditText, showNewPasswordVerificationButton)
         }
 
+        // 닉네임 변경 버튼 이벤트 핸들러
         nicknameChangeButton.setOnClickListener {
             // TextView를 숨기고 EditText를 보이게 함
             nicknameTextView.visibility = View.GONE
@@ -150,6 +151,7 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        // 닉네임 변경 확인 버튼 이벤트 핸들러
         nicknameConfirmButton.setOnClickListener {
             val newNickname = nicknameEditText.text.toString()
             sendModifyRequest(this,newNickname)
@@ -157,7 +159,6 @@ class ProfileFragment : Fragment() {
 
         // 루트 뷰에 클릭 리스너 설정
         rootRelativeLayout.setOnClickListener {
-            // EditText가 보이는 상태라면, EditText를 숨기고 TextView를 다시 보이게 함
             if ((nicknameEditText.visibility == View.VISIBLE) || (passwordConfirmButton.visibility == View.VISIBLE)) {
                 nicknameEditText.visibility = View.GONE
                 nicknameTextView.visibility = View.VISIBLE
@@ -185,8 +186,8 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        // 비밀번호 변경 버튼 이벤트 핸들러
         passwordChangeButton.setOnClickListener {
-            // TextView를 숨기고 EditText를 보이게 함
             passwordChangeButton.visibility = View.GONE
             passwordConfirmButton.visibility = View.VISIBLE
             currentPasswordEditText.visibility = View.VISIBLE
@@ -197,6 +198,7 @@ class ProfileFragment : Fragment() {
             showNewPasswordVerificationButton.visibility = View.VISIBLE
         }
 
+        // 비밀번호 변경 확인 버튼 이벤트 핸들러
         passwordConfirmButton.setOnClickListener {
             val currentPassword = currentPasswordEditText.text.toString()
             val newPassword = newPasswordEditText.text.toString()
@@ -204,10 +206,12 @@ class ProfileFragment : Fragment() {
             sendChangePasswordRequest(this,currentPassword,newPassword,newPasswordVerification)
         }
 
+        // 로그아웃 버튼 이벤트 핸들러
         logoutButton.setOnClickListener{
             sendLogoutRequest(this)
         }
 
+        // 계정 삭제 버튼 이벤트 핸들러
         deleteAccountButton.setOnClickListener {
             // TextView를 숨기고 EditText를 보이게 함
             deleteAccountEditText.visibility = View.VISIBLE
@@ -215,23 +219,21 @@ class ProfileFragment : Fragment() {
             deleteAccountButton.visibility = View.GONE
         }
 
+        // 계정 삭제 확인 버튼 이벤트 핸들러
         deleteAccountConfirmButton.setOnClickListener {
             val passwordConfirm = deleteAccountEditText.text.toString()
             sendDeleteRequest(this,passwordConfirm)
         }
-
-        Log.d("ProfileFragment", "onViewCreated 완료")
     }
 
+    // 비밀번호 표시/숨김 토글 함수
     private fun togglePasswordVisibility(editText: EditText, button: ImageButton) {
         if (editText.transformationMethod is PasswordTransformationMethod) {
-            // 비밀번호가 숨겨져 있을 때는 보이게 합니다.
             editText.transformationMethod = null
-            button.isSelected = true // 상태를 변경합니다.
+            button.isSelected = true
         } else {
-            // 비밀번호가 보이는 상태일 때는 숨깁니다.
             editText.transformationMethod = PasswordTransformationMethod.getInstance()
-            button.isSelected = false // 상태를 변경합니다.
+            button.isSelected = false
         }
     }
 }

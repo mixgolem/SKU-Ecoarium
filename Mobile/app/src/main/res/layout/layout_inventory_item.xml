@@ -20,7 +20,6 @@
             android:id="@+id/stampImage"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:src="@drawable/one"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/topLine"/>
 

@@ -11,11 +11,13 @@ import java.io.IOException
 
 // 프로필 불러오기 요청
 fun sendProfileRequest(fragment: Fragment) {
+    // 요청 객체 생성
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/auth/loadProfile")
         .get()
         .build()
 
+    // 요청 전송
     client.newCall(request).enqueue(object : Callback {
         override fun onFailure(call: Call, e: IOException) {
             // 네트워크 오류 처리
@@ -40,6 +42,7 @@ fun sendProfileRequest(fragment: Fragment) {
                 val emailTextView = fragment.view?.findViewById<TextView>(R.id.emailTextView)
                 val nicknameTextView = fragment.view?.findViewById<TextView>(R.id.nicknameTextView)
 
+                // UI 업데이트는 메인 스레드에서 수행해야 하므로 runOnUiThread를 사용
                 fragment.activity?.runOnUiThread {
                     idTextView?.text = fragment.getString(R.string.id, id)
                     emailTextView?.text = fragment.getString(R.string.id, email)
@@ -49,4 +52,3 @@ fun sendProfileRequest(fragment: Fragment) {
         }
     })
 }
-

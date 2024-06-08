@@ -24,33 +24,36 @@ import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.journeyapps.barcodescanner.BarcodeEncoder
 
+// 인벤토리 아이템을 표시하는 RecyclerView 어댑터
 class InventoryRecyclerViewAdapter(private val itemList: List<List<String>>) :
     RecyclerView.Adapter<InventoryRecyclerViewAdapter.RecyclerViewHolder>() {
 
+    // 뷰 홀더 정의
     inner class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ItemImage: ImageView = view.findViewById(R.id.stampImage)
         val ItemName: TextView = view.findViewById(R.id.stampName)
         val ItemMessage: TextView = view.findViewById(R.id.stampMessage)
     }
 
+    // 뷰 홀더 생성
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_inventory_item, parent, false)
         return RecyclerViewHolder(view)
     }
 
+    // 뷰 홀더에 데이터 바인딩
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         val itemData = itemList[position]
-        Log.d("InventoryRecyclerViewAdapter", "Item data: $itemData")
 
-        // Assuming that the second element in the list is the item message
+        // 아이템 메시지 설정
         val itemMessage = itemData[1]
         holder.ItemMessage.text = convertIsoToCustomFormat(itemMessage)
 
-        // Assuming that the third element in the list is the item name
+        // 아이템 이름 설정
         val itemName = itemData[2]
         holder.ItemName.text = itemName
 
-        // Assuming that the fourth element in the list is the item image file name
+        // 아이템 이미지 설정
         val itemImageFileName = itemData[3]
         val itemImageURL = "http://${IpConfig.serverIp}:8000/uploads/$itemImageFileName"
         Glide.with(holder.ItemImage.context)
@@ -67,6 +70,7 @@ class InventoryRecyclerViewAdapter(private val itemList: List<List<String>>) :
             })
             .into(holder.ItemImage)
 
+        // 아이템 코드 설정 및 클릭 이벤트 핸들러 설정
         val itemCode = itemData[4]
         holder.itemView.setOnClickListener {
             val multiFormatWriter = MultiFormatWriter()
@@ -82,7 +86,6 @@ class InventoryRecyclerViewAdapter(private val itemList: List<List<String>>) :
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
                 )
-                // ImageView에 대한 상단 마진을 설정합니다. 여기서는 30dp의 마진을 추가하였습니다.
                 val marginTopInDp = 30
                 val marginBottomInDp = 20
                 val marginTopInPixels = (marginTopInDp * holder.itemView.context.resources.displayMetrics.density).toInt()
@@ -90,17 +93,16 @@ class InventoryRecyclerViewAdapter(private val itemList: List<List<String>>) :
                 imageViewLayoutParams.setMargins(0, marginTopInPixels, 0, marginBottomInPixels)
                 imageView.layoutParams = imageViewLayoutParams
 
-                // 바코드 번호를 표시하는 TextView를 생성합니다.
                 val textView = TextView(holder.itemView.context)
-                textView.text = itemCode  // 바코드 번호를 설정합니다.
-                textView.textSize = 18f  // 텍스트 크기를 설정합니다.
-                textView.gravity = Gravity.CENTER  // 텍스트를 가운데 정렬합니다.
+                textView.text = itemCode
+                textView.textSize = 18f
+                textView.gravity = Gravity.CENTER
 
                 val linearLayout = LinearLayout(holder.itemView.context)
-                linearLayout.orientation = LinearLayout.VERTICAL  // 추가된 부분
+                linearLayout.orientation = LinearLayout.VERTICAL
                 linearLayout.gravity = Gravity.CENTER
                 linearLayout.addView(imageView)
-                linearLayout.addView(textView)  // TextView를 LinearLayout에 추가합니다.
+                linearLayout.addView(textView)
 
                 val builder = AlertDialog.Builder(holder.itemView.context)
                 builder.setView(linearLayout)
@@ -112,6 +114,7 @@ class InventoryRecyclerViewAdapter(private val itemList: List<List<String>>) :
         }
     }
 
+    // 아이템 개수 반환
     override fun getItemCount(): Int {
         return itemList.size
     }

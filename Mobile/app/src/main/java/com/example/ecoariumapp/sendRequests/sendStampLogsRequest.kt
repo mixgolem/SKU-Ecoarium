@@ -11,7 +11,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 
-// 서버에서 아이템 리스트 가져오기
+// 서버에서 모든 로그 가져오기
 fun sendAllLogsRequest(fragment: Fragment) {
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/mypage/load-all-logs")
@@ -34,10 +34,10 @@ fun sendAllLogsRequest(fragment: Fragment) {
                 val allLogsArray = jsonObject.getJSONArray("all_logs")
                 val itemsArray = jsonObject.getJSONArray("items")
 
-                // Create the adapter
+                // 어댑터 생성
                 val adapter = StampRecyclerViewAdapter(allLogsArray, itemsArray)
 
-                // Run on the UI thread to update the RecyclerView
+                // UI 스레드에서 RecyclerView 업데이트
                 fragment.activity?.runOnUiThread {
                     val recyclerView = fragment.view?.findViewById<RecyclerView>(R.id.stampRecyclerView)
                     recyclerView?.adapter = adapter
@@ -47,6 +47,7 @@ fun sendAllLogsRequest(fragment: Fragment) {
     })
 }
 
+// 서버에서 스탬프 로그 가져오기
 fun sendStampLogsRequest(fragment: Fragment) {
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/mypage/load-earnings-logs")
@@ -65,16 +66,14 @@ fun sendStampLogsRequest(fragment: Fragment) {
                 val responseBody: ResponseBody? = response.body
                 val jsonData: String = responseBody?.string() ?: ""
 
-                Log.d("usageLogs", jsonData)
-
                 val jsonObject = JSONObject(jsonData)
                 val pointEarningArray = jsonObject.getJSONArray("point_earnings")
                 val itemsArray = JSONArray()
 
-                // Create the adapter
+                // 어댑터 생성
                 val adapter = StampRecyclerViewAdapter(pointEarningArray, itemsArray)
 
-                // Run on the UI thread to update the RecyclerView
+                // UI 스레드에서 RecyclerView 업데이트
                 fragment.activity?.runOnUiThread {
                     val recyclerView = fragment.view?.findViewById<RecyclerView>(R.id.stampRecyclerView)
                     recyclerView?.adapter = adapter
@@ -84,6 +83,7 @@ fun sendStampLogsRequest(fragment: Fragment) {
     })
 }
 
+// 서버에서 아이템 로그 가져오기
 fun sendItemsLogsRequest(fragment: Fragment) {
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/mypage/load-usages-logs")
@@ -101,23 +101,22 @@ fun sendItemsLogsRequest(fragment: Fragment) {
             if (response.isSuccessful) {
                 val responseBody: ResponseBody? = response.body
                 val jsonData: String = responseBody?.string() ?: ""
-                Log.d("usageLogs", jsonData)
 
                 val jsonObject = JSONObject(jsonData)
                 val pointUsageArray = jsonObject.getJSONArray("point_usages")
                 val itemsArray = jsonObject.getJSONArray("items")
 
-                // Filter the logs to include only the used items
+                // 사용된 아이템만 포함하도록 로그 필터링
                 val usedItemsArray = JSONArray()
                 for (i in 0 until pointUsageArray.length()) {
                     val log = pointUsageArray.getJSONObject(i)
                     usedItemsArray.put(log)
                 }
 
-                // Create the adapter with the used items
+                // 사용된 아이템으로 어댑터 생성
                 val adapter = StampRecyclerViewAdapter(usedItemsArray, itemsArray)
 
-                // Run on the UI thread to update the RecyclerView
+                // UI 스레드에서 RecyclerView 업데이트
                 fragment.activity?.runOnUiThread {
                     val recyclerView = fragment.view?.findViewById<RecyclerView>(R.id.stampRecyclerView)
                     recyclerView?.adapter = adapter

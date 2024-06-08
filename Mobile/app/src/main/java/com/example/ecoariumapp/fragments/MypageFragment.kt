@@ -1,9 +1,7 @@
-
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,36 +15,40 @@ import com.example.ecoariumapp.R
 import com.example.ecoariumapp.sendRequests.*
 import java.io.InputStream
 
+// 사용자의 마이페이지를 표시하는 프래그먼트
 class MypageFragment: Fragment() {
 
     companion object {
+        // MypageFragment 인스턴스 생성
         fun newInstance():MypageFragment {
             return MypageFragment()
         }
     }
 
-    // 메모리에 올라갔을 때
+    // 프래그먼트 생성 시 호출
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-    // 프래그먼트를 안고 있는 액티비티에 붙었을 때
+    // 프래그먼트가 액티비티에 연결될 때 호출
     override fun onAttach(context: Context) {
         super.onAttach(context)
     }
 
-    // 뷰가 생성되었을 때, 프래그먼트와 레이아웃을 연결시켜주는 부분
+    // 프래그먼트의 뷰 생성 시 호출
+    // 레이아웃 인플레이트, 로그와 마이페이지 요청
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // 레이아웃과 조각을 서로 연결
+        // 레이아웃 인플레이트
         val view = inflater.inflate(R.layout.fragment_mypage, container, false)
+        // 로그와 마이페이지 요청
         sendAllLogsRequest(this)
         sendMypageRequest(this)
 
-
+        // 뷰 요소 참조
         val recyclerView = view.findViewById<RecyclerView>(R.id.stampRecyclerView)
         recyclerView?.layoutManager=LinearLayoutManager(context)
 
@@ -59,12 +61,14 @@ class MypageFragment: Fragment() {
 
         allButton.isSelected = true
 
+        // 프로필 편집 버튼 클릭 이벤트 핸들러
         editProfileButton.setOnClickListener {
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             transaction?.replace(R.id.fragmentContainer, ProfileFragment.newInstance())
             transaction?.commit()
         }
 
+        // 버튼 클릭 이벤트 핸들러
         allButton.setOnClickListener {
             sendAllLogsRequest(this)
             allButton.isSelected = true
@@ -86,33 +90,35 @@ class MypageFragment: Fragment() {
             usageButton.isSelected = true
         }
 
+        // 로그아웃 버튼 클릭 이벤트 핸들러
         logoutButton.setOnClickListener {
             sendLogoutRequest(this)
-            // 로그아웃 버튼 클릭 시 수행할 작업
         }
 
         return view
     }
+
+    // 프래그먼트의 뷰가 생성된 후 호출
+    // 마이페이지 요청, 프로필 이미지 설정
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Mypage 요청을 보냅니다.
+        // 마이페이지 요청
         sendMypageRequest(this)
 
-        // SharedPrefManager 인스턴스를 생성합니다.
+        // SharedPrefManager 인스턴스 생성
         val sharedPrefManager = SharedPrefManager(requireContext())
-        // SharedPreferences에서 "profileImage" 키에 해당하는 값을 가져옵니다.
+        // SharedPreferences에서 "profileImage" 키에 해당하는 값 가져오기
         val imageUriString = sharedPrefManager.getSharedPrefereces().getString("profileImage", "")
-        Log.d("MypageFragment", "imageUriString: $imageUriString")
 
-        val imageView: ImageView = view.findViewById(R.id.mypageImageView) // 여기에 ImageView의 실제 ID를 사용하세요.
+        val imageView: ImageView = view.findViewById(R.id.mypageImageView)
 
         if (imageUriString!!.startsWith("/")) {
-            // If the imageUriString is a file path
+            // 이미지UriString이 파일 경로인 경우
             val bitmap = BitmapFactory.decodeFile(imageUriString)
             imageView.setImageBitmap(bitmap)
         } else if (imageUriString.startsWith("android.resource://")) {
-            // If the imageUriString is a resource identifier
+            // 이미지UriString이 리소스 식별자인 경우
             val imageUri = Uri.parse(imageUriString)
             val imageStream: InputStream? = context?.contentResolver?.openInputStream(imageUri)
             val bitmap = BitmapFactory.decodeStream(imageStream)

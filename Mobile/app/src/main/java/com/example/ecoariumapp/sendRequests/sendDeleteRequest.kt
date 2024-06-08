@@ -16,18 +16,22 @@ import okhttp3.Response
 import org.json.JSONObject
 import java.io.IOException
 
+// 계정 삭제 요청을 보내는 함수
 public fun sendDeleteRequest(fragment: Fragment,password: String) {
+    // 삭제할 계정의 비밀번호를 JSON 형태로 변환
     val json = JSONObject()
     json.put("present_pw", password)
 
     val mediaType = "application/json; charset=utf-8".toMediaTypeOrNull()
     val body = json.toString().toRequestBody(mediaType)
 
+    // POST 요청 생성
     val request = Request.Builder()
         .url("http://${IpConfig.serverIp}:8000/auth/withdrawalMobile")
         .post(body)
         .build()
 
+    // 요청을 보내고 응답을 처리
     client.newCall(request).enqueue(object : Callback {
         override fun onFailure(call: Call, e: IOException) {
             // 네트워크 오류 처리
@@ -37,10 +41,10 @@ public fun sendDeleteRequest(fragment: Fragment,password: String) {
         override fun onResponse(call: Call, response: Response) {
             Log.d("DeleteAccountFragment", "response: $response")
             val responseBody = response.body?.string()
+            // 계정 삭제 성공 처리
             if (responseBody == "true") {
-                // 삭제 성공시 처리
                 fragment.activity?.runOnUiThread {
-                    // 세션 끊기
+                    // 세션 종료
                     val sharedPreferences = fragment.activity?.getSharedPreferences("user_session", Context.MODE_PRIVATE)
                     val editor = sharedPreferences?.edit()
                     editor?.clear()
@@ -53,7 +57,7 @@ public fun sendDeleteRequest(fragment: Fragment,password: String) {
                     fragment.activity?.finish()
                 }
             } else {
-                // 삭제 실패 처리
+                // 계정 삭제 실패 처리
                 fragment.activity?.runOnUiThread {
                     Toast.makeText(fragment.context, "Error", Toast.LENGTH_SHORT).show()
                 }
