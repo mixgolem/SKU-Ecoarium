@@ -14,7 +14,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 ## 설치 및 실행
 > ⚠️ **경고:** 본 Application은 Android 환경의 Mobile Device에 설치 가능합니다.
 ### APK 설치 및 실행 방법
-- Repository에 첨부 된 APK 파일을 다운로드 받습니다.
+- Repository에 첨부 된 APK 파일을 다운로드 받습니다. (Mobile - app - release - Ecoarium.apk)
 - APK 파일을 Android 기기에 전송합니다.
 - 기기에서 파일 관리자를 열고, APK 파일을 찾습니다.
 - APK 파일을 클릭하여 설치를 시작합니다. (설치 전, 기기의 설정에서 '알 수 없는 앱'에 대한 설치를 허용해야 할 수 있습니다.)
