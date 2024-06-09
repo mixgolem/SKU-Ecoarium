@@ -23,7 +23,8 @@
 
 #### 동작 화면
 <p align="center">
-  1) JT 초기 화면
+
+1) JT 초기 화면
   
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/223ce776-3119-4551-b733-50781dbdb2bd">
 
