@@ -13,7 +13,7 @@
 
 ---
 
-## 1.1. 플라스틱 컵 수거 장치
+## 1.1. JT - 플라스틱 컵 수거 장치
 <p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/b47ee6d1-2bfd-4b1f-85a5-75f385b62bc2">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/6410845f-b612-4088-aea9-a8d835407e3d">
