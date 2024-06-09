@@ -6,6 +6,11 @@ Ecoarium Application은 Smart Recycling System 프로젝트의 일환으로 개�
 Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는 과정에서 쉬운 접근과 편리한 사용감을 제공하기 위해 제작되었습니다.<br>
 손쉽게 플라스틱 폐기물을 재활용하는 과정을 통해 환경 보호에 기여하고 이를 통해 적립된 포인트로 다양한 상품을 교환해보세요!
 ## 주요 기능
+### 1. 로그인 페이지
+- Activity를 사용해서 제작
+- 비밀번호 표시/숨김 기능 구현
+- 자동 로그인 기능 구현 ( SharedPreferences의 isLogin 변수 사용 )
+- 로그인 정보를 JSON형태로 변환하여 서버에 POST 요청 전송 [sendLoginRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendLoginRequest.kt)
 - QR코드 인증 : 유저의 고유한 QR코드를 인식하여 인증 과정을 보다 편리하게 이용할 수 있습니다.
 - 스탬프 적립 : 재활용 가능한 플라스틱 폐기물을 수거했을 경우 일정량의 포인트를 적립할 수 있습니다.
 - 다양한 상품 교환 : 적립된 포인트를 사용해서 스토어에 등록된 다양한 상품을 구매할 수 있습니다.
