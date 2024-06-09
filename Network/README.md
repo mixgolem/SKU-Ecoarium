@@ -15,7 +15,7 @@ System 확장성을 위해 클라우드 컴퓨팅 서비스인 Linux CentOS7 기
 
 ### DBMS서비스 설치 및 실행
 안정적이고 빠른 성능을 제공하면서도 오픈 소스 기반으로 비용 효율적인 RDBMS인 MySQL 8.0을 사용합니다.  <br>
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/56341387/2c49c228-450d-4d31-8f77-0b24f00a38b1" alt="MySQL 설치 및 실행" style="width: 70%;"><br>
+
 - MySQL 8.0 설치 명령어 <br>
 yum install –y https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm <br>
 yum install -y mysql-community-server <br>
@@ -25,3 +25,8 @@ systemctl enable mysqld <br>
 - MySQL 8.0 진입 명령 <br>
 mysql –u root -p <br>
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/56341387/b674475c-4130-475d-a25d-ae20cf860fcf" alt="MySQL 설치 및 실행" style="width: 70%;"><br>
+
+### ecoarium 스키마 생성
+- 쿼리문 <br>
+CREATE DATABASE IF NOT EXISTS ecoarium; <br>
+USE ecoarium; <br>
