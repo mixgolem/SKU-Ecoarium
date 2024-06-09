@@ -16,6 +16,7 @@
 ## 3.1. 플라스틱 컵 수거 장치
 <p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/b47ee6d1-2bfd-4b1f-85a5-75f385b62bc2">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/e37e3a87-ad66-4896-ae78-6595e3ede64e" width="600">
 </p>
 
     * 일회용 플라스틱 컵 수거 시스템을 위한 장치
