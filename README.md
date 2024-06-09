@@ -20,7 +20,6 @@
     * JT S/W는 Python tkinter Library로 제작
     * QR코드 인식 OpenCV2, imutils
     * HTTP 통신을 사용해 AP서버, Android APP과 통신
-<img src="">
 
 #### 동작 화면
 <p align="center">
