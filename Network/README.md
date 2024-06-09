@@ -11,16 +11,17 @@ Ecoarium은 단순 장치 구동을 구현한 것이 아닌 System을 설계했�
 
 ### 클라우드 컴퓨팅 서비스 기반 DB서버 구축
 System 확장성을 위해 클라우드 컴퓨팅 서비스인 Linux CentOS7 기반의 AWS EC2 instance를 생성합니다.
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/56341387/8dc023ac-7995-4fc8-81a4-e4279be951d6" alt="Linux CentOS7기반 AWS EC2 instance 생성" style="width: 70%;"><br>
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/56341387/7ecbe3b9-9f80-41e2-b9c8-bd28d072f411" alt="Linux CentOS7기반 AWS EC2 instance 생성" style="width: 70%;"><br>
 
 ### DBMS서비스 설치 및 실행
 안정적이고 빠른 성능을 제공하면서도 오픈 소스 기반으로 비용 효율적인 RDBMS인 MySQL 8.0을 사용합니다.  <br>
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/56341387/7ecbe3b9-9f80-41e2-b9c8-bd28d072f411" alt="MySQL 설치 및 실행" style="width: 70%;"><br>
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/56341387/2c49c228-450d-4d31-8f77-0b24f00a38b1" alt="MySQL 설치 및 실행" style="width: 70%;"><br>
 - MySQL 8.0 설치 명령어 <br>
 yum install –y https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm <br>
-yum install -y mysql-community-server
+yum install -y mysql-community-server <br>
 - MySQL 8.0 시작 및 부팅시 자동시작 설정 명령어 <br>
 systemctl start mysqld <br>
-systemctl enable mysqld 
+systemctl enable mysqld <br>
 - MySQL 8.0 진입 명령 <br>
 mysql –u root -p <br>
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/56341387/b674475c-4130-475d-a25d-ae20cf860fcf" alt="MySQL 설치 및 실행" style="width: 70%;"><br>
