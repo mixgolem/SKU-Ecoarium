@@ -24,7 +24,7 @@
 
 #### 1) JT 초기 화면
 
-<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/8659afbe-70d6-40ab-a3b3-36425d0a8a4f" width="800">
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/8659afbe-70d6-40ab-a3b3-36425d0a8a4f" width="600">
 
 
 #### 2) QR 로그인
