@@ -86,8 +86,8 @@ passport 모듈을 사용해 로그인 기능을 구현하였습니다. 회원�
 ### 프로필 수정
 <p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/8c57bc35-b391-4318-b429-b8c794a186cb"><br>
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/5ee9c4dd-a257-4264-b022-48cdaa3756f0">
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/8026b9e0-74d2-423b-80f9-93036e5e6acd">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/d7c0d325-9bc4-4932-90c9-3f83b25633e3">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/0f93a84b-6c48-476e-ac8f-7798e63a3674">
 </p>
 프로필 수정 페이지에서 닉네임, 이메일, 비밀번호를 수정할 수 있고, 회원탈퇴를 할 수 있습니다.
 
@@ -101,9 +101,9 @@ passport 모듈을 사용해 로그인 기능을 구현하였습니다. 회원�
 
 ### 비밀번호 찾기
 <p align="center">
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/825c4412-8c39-421f-b293-a23a7ce257f3">
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/73e14db6-9500-4140-ba2e-2bfd0c12d40c">
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/9276c05f-6384-49ff-acde-9b827e84fd77">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/fc6040e3-684f-46c7-bef1-9fdb1d01db21">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/61be95fa-5936-40b6-b466-c9a0e98f681c">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/9ac14df5-61ed-428c-89ed-5427fc8090e6">
 </p>
 로그인 단계에서 비밀번호 찾기로 이동할 수 있습니다. 사용자가 아이디를 입력 시 서버는 계정에 저장 된 이메일로 인증 코드를 보냅니다.
 인증 코드는 16자리 랜덤 문자열로 생성되고, DB에 시간 정보와 함께 저장됩니다.
