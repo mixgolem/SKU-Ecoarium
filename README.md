@@ -24,6 +24,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/3dad1f6a-fd9f-4386-959a-4eae6ec4615c" alt="Mobile App 기능 블록도" style="width: 70%;"><br>
   <em>Mobile App 기능 블록도</em>
 </p>
+<br>
 
 ### 1. 로그인 페이지
 <p align="left">
@@ -37,6 +38,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > #### 관련 코드
 > - [LoginActivity](Mobile/app/src/main/java/com/example/ecoariumapp/activities/LoginActivity.kt)
 > - [sendLoginRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendLoginRequest.kt)
+<br>
 
 ### 2. 회원가입 페이지
 <p align="left">
@@ -48,6 +50,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > #### 관련 코드
 > - [RegisterActivity](Mobile/app/src/main/java/com/example/ecoariumapp/activities/RegisterActivity.kt)
 > - [sendRegisterRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendRegisterRequest.kt)
+<br>
 
 ### 3. 메인 페이지
 - Fragment의 생명 주기 관리 기능 구현
@@ -55,6 +58,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 - 네비게이션 바 기능 구현
 > #### 관련 코드
 > - [MainActivity](Mobile/app/src/main/java/com/example/ecoariumapp/activities/MainActivity.kt)
+<br>
 
 ### 4. 홈 페이지
 <p align="left">
@@ -68,6 +72,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > - [HomeFragment](Mobile/app/src/main/java/com/example/ecoariumapp/fragments/HomeFragment.kt)
 > - [sendHomeRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendHomeRequest.kt)
 > - [sendStacksRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendStacksRequest.kt)
+<br>
 
 ### 5. 스토어 페이지
 <p align="left">
@@ -80,6 +85,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > - [StoreFragment](Mobile/app/src/main/java/com/example/ecoariumapp/fragments/StoreFragment.kt)
 > - [sendStoreRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendStoreRequest.kt)
 > - [sendExchangeRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendExchangeRequest.kt)
+<br>
 
 ### 6. QR 페이지
 <p align="left">
@@ -91,6 +97,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > #### 관련 코드
 > - [QRcodeFragment](Mobile/app/src/main/java/com/example/ecoariumapp/fragments/QRcodeFragment.kt)
 > - [sendQRcodeRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendQRcodeRequest.kt)
+<br>
 
 ### 7. 보관함 페이지
 <p align="left">
@@ -103,6 +110,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > #### 관련 코드
 > - [InventoryFragment](Mobile/app/src/main/java/com/example/ecoariumapp/fragments/InventoryFragment.kt)
 > - [sendInventoryRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendInventoryRequest.kt)
+<br>
 
 ### 8. 마이 페이지
 <p align="left">
@@ -118,6 +126,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > - [sendMypageRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendMypageRequest.kt)
 > - [sendLogoutRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendLogoutRequest.kt)
 > - [sendStampLogsRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendStampLogsRequest.kt)
+<br>
 
 ### 9. 회원 관리 페이지
 <p align="left">
@@ -137,6 +146,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > - [sendChangePasswordRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendChangePasswordRequest.kt)
 > - [sendLogoutRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendLogoutRequest.kt)
 > - [sendDeleteRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendDeleteRequest.kt)
+<br>
 
 ### 10. 기타
 - Recycler View, View Pager 등의 데이터 바인딩을 위한 Adapter 구현
