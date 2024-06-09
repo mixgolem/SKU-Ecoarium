@@ -30,8 +30,7 @@
 
 <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/91078dc7-bc97-4632-8709-21a5720745b0">
 
-![로그인, qr인식](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f8d17f72-eb39-4d5e-b98d-e59e4da05f5d)
-
+![로그인, qr인식 (1)](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/2defecf8-0d55-4884-87d6-0e8c1980be16)
 
 #### 3) 로그인 성공
 
