@@ -78,8 +78,8 @@ passport 모듈을 사용해 로그인 기능을 구현하였습니다. 회원�
 
 ### 보관함
 <p align="center">
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/9e21ce0e-df97-4fda-b036-93f46704f93a">
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/b13a9650-6692-4968-acd0-56ee9387b737">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/24ee580b-16d7-49bb-99eb-b2345236248d">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/163653941/5d7fe23a-fa17-449d-98b9-fb894c9cc4e5">
 </p>
 스토어에서 구매한 상품을 보관함에서 확인할 수 있습니다. 사용가능 탭의 상품을 클릭 시 바코드를 확인할 수 있습니다.
 
