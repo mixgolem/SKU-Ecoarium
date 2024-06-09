@@ -59,7 +59,7 @@
 
 ---
 
-# 2. 플라스틱 컵 분류기
+# 2. Plastic Cup Classifier
 <p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/e37e3a87-ad66-4896-ae78-6595e3ede64e">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f5393994-810a-4ce4-b153-8fc599dc0bf0">
