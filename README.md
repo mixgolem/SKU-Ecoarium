@@ -30,7 +30,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 - 백그라운드 로그인 유지 기능 구현
 - 네비게이션 바 기능 구현
 > #### 관련 코드
-> - [MainActivity](Mobile/app/src/main/java/com/example/ecoariumapp/activities/LoginActivity.kt)
+> - [MainActivity](Mobile/app/src/main/java/com/example/ecoariumapp/activities/MainActivity.kt)
 ### 4. 홈 페이지
 - View Pager 형식의 캠페인/이벤트 뷰어 구현
 - 미니 프로필 뷰어 구현
