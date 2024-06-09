@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Ecoarium </title>
+    <link rel="stylesheet" href="public/mypage.css">
+</head>
+<body>
+    <div class="header">
+        <div class = "layout">
+            <a id= "logo" href="/">Ecoarium</a>
+            <a id = "text"> - 마이페이지</a>
+            <a id= "mypage" href="/mypage">마이페이지</a>
+            <div id = "line"></div>
+            <a id= "store" href="/store">스토어</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class = "container-name">프로필</div>
+        <div class = "container">
+            <div id = "area1">
+                <div id = "nickname"></div>  
+                <div id = "user-id"></div>
+                <a href="/auth/logout"><button class = "logout-btn">로그아웃</button></a>
+                <a href="/profileModification"><button class = "logout-btn">프로필 수정</button></a>
+            </div>
+            <div id = "area2"></div> 
+            <div id = "area3">
+                <button id = "stamp-btn" onclick="window.location.href='/mypage'">스탬프 내역</button>
+                <div id = "btn-line"></div>
+                <button id="inventory-btn" onclick="window.location.href='/inventory'">보관함</button>
+            </div>
+        </div>
+        <div class = "container-name">스탬프 내역</div>
+        <div id = "buttons">
+            <button id = "all-btn" class = "filter-clicked-btn">전체</button>
+            <button id = "earnings-btn" class = "filter-btn">적립</button>
+            <button id = "usages-btn" class = "filter-btn">사용</button>
+        </div>
+        <div id = "logs-container" class = "container">
+        </div>
+    </div>
+    <script>
+        const area1 = document.getElementById("area1");
+        const area2 = document.getElementById("area2");
+        const area3 = document.getElementById("area3");
+        const nick = document.getElementById("nickname");
+        const userid = document.getElementById("user-id");
+        const logs_container = document.getElementById("logs-container");
+        const all_btn = document.getElementById("all-btn");
+        const earnings_btn = document.getElementById("earnings-btn");
+        const usages_btn = document.getElementById("usages-btn");
+
+        // 로딩 페이지
+        let page = 1;
+        // 전체, 적립, 사용
+        let select = 1;
+
+        //프로필 불러오기
+        fetch('/mypage/load-profile')
+            .then(response => response.json())
+            .then(data => {
+                const user = data.user;
+                const points = data.points;
+                nick.innerText = user.nickname + "님";
+                userid.innerText = user.username;
+                area2.innerText = points + "개의 스탬프를 모았어요.";
+                //관리자 버튼 생성
+                if (user.admin == 1){
+                    const admin = document.createElement('button');
+                    admin.classList.add('logout-btn');
+                    admin.innerText = "관리자 페이지";
+                    area1.appendChild(admin);
+                    admin.addEventListener('click', async () => {
+                        try {
+                            window.location.href = '/admin';
+                        } catch (error) {
+                            console.error(error);
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        //전체기록 생성 함수
+        function allLogs (all_logs, items){
+            const logs = logs_container.firstChild;
+            all_logs.forEach(each => {
+                //획득내역
+                if (each.type == "point_earning"){
+                    //로그 생성
+                    const log = document.createElement('div');
+                    log.classList.add('log');
+                    logs.appendChild(log);
+                    //이미지
+                    const stamp_img = document.createElement('img');
+                    stamp_img.classList.add('stamp-img');
+                    stamp_img.src = "public/icons/stamp.jpg";
+                    stamp_img.alt = '스탬프';
+                    log.appendChild(stamp_img);
+                    //이미지 옆 div
+                    const right_area = document.createElement('div');
+                    right_area.classList.add('right_area');
+                    log.appendChild(right_area);
+                    //위치
+                    const log_location = document.createElement('div');
+                    log_location.classList.add('log-location');
+                    log_location.innerText = each.detail;
+                    right_area.appendChild(log_location);
+                    //날짜/시간
+                    const log_time = document.createElement('div');
+                    log_time.classList.add('log-time');
+                    log_time.innerText = each.createdAt.slice(0, 10) +" "+ each.createdAt.slice(11, 16);
+                    right_area.appendChild(log_time);
+                } else {//사용내역
+                    //상품 종류
+                    const kind = items.find(model => model.id == each.detail);
+                    //로그 생성
+                    const log = document.createElement('div');
+                    log.classList.add('log');
+                    logs.appendChild(log);
+                    //이미지
+                    const item_img = document.createElement('img');
+                    item_img.classList.add('item-img');
+                    item_img.src = "uploads/" + kind.img.slice(5);
+                    item_img.alt = '스탬프';
+                    log.appendChild(item_img);
+                    //이미지 옆 div
+                    const right_area = document.createElement('div');
+                    right_area.classList.add('right_area');
+                    log.appendChild(right_area);
+                    //상품명
+                    const name = document.createElement('div');
+                    name.classList.add('log-name');
+                    name.innerText = kind.name;
+                    right_area.appendChild(name);
+                    //가격
+                    const price = document.createElement('div');
+                    price.classList.add('log-price');
+                    price.innerText = kind.price + " 스탬프";
+                    right_area.appendChild(price);
+                    //날짜/시간
+                    const log_time = document.createElement('div');
+                    log_time.classList.add('log-time');
+                    log_time.innerText = each.createdAt.slice(0, 10) +" "+ each.createdAt.slice(11, 16);
+                    right_area.appendChild(log_time);
+                };
+            });
+        };
+
+        //획득기록 생성 함수
+        function earningLogs (point_earnings) {
+            const logs = logs_container.firstChild;
+            point_earnings.forEach(each => {
+                //로그 생성
+                const log = document.createElement('div');
+                log.classList.add('log');
+                logs.appendChild(log);
+                //이미지
+                const stamp_img = document.createElement('img');
+                stamp_img.classList.add('stamp-img');
+                stamp_img.src = "public/icons/stamp.jpg";
+                stamp_img.alt = '스탬프';
+                log.appendChild(stamp_img);
+                //이미지 옆 div
+                const right_area = document.createElement('div');
+                right_area.classList.add('right_area');
+                log.appendChild(right_area);
+                //위치
+                const log_location = document.createElement('div');
+                log_location.classList.add('log-location');
+                log_location.innerText = each.location;
+                right_area.appendChild(log_location);
+                //날짜/시간
+                const log_time = document.createElement('div');
+                log_time.classList.add('log-time');
+                log_time.innerText = each.createdAt.slice(0, 10) +" "+ each.createdAt.slice(11, 16);
+                right_area.appendChild(log_time);
+            });
+        };
+
+        //사용기록 생성 함수
+        function usageLogs (point_usages, items) {
+            const logs = logs_container.firstChild;
+            point_usages.forEach(each => {
+                //상품 종류
+                const kind = items.find(model => model.id == each.itemId);
+                //로그 생성
+                const log = document.createElement('div');
+                log.classList.add('log');
+                logs.appendChild(log);
+                //이미지
+                const item_img = document.createElement('img');
+                item_img.classList.add('item-img');
+                item_img.src = "uploads/" + kind.img.slice(5);
+                item_img.alt = '스탬프';
+                log.appendChild(item_img);
+                //이미지 옆 div
+                const right_area = document.createElement('div');
+                right_area.classList.add('right_area');
+                log.appendChild(right_area);
+                //상품명
+                const name = document.createElement('div');
+                name.classList.add('log-name');
+                name.innerText = kind.name;
+                right_area.appendChild(name);
+                //가격
+                const price = document.createElement('div');
+                price.classList.add('log-price');
+                price.innerText = kind.price + " 스탬프";
+                right_area.appendChild(price);
+                //날짜/시간
+                const log_time = document.createElement('div');
+                log_time.classList.add('log-time');
+                log_time.innerText = each.createdAt.slice(0, 10) +" "+ each.createdAt.slice(11, 16);
+                right_area.appendChild(log_time);
+            });
+        }
+
+        
+        //전체기록 불러오기
+        fetch('/mypage/load-all-partOfLogs')
+            .then(response => response.json())
+            .then(data => {
+                logs_container.removeChild(logs_container.firstChild);
+                const logs = document.createElement('div');
+                logs_container.appendChild(logs);
+                allLogs(data.all_logs, data.items);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        //전체기록 버튼
+        all_btn.addEventListener('click', async () => {
+            select = 1;
+            page =1;
+            all_btn.classList.remove("filter-btn");
+            all_btn.classList.add("filter-clicked-btn");
+            earnings_btn.classList.remove("filter-clicked-btn");
+            earnings_btn.classList.add("filter-btn");
+            usages_btn.classList.remove("filter-clicked-btn");
+            usages_btn.classList.add("filter-btn");
+            logs_container.removeChild(logs_container.firstChild);
+            const logs = document.createElement('div');
+            logs_container.appendChild(logs);
+            fetch(`/mypage/load-all-partOfLogs?page=${page}`)
+                .then(response => response.json())
+                .then(data => {
+                    allLogs(data.all_logs, data.items);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+
+        //획득기록 버튼
+        earnings_btn.addEventListener('click', async () => {
+            select = 2;
+            page =1;
+            all_btn.classList.remove("filter-clicked-btn");
+            all_btn.classList.add("filter-btn");
+            earnings_btn.classList.remove("filter-btn");
+            earnings_btn.classList.add("filter-clicked-btn");
+            usages_btn.classList.remove("filter-clicked-btn");
+            usages_btn.classList.add("filter-btn");
+            logs_container.removeChild(logs_container.firstChild);
+            const logs = document.createElement('div');
+            logs_container.appendChild(logs);
+            fetch(`/mypage/load-earnings-partOfLogs?page=${page}`)
+                .then(response => response.json())
+                .then(data => {
+                    earningLogs(data.point_earnings);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+
+        //사용기록 버튼
+        usages_btn.addEventListener('click', async () => {
+            select = 3;
+            page =1;
+            all_btn.classList.remove("filter-clicked-btn");
+            all_btn.classList.add("filter-btn");
+            earnings_btn.classList.remove("filter-clicked-btn");
+            earnings_btn.classList.add("filter-btn");
+            usages_btn.classList.remove("filter-btn");
+            usages_btn.classList.add("filter-clicked-btn");
+            logs_container.removeChild(logs_container.firstChild);
+            const logs = document.createElement('div');
+            logs_container.appendChild(logs);
+            fetch(`/mypage/load-usages-partOfLogs?page=${page}`)
+                .then(response => response.json())
+                .then(data => {
+                    usageLogs(data.point_usages, data.items);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+
+        // 스크롤 이벤트 리스너
+        window.addEventListener('scroll', () => {
+            // 현재 스크롤 위치
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            // 전체 문서 높이
+            const documentHeight = document.documentElement.scrollHeight;
+            // 현재 창의 높이
+            const windowHeight = window.innerHeight;
+            // 스크롤이 맨 아래로 내려왔는지 확인
+            if (scrollTop + windowHeight >= documentHeight - 1) {
+                // 선택된 탭에 따른 로딩 요청
+                if (select == 1) {
+                    page ++;
+                    fetch(`/mypage/load-all-partOfLogs?page=${page}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            allLogs(data.all_logs, data.items);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
+                else if (select == 2) {
+                    page ++;
+                    fetch(`/mypage/load-earnings-partOfLogs?page=${page}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            earningLogs(data.point_earnings);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
+                else if (select == 3) {
+                    page ++;
+                    fetch(`/mypage/load-usages-partOfLogs?page=${page}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            usageLogs(data.point_usages, data.items);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                };
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Ecoarium </title>
+    <link rel="stylesheet" href="public/inventory.css">
+</head>
+<body>
+    <div class="header">
+        <div class = "layout">
+            <a id= "logo" href="/">Ecoarium</a>
+            <a id = "text"> - 마이페이지</a>
+            <a id= "mypage" href="/mypage">마이페이지</a>
+            <div id = "line"></div>
+            <a id= "store" href="/store">스토어</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class = "container-name">프로필</div>
+        <div class = "container">
+            <div id = "area1">
+                <div id = "nickname"></div>  
+                <div id = "user-id"></div>
+                <a href="/auth/logout"><button class = "logout-btn">로그아웃</button></a>
+                <a href="/profileModification"><button class = "logout-btn">프로필 수정</button></a>
+            </div>
+            <div id = "area2"></div> 
+            <div id = "area3">
+                <button id = "stamp-btn" onclick="window.location.href='/mypage'">스탬프 내역</button>
+                <div id = "btn-line"></div>
+                <button id="inventory-btn" onclick="window.location.href='/inventory'">보관함</button>
+            </div>
+        </div>
+        <div class = "container-name">보관함</div>
+        <div id = "buttons">
+            <button id = "available-btn" class = "filter-clicked-btn">사용가능</button>
+            <button id = "completed-btn" class = "filter-btn">사용완료</button>
+        </div>
+        <div id = "inventory-container" class = "container">
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script>
+        const area1 = document.getElementById("area1");
+        const area2 = document.getElementById("area2");
+        const area3 = document.getElementById("area3");
+        const nick = document.getElementById("nickname");
+        const userid = document.getElementById("user-id");
+        const inventory_container = document.getElementById("inventory-container");
+        const available_btn = document.getElementById("available-btn");
+        const completed_btn = document.getElementById("completed-btn");
+
+        // 로딩 페이지
+        let page = 1;
+        // 사용가능 / 사용완료
+        let select = 1;
+        // 상세 정보
+        let detail = false;
+        // 상세 정보 보기 전 사용 가능 목록
+        let availables;
+
+        //프로필 불러오기
+        fetch('/inventory/load-profile')
+            .then(response => response.json())
+            .then(data => {
+                const user = data.user;
+                const points = data.points;
+                nick.innerText = user.nickname + "님"
+                userid.innerText = user.username;
+                area2.innerText = points + "개의 스탬프를 모았어요.";
+                //관리자 버튼 생성
+                if (user.admin == 1){
+                    const admin = document.createElement('button');
+                    admin.classList.add('logout-btn')
+                    admin.innerText = "관리자 페이지"
+                    area1.appendChild(admin);
+                    admin.addEventListener('click', async () => {
+                        try {
+                            window.location.href = '/admin';
+                        } catch (error) {
+                            console.error(error);
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        // 상세 정보 div
+        const detail_div = document.createElement('div');
+        detail_div.classList.add('items');
+        const item_detail = document.createElement('div');
+        detail_div.appendChild(item_detail);
+        //뒤로가기 버튼
+        const cancel_button = document.createElement('button');
+        cancel_button.classList.add('cancel_button');
+        cancel_button.addEventListener('click', async () => {
+            inventory_container.removeChild(detail_div);
+            inventory_container.appendChild(availables);
+        });
+        item_detail.appendChild(cancel_button);
+        //이미지
+        const detail_img = document.createElement('img');
+        detail_img.classList.add('detail-image');
+        item_detail.appendChild(detail_img);
+        //상품명
+        const detail_name = document.createElement('div');
+        detail_name.classList.add('detail-name');
+        item_detail.appendChild(detail_name);
+        //바코드;
+        const barcode_container = document.createElement('div');
+        barcode_container.classList.add('barcode-container');
+        item_detail.appendChild(barcode_container);
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('class', 'barcode-svg');
+        barcode_container.appendChild(svg);
+
+        // 상세 정보 수정
+        function Detail (myItem, info) {
+            detail_img.src = "uploads/" + info.img.slice(5);
+            detail_img.alt = info.name;
+            detail_name.innerText = info.name;
+            const formattedDisplayValue = myItem.code.match(/.{1,4}/g).join(' ');
+            JsBarcode(svg, myItem.code, {
+                format: "CODE128",
+                lineColor: "#000",
+                width: 2,
+                height: 100,
+                displayValue: true,
+                text: formattedDisplayValue
+            });
+        };
+
+        //사용가능 생성 함수
+        function available (available_items, items){
+            const items_div = inventory_container.firstChild;
+            availables = items_div;
+            available_items.forEach(each => {
+                //상품 종류
+                const kind = items.find(model => model.id == each.itemId);
+                //상품 생성
+                const item = document.createElement('button');
+                // 클릭 시 상세 정보
+                item.addEventListener('click', async () => {
+                    detail = true;
+                    inventory_container.removeChild(items_div);
+                    inventory_container.appendChild(detail_div);
+                    Detail(each, kind);
+                });
+                item.classList.add('item');
+                items_div.appendChild(item);
+                //이미지
+                const item_img = document.createElement('img');
+                item_img.classList.add('image');
+                item_img.src = "uploads/" + kind.img.slice(5);
+                item_img.alt = kind.name;
+                item.appendChild(item_img);
+                //상품명
+                const name = document.createElement('div');
+                name.classList.add('item-name');
+                name.innerText = kind.name;
+                item.appendChild(name);
+                //교환날짜/시간
+                const time = document.createElement('div');
+                time.classList.add('exchanged-time');
+                time.innerText = each.createdAt.slice(0, 10) +" "+ each.createdAt.slice(11, 16);
+                item.appendChild(time);
+            });
+        };
+
+        //사용완료 생성 함수
+        function completed (completed_items, items){
+            const items_div = inventory_container.firstChild;
+            completed_items.forEach(each => {
+                //상품 종류
+                const kind = items.find(model => model.id == each.itemId);
+                //상품 생성
+                const item = document.createElement('div');
+                item.classList.add('item');
+                items_div.appendChild(item);
+                //이미지
+                const item_img = document.createElement('img');
+                item_img.classList.add('image');
+                item_img.src = "uploads/" + kind.img.slice(5);
+                item_img.alt = kind.name;
+                item.appendChild(item_img);
+                //상품명
+                const name = document.createElement('div');
+                name.classList.add('item-name');
+                name.innerText = kind.name;
+                item.appendChild(name);
+                //교환날짜/시간
+                const time = document.createElement('div');
+                time.classList.add('exchanged-time');
+                time.innerText = each.createdAt.slice(0, 10) +" "+ each.createdAt.slice(11, 16);
+                item.appendChild(time);
+            });
+        };
+
+        //사용가능 불러오기
+        fetch(`/inventory/partOfAvailable?page=${page}`)
+            .then(response => response.json())
+            .then(data => {
+                inventory_container.removeChild(inventory_container.firstChild);
+                const items_div = document.createElement('div');
+                items_div.classList.add('items');
+                inventory_container.appendChild(items_div);
+                available(data.available_items, data.items);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        //사용가능 버튼
+        available_btn.addEventListener('click', async () => {
+            detail = false;
+            select = 1;
+            page =1;
+            available_btn.classList.remove("filter-btn");
+            available_btn.classList.add("filter-clicked-btn");
+            completed_btn.classList.remove("filter-clicked-btn");
+            completed_btn.classList.add("filter-btn");
+            inventory_container.removeChild(inventory_container.firstChild);
+            const items_div = document.createElement('div');
+            items_div.classList.add('items');
+            inventory_container.appendChild(items_div);
+            fetch(`/inventory/partOfAvailable?page=${page}`)
+                .then(response => response.json())
+                .then(data => {
+                    available(data.available_items, data.items);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+
+        //사용완료 버튼
+        completed_btn.addEventListener('click', async () => {
+            detail = false;
+            select = 2;
+            page =1;
+            available_btn.classList.remove("filter-clicked-btn");
+            available_btn.classList.add("filter-btn");
+            completed_btn.classList.remove("filter-btn");
+            completed_btn.classList.add("filter-clicked-btn");
+            inventory_container.removeChild(inventory_container.firstChild);
+            const items_div = document.createElement('div');
+            items_div.classList.add('items');
+            inventory_container.appendChild(items_div);
+            fetch(`/inventory/partOfCompleted?page=${page}`)
+                .then(response => response.json())
+                .then(data => {
+                    completed(data.completed_items, data.items);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+
+        // 스크롤 이벤트 리스너
+        window.addEventListener('scroll', () => {
+            if (detail) return;
+            // 현재 스크롤 위치
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            // 전체 문서 높이
+            const documentHeight = document.documentElement.scrollHeight;
+            // 현재 창의 높이
+            const windowHeight = window.innerHeight;
+            // 스크롤이 맨 아래로 내려왔는지 확인
+            if (scrollTop + windowHeight >= documentHeight - 1) {
+                // 선택된 탭에 따른 로딩 요청
+                if (select == 1) {
+                    page ++;
+                    fetch(`/inventory/partOfAvailable?page=${page}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            available(data.available_items, data.items);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
+                else if (select == 2) {
+                    page ++;
+                    fetch(`/inventory/partOfCompleted?page=${page}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            completed(data.completed_items, data.items);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

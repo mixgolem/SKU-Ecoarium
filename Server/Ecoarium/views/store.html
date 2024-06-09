@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Ecoarium </title>
+    <link rel="stylesheet" href="public/store.css">
+</head>
+<body>
+    <div class="header">
+        <div class = "layout">
+            <a id= "logo" href="/">Ecoarium</a>
+            <a id= "mypage" href="/mypage">마이페이지</a>
+            <div id = "line"></div>
+            <a id= "store" href="/store">스토어</a>
+        </div>
+    </div>
+    <div class="main">
+        <div id = "container">
+            <div id = "area1">
+                <a id = "text">스토어</a>
+                <a id = "mypoint"></a>
+            </div>
+            <div id = "area2">
+            </div>
+        </div>
+    </div>
+    <script>
+        const item_list = document.getElementById('area2');
+
+        //상품 목록
+        fetch('/store/load')
+            .then(response => response.json())
+            .then(data => {
+                const items = data;
+                items.forEach(each => {
+                    const itemId = each.id
+                    const item = document.createElement('div');
+                    item.classList.add('store_content');
+                    const img = document.createElement('img');
+                    img.classList.add('image');
+                    img.src = "uploads/" + each.img.slice(5);
+                    item.appendChild(img);
+                    const name = document.createElement('div');
+                    name.classList.add('name');
+                    name.innerText = each.name;
+                    const price = document.createElement('div');
+                    price.classList.add('price');
+                    price.innerText = each.price + " 스탬프";
+                    const exchange_btn = document.createElement('button');
+                    exchange_btn.classList.add('exchange');
+                    exchange_btn.innerText = "교환";
+                    // 구매 버튼 이벤트 리스너
+                    exchange_btn.addEventListener('click', async () => {
+                        try {
+                            const confirmed = confirm("교환하시겠습니까?");
+                            if (confirmed){
+                                await fetch('/store/exchange', {
+                                    method: 'PUT',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({itemId}),
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data == true) {
+                                        window.alert("구매 완료");
+                                    }
+                                    else {
+                                        window.alert("스탬프가 부족합니다.");
+                                    }
+                                });
+                            };
+                        } catch (error) {
+                            console.error(error);
+                        }
+                    });
+                    name.appendChild(exchange_btn);
+                    item.appendChild(name);
+                    item.appendChild(price);
+                    item_list.appendChild(item);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>

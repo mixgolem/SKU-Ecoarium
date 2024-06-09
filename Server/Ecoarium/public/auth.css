@@ -1,0 +1,130 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f5;
+}
+
+.layout{
+    max-width: 398px;
+    margin: 50px auto 10px auto;
+    background-color: #ffffff00;
+    color: #ffffff00;
+    box-sizing: border-box;
+    
+}
+
+#logo{
+    margin: 20px 110px;
+    background-color: #ffffff00;
+    color:#32422f;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.login-container {
+    width: 400px;
+    margin: 0px auto;
+    padding: 40px 50px 20px 50px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 13px;
+    box-sizing: border-box;
+}
+
+.typing-container {
+    width: 280px;
+    padding: 10px;
+    margin: 13px 0px 0px 0px;
+    border: 0px;
+    border-bottom: 2px solid #ccc;
+    font-size: 18px;
+}
+.typing-container:focus {
+    outline: none;
+    border-bottom: 2px solid #6b6b6b;
+}
+
+#login-button {
+    padding: 11px 123px;
+    margin: 30px 0px 20px 0px;
+    background-color: #01977F;
+    border: none;
+    border-radius: 13px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+#login-button:hover {
+    background-color: #00705e;
+}
+
+#joinsubmit-button {
+    padding: 11px 114px;
+    margin: 30px 0px 20px 0px;
+    background-color: #01977F;
+    border: none;
+    border-radius: 13px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+#joinsubmit-button:hover {
+    background-color: #00705e;
+}
+
+#findPW-button{
+    padding: 10px;
+    margin-left:45px;
+    cursor: pointer;
+    background-color: #ffffff;
+    color:#6b6b6b;
+    border: none;
+    float: left;
+}
+#line {
+    margin-top: 10px;
+    padding: 10px 0;
+    background-color: #ffffff;
+    border-left: 1px solid #dfdfdf;
+    float: left;
+}
+#join-button{
+    padding: 10px;
+    cursor: pointer;
+    background-color: #ffffff;
+    color:#6b6b6b;
+    border: none;
+}
+
+#backtologin-button{
+    padding: 10px;
+    margin-left:120px;
+    cursor: pointer;
+    background-color: #ffffff;
+    color:#6b6b6b;
+    border: none;
+}
+
+.change-button {
+    padding: 11px 114px;
+    margin: 30px 0px 20px 0px;
+    background-color: #01977F;
+    border: none;
+    border-radius: 13px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+.change-button:hover {
+    background-color: #00705e;
+}
+
+.error-message{
+    color: #ff0000;
+}
+
+.countdown{
+    margin-top: 5px;    
+}
