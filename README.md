@@ -1,4 +1,4 @@
-# Ecoarium JT & Plastic Cup Classifier
+# 3. Ecoarium JT & Plastic Cup Classifier
 <p align="center">
   <img src="https://img.shields.io/badge/tensorflow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
@@ -13,7 +13,7 @@
 
 ---
 
-## JT;플라스틱 컵 수거 장치
+## 3.1. 플라스틱 컵 수거 장치
 <p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/b47ee6d1-2bfd-4b1f-85a5-75f385b62bc2">
 </p>
@@ -26,41 +26,39 @@
     * QR코드 인식 OpenCV2, imutils
     * HTTP 통신을 사용해 AP서버, Android APP과 통신
 
-### 동작 화면
-
-#### 1) JT 초기 화면
+#### 3.1.1. JT 초기 화면
 
 <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/8659afbe-70d6-40ab-a3b3-36425d0a8a4f" width="600">
 
 
-#### 2) QR 로그인
+#### 3.1.2. QR 로그인
 
 <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/cd7156d6-74b1-41a0-9aba-26478e092d73" width="600">
 
 
-#### 3) 로그인 성공 후 투입구 열림, 컵 투입
+#### 3.1.3. 로그인 성공 후 투입구 열림, 컵 투입
 
 <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/dd184eb6-0a6f-40b7-aca9-f3a667ac02fb" width="600">
 
 
-#### 4) 투입구 닫힌 후 컵 사진 촬영
+#### 3.1.4. 투입구 닫힌 후 컵 사진 촬영
 
 <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f983947a-3eb1-4e3c-b6af-30be5ce98a6b" width="600">
 
 
-#### 5) 컵 수거 완료
+#### 3.1.5. 컵 수거 완료
 
 <img src="" width="600">
 
 
-#### 6) 컵 수거 불가
+#### 3.1.6. 컵 수거 불가
 
 <img src="" width="600">
 
 
 ---
 
-## JT;플라스틱 컵 분류기
+## 3.2.플라스틱 컵 분류기
 <p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f5393994-810a-4ce4-b153-8fc599dc0bf0">
 </p>
