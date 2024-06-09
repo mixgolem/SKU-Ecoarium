@@ -5,6 +5,12 @@
   <img src="https://img.shields.io/badge/Clang-A8B9CC?style=for-the-badge&logo=c&logoColor=white">
 </p>
 
+    * IDE : Visual Studio Code 1.90
+    * Python: 3.11.9
+    * Tensorflow: 2.16.1
+    * gcc: 6.3.0
+    * Raspberry Pi 4B Bullseye
+
 ---
 
 ## JT;플라스틱 컵 수거 장치
