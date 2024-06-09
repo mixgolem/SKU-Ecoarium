@@ -7,10 +7,9 @@
 
 ## 플라스틱 컵 수거 장치
 <p align="center">
-  <img src=https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f10c92b4-4e90-4f0c-9f17-59dbb3583af4">
+  <img src=https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/b1ca506c-4377-4254-af0b-f6d7030abd89">
 </p>
-+ 123
-+ 123
+    * 123
 
 
 
