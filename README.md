@@ -18,7 +18,22 @@
 - [2. Plastic Cup Classifier](#2-Plastic-Cup-Classifier)
 - [3. Ecoarium AP Server, WEB Server](#3)
 - [4. Ecoarium Application](#4-ecoarium-application)
-  - [4.1.]
+  - [4.1. 소개](#41-소개)
+  - [4.2. 주요 기능](#42-주요-기능)
+  - [4.3. 주요 구성](#43-주요-구성)
+    - [4.3.0. 기능 블록도](#430-기능-블록도)
+    - [4.3.1. 로그인 페이지](#431-로그인-페이지)
+    - [4.3.2. 회원가입 페이지](#432-회원가입-페이지)
+    - [4.3.3. 메인 페이지](#433-메인-페이지)
+    - [4.3.4. 홈 페이지](#434-홈-페이지)
+    - [4.3.5. 스토어 페이지](#435-스토어-페이지)
+    - [4.3.6. QR 페이지](#436-QR-페이지)
+    - [4.3.7. 보관함 페이지](#437-보관함-페이지)
+    - [4.3.8. 마이 페이지](#438-마이-페이지)
+    - [4.3.9. 회원 관리 페이지](#439-회원-관리-페이지)
+    - [4.3.10. 기타](#4310-기타)
+  - [4.4. 설치 및 실행](#44-설치-및-실행)
+    
 # Tech Stack
 <p align="center">
   <img src="https://img.shields.io/badge/Node.js-5FA04E?style=flat-square&logo=Node.js&logoColor=white">
@@ -282,24 +297,24 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > - [SharedPrefManager](Mobile/app/src/main/java/com/example/ecoariumapp/sharedPreferences/SharedPrefManager.kt)
 > - [Ipconfig](Mobile/app/src/main/java/com/example/ecoariumapp/Ipconfig.kt)
 
-## 4.4 설치 및 실행
+## 4.4. 설치 및 실행
 > ⚠️ **경고:** 본 Application은 Android 환경의 Mobile Device에 설치 가능합니다.
 
-### 4.4.1 APK 설치 및 실행 방법
+### 4.4.1. APK 설치 및 실행 방법
 - Repository에 첨부 된 APK 파일을 다운로드 받습니다. (Mobile - app - release - Ecoarium.apk)
 - APK 파일을 Android 기기에 전송합니다.
 - 기기에서 파일 관리자를 열고, APK 파일을 찾습니다.
 - APK 파일을 클릭하여 설치를 시작합니다. (설치 전, 기기의 설정에서 '알 수 없는 앱'에 대한 설치를 허용해야 할 수 있습니다.)
 - 설치가 완료되면 앱을 실행하여 사용을 시작합니다.
   
-### 4.4.2 가상머신 사용 방법 (Android 환경이 아닌 경우)
+### 4.4.2. 가상머신 사용 방법 (Android 환경이 아닌 경우)
 - GitHub 저장소에서 프로젝트를 클론합니다.
 - Android Studio에서 'Run' > 'Run 'app''을 선택합니다.
 - Android Studio를 열고, 'File' > 'Open'을 선택하여 클론한 프로젝트를 엽니다.
 - 연결된 Android 기기를 선택하거나, 새 Android Virtual Device를 생성합니다.
 - 'OK'를 클릭하여 앱을 실행합니다.
 
-### 4.4.3 APK 생성 및 실행 방법 (APK 설치 과정에서 오류가 발생한 경우)
+### 4.4.3. APK 생성 및 실행 방법 (APK 설치 과정에서 오류가 발생한 경우)
 - GitHub 저장소에서 프로젝트를 클론합니다.
 - Android Studio를 열고, 'File' > 'Open'을 선택하여 클론한 프로젝트를 엽니다.
 - 'Build' > 'Build Bundle(s) / APK(s)' > 'Build APK(s)'를 선택하여 APK를 빌드합니다.
@@ -307,7 +322,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 - APK 파일을 Android 기기에 전송하고, 파일을 클릭하여 설치합니다. (설치 전, 기기의 설정에서 '알 수 없는 앱'에 대한 설치를 허용해야 할 수 있습니다.)
 - 설치가 완료되면 앱을 실행하여 사용을 시작합니다.
 
-### 4.4.4 Android SDK 설정이 안된 경우
+### 4.4.4. Android SDK 설정이 안된 경우
 > Android SDK의 위치가 제대로 설정되지 않은 오류 등이 발생한 경우 아래 두가지 방법 중 하나를 시도 해보시기 바랍니다.
 #### 4.4.4.1. ANDROID_HOME 환경 변수 설정
 - 시작 메뉴를 열고 "환경 변수 편집"을 검색하여 "시스템 환경 변수 편집"을 선택합니다.
