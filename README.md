@@ -7,10 +7,10 @@
 
 
 
-
 ## JT;플라스틱 컵 수거 장치
-![image](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/b47ee6d1-2bfd-4b1f-85a5-75f385b62bc2)
-
+<p align="center">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/b47ee6d1-2bfd-4b1f-85a5-75f385b62bc2">
+</p>
     * 일회용 플라스틱 컵 수거 시스템을 위한 장치
     * 스테인리스(STS304 1.2T POLISHING) 재질, W450*D150*H300mm
     * RaspberryPi 4B bullseye
@@ -22,8 +22,9 @@
 
 
 ## JT;플라스틱 컵 분류기
-![image](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f5393994-810a-4ce4-b153-8fc599dc0bf0)
-
+<p align="center">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f5393994-810a-4ce4-b153-8fc599dc0bf0">
+</p>
 
     * 일회용 플라스틱 컵 수거 시스템을 위한 장치
     * 스테인리스(STS304 1.2T POLISHING) 재질, W450*D150*H300mm
