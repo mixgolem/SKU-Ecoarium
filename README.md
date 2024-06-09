@@ -61,8 +61,8 @@
 
 ## 3.2.플라스틱 컵 분류기
 <p align="center">
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f5393994-810a-4ce4-b153-8fc599dc0bf0">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/e37e3a87-ad66-4896-ae78-6595e3ede64e">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f5393994-810a-4ce4-b153-8fc599dc0bf0">
 </p>
 
     * 일회용 플라스틱 컵 재활용 수거 여부 판별
