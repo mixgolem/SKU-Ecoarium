@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/fragmentTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/green">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="보관함"
+                android:fontFamily="@font/jua"
+                android:textColor="@color/white"
+                android:textSize="28sp"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+            android:id="@+id/buttonLayout"
+            android:layout_below="@+id/fragmentTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <Button
+                android:layout_margin="2dp"
+                android:id="@+id/buttonAvailable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사용 가능"
+                android:fontFamily="@font/jua"
+                android:textSize="18sp"
+                android:background="@drawable/button_background"
+                android:textColor="@drawable/button_color_selector"
+                android:layout_weight="1"
+                app:layout_constraintEnd_toStartOf="@+id/buttonCompleted"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+                android:layout_margin="2dp"
+                android:id="@+id/buttonCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사용 완료"
+                android:fontFamily="@font/jua"
+                android:textSize="18sp"
+                android:background="@drawable/button_background"
+                android:textColor="@drawable/button_color_selector"
+                android:layout_weight="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/buttonLayout"
+            android:id="@+id/inventoryRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+</RelativeLayout>
