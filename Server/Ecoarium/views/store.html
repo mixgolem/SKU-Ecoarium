@@ -50,6 +50,7 @@
                     const exchange_btn = document.createElement('button');
                     exchange_btn.classList.add('exchange');
                     exchange_btn.innerText = "교환";
+                    // 구매 버튼 이벤트 리스너
                     exchange_btn.addEventListener('click', async () => {
                         try {
                             const confirmed = confirm("교환하시겠습니까?");

@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
-//프로필 불러오기
+// 프로필 불러오기
 router.get('/load-profile', isLoggedIn, async (req,res, next) => {
     try{
         let user = req.user;
@@ -19,7 +19,7 @@ router.get('/load-profile', isLoggedIn, async (req,res, next) => {
     }
 });
 
-//사용가능 불러오기
+// 사용가능 불러오기
 router.get('/available', isLoggedIn, async (req, res, next) => {
     try {
         //보유중인 상품들
@@ -49,7 +49,7 @@ router.get('/available', isLoggedIn, async (req, res, next) => {
     }
 });
 
-//사용완료 불러오기
+// 사용완료 불러오기
 router.get('/completed', isLoggedIn, async (req, res, next) => {
     try {
         //사용완료한 상품들
@@ -82,7 +82,7 @@ router.get('/completed', isLoggedIn, async (req, res, next) => {
 //-----------------------------------------
 // 무한 스크롤
 
-//사용가능 불러오기
+// 사용가능 불러오기
 router.get('/partOfAvailable', isLoggedIn, async (req, res, next) => {
     try {
         //보유중인 상품들
@@ -117,7 +117,7 @@ router.get('/partOfAvailable', isLoggedIn, async (req, res, next) => {
     }
 });
 
-//사용완료 불러오기
+// 사용완료 불러오기
 router.get('/partOfCompleted', isLoggedIn, async (req, res, next) => {
     try {
         //사용완료한 상품들

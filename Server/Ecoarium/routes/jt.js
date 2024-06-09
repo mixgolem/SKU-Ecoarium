@@ -65,7 +65,7 @@ router.post('/QRCode', async (req, res, next) => {
     }
 });
 
-// 사진 받기
+// 모델 검사
 router.post('/determine', upload.single('file'), async (req, res) => {
     const {key, userId, location} = req.body;
     console.log(userId, location);

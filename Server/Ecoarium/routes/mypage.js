@@ -4,7 +4,7 @@ const db = require('../models');
 const { sequelize } = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
-//프로필 불러오기
+// 프로필 불러오기
 router.get('/load-profile', isLoggedIn, async (req,res, next) => {
     try{
         let user = req.user;
@@ -20,7 +20,7 @@ router.get('/load-profile', isLoggedIn, async (req,res, next) => {
     }
 });
 
-//전체 기록 불러오기
+// 전체 기록 불러오기
 router.get('/load-all-logs', isLoggedIn, async (req,res, next) => {
     try{
         const point_earnings = await db.Point_earning.findAll({where: {userId: req.user.id}});
@@ -48,7 +48,7 @@ router.get('/load-all-logs', isLoggedIn, async (req,res, next) => {
     }
 });
 
-//획득 기록 불러오기
+// 획득 기록 불러오기
 router.get('/load-earnings-logs', isLoggedIn, async (req,res, next) => {
     try{
         const point_earnings = await db.Point_earning.findAll({
@@ -62,7 +62,7 @@ router.get('/load-earnings-logs', isLoggedIn, async (req,res, next) => {
     }
 });
 
-//사용 기록 불러오기
+// 사용 기록 불러오기
 router.get('/load-usages-logs', isLoggedIn, async (req,res, next) => {
     try{
         //기록
@@ -92,7 +92,7 @@ router.get('/load-usages-logs', isLoggedIn, async (req,res, next) => {
 //-----------------------------------------
 // 무한 스크롤
 
-//전체 기록 불러오기
+// 전체 기록 불러오기
 router.get('/load-all-partOfLogs', isLoggedIn, async (req,res, next) => {
     try{
         const userId = req.user.id;
@@ -133,7 +133,7 @@ router.get('/load-all-partOfLogs', isLoggedIn, async (req,res, next) => {
     }
 });
 
-//획득 기록 불러오기
+// 획득 기록 불러오기
 router.get('/load-earnings-partOfLogs', isLoggedIn, async (req,res, next) => {
     try{
         const page = parseInt(req.query.page) || 1;
@@ -152,7 +152,7 @@ router.get('/load-earnings-partOfLogs', isLoggedIn, async (req,res, next) => {
     }
 });
 
-//사용 기록 불러오기
+// 사용 기록 불러오기
 router.get('/load-usages-partOfLogs', isLoggedIn, async (req,res, next) => {
     try{
 

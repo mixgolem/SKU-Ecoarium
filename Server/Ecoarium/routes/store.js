@@ -4,7 +4,7 @@ const router = express.Router();
 const db = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
-//상품 불러오기
+// 상품 불러오기
 router.get('/load', isLoggedIn, async (req,res, next) => {
     try{
         const item = await db.Store.findAll();
@@ -15,7 +15,7 @@ router.get('/load', isLoggedIn, async (req,res, next) => {
     }
 });
 
-//상품 교환
+// 상품 교환
 router.put('/exchange', isLoggedIn, async (req,res, next) => {
     try{
         const points = req.user.points;

@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
-//포인트 불러오기
+// 포인트 불러오기
 router.get('/loadpoint', isLoggedIn, async (req,res, next) => {
     try{
         const points = req.user.points
@@ -14,6 +14,7 @@ router.get('/loadpoint', isLoggedIn, async (req,res, next) => {
     }
 });
 
+// 메인 불러오기(모바일)
 router.get('/loadPlasticStacks', isLoggedIn, async (req, res, next) => {
     try {
         const allStacks = await db.Point_earning.count();
@@ -28,12 +29,9 @@ router.get('/loadPlasticStacks', isLoggedIn, async (req, res, next) => {
     }
 });
 
-//포인트 생성 (디버깅용 임시)
+// 포인트 생성 (디버깅용 임시)
 router.get('/createpoint', isLoggedIn, async (req,res, next) => {
     try{
-        const user = await db.User.findOne({ where : {Id: "2"} });
-        console.log(user)
-
         //포인트 + 1
         const points = req.user.points
         await db.User.update({
@@ -57,7 +55,7 @@ router.get('/createpoint', isLoggedIn, async (req,res, next) => {
     }
 });
 
-//QR 생성
+// QR 생성
 router.get('/createQR', isLoggedIn, async (req,res, next) => {
     try{
         const id = req.user.id;

@@ -85,6 +85,7 @@
             }
         }
 
+        //QR 생성 버튼 이벤트 리스너
         QRcode_button.addEventListener('click', async () => {
             try {
                 QRcode_button.remove();
@@ -110,6 +111,7 @@
             }
         });
 
+        //QR 취소 버튼 이벤트 리스너
         QRcode_cancel_button.addEventListener('click', async () => {
             try {
                 area1.appendChild(QRcode_button);

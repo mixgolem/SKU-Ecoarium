@@ -18,7 +18,7 @@ const upload = multer({
     limits: { fileSize: 5 * 1024 * 1024 },
 });
 
-//상품 불러오기
+// 상품 불러오기
 router.get('/load', isLoggedIn, async (req,res, next) => {
     try{
         const item = await db.Store.findAll();
@@ -29,7 +29,7 @@ router.get('/load', isLoggedIn, async (req,res, next) => {
     }
 });
 
-//상품 생성
+// 상품 생성
 router.post('/newitem', isLoggedIn, upload.single('img'), async (req, res) => {
     try{
         const item = await db.Store.create({
@@ -45,7 +45,7 @@ router.post('/newitem', isLoggedIn, upload.single('img'), async (req, res) => {
     }
 });
 
-//상품 사용
+// 상품 사용
 router.put('/use', isLoggedIn, async (req, res) => {
     try{
         if (req.user.admin != 1) return;
@@ -71,7 +71,7 @@ router.put('/use', isLoggedIn, async (req, res) => {
 
 
 
-//파이썬 연결 테스트
+// 파이썬 연결 테스트
 router.post('/test', async (req, res, next) => {
     const {QRCode, key} = req.body;
     console.log(key);

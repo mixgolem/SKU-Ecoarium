@@ -303,20 +303,17 @@
                 });
         });
 
-        // 스크롤 이벤트 리스너 추가
+        // 스크롤 이벤트 리스너
         window.addEventListener('scroll', () => {
             // 현재 스크롤 위치
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
             // 전체 문서 높이
             const documentHeight = document.documentElement.scrollHeight;
-
             // 현재 창의 높이
             const windowHeight = window.innerHeight;
-
             // 스크롤이 맨 아래로 내려왔는지 확인
             if (scrollTop + windowHeight >= documentHeight - 1) {
-                // 추가 작업 수행 (예: 더 많은 데이터를 로드하는 함수 호출)
+                // 선택된 탭에 따른 로딩 요청
                 if (select == 1) {
                     page ++;
                     fetch(`/mypage/load-all-partOfLogs?page=${page}`)
