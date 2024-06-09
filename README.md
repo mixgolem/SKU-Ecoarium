@@ -7,10 +7,12 @@
 
 
 
+
 ## JT;플라스틱 컵 수거 장치
 <p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/b47ee6d1-2bfd-4b1f-85a5-75f385b62bc2">
 </p>
+
     * 일회용 플라스틱 컵 수거 시스템을 위한 장치
     * 스테인리스(STS304 1.2T POLISHING) 재질, W450*D150*H300mm
     * RaspberryPi 4B bullseye
@@ -18,6 +20,7 @@
     * JT S/W는 Python tkinter Library로 제작
     * QR코드 인식 OpenCV2, imutils
     * HTTP 통신을 사용해 AP서버, Android APP과 통
+
 
 
 
