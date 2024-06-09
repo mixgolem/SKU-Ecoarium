@@ -16,33 +16,59 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 - 비밀번호 표시/숨김 기능 구현
 - 자동 로그인 기능 구현
 - 쿠키를 사용한 세션 유지 기능 구현
-#### [LoginActivity](Mobile/app/src/main/java/com/example/ecoariumapp/activities/LoginActivity.kt)
+> #### 관련 코드
+> - [LoginActivity](Mobile/app/src/main/java/com/example/ecoariumapp/activities/LoginActivity.kt)
+> - [sendLoginRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendLoginRequest.kt)
 ### 2. 회원가입 페이지
 - 회원가입 기능 구현
 - 비밀번호 표시/숨김 기능 구현
+> #### 관련 코드
+> - [RegisterActivity](Mobile/app/src/main/java/com/example/ecoariumapp/activities/RegisterActivity.kt)
+> - [sendRegisterRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendRegisterRequest.kt)
 ### 3. 메인 페이지
 - Fragment의 생명 주기 관리 기능 구현
 - 백그라운드 로그인 유지 기능 구현
 - 네비게이션 바 기능 구현
+> #### 관련 코드
+> - [MainActivity](Mobile/app/src/main/java/com/example/ecoariumapp/activities/LoginActivity.kt)
 ### 4. 홈 페이지
 - View Pager 형식의 캠페인/이벤트 뷰어 구현
 - 미니 프로필 뷰어 구현
 - JT 수거 현황 뷰어 구현
+> #### 관련 코드
+> - [HomeFragment](Mobile/app/src/main/java/com/example/ecoariumapp/fragments/HomeFragment.kt)
+> - [sendHomeRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendHomeRequest.kt)
+> - [sendStacksRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendStacksRequest.kt)
 ### 5. 스토어 페이지
 - Recycler View 형식의 상품 뷰어 구현
 - 상품 교환 기능 구현
+> #### 관련 코드
+> - [StoreFragment](Mobile/app/src/main/java/com/example/ecoariumapp/fragments/StoreFragment.kt)
+> - [sendStoreRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendStoreRequest.kt)
+> - [sendExchangeRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendExchangeRequest.kt)
 ### 6. QR 페이지
 - QR코드 생성 및 이미지 뷰 구현
 - QR코드 유효 시간 알림 타이머 구현
+> #### 관련 코드
+> - [QRcodeFragment](Mobile/app/src/main/java/com/example/ecoariumapp/fragments/QRcodeFragment.kt)
+> - [sendQRcodeRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendQRcodeRequest.kt)
 ### 7. 보관함 페이지
 - Recycler View 형식의 상품 뷰어 구현
 - 보관함 페이지 정렬 버튼 ( 사용 가능, 사용 완료 ) 구현
 - 상품 고유 바코드 이미지 뷰 구현
+> #### 관련 코드
+> - [InventoryFragment](Mobile/app/src/main/java/com/example/ecoariumapp/fragments/InventoryFragment.kt)
+> - [sendInventoryRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendInventoryRequest.kt)
 ### 8. 마이 페이지
 - 프로필 뷰어 구현
 - 로그아웃 기능 구현
 - Recycler View 형식의 스탬프 내역 뷰어 구현
 - 스탬프 내역 정렬 버튼 ( 전체, 적립, 사용 ) 구현
+> #### 관련 코드
+> - [MypageFragment](Mobile/app/src/main/java/com/example/ecoariumapp/fragments/MypageFragment.kt)
+> - [sendMypageRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendMypageRequest.kt)
+> - [sendLogoutRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendLogoutRequest.kt)
+> - [sendStampLogsRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendStampLogsRequest.kt)
 ### 9. 회원 관리 페이지
 - 프로필 아이콘 수정 기능 구현
 - 닉네임 수정 기능 구현
@@ -50,12 +76,27 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 - 비밀번호 표시/숨김 기능 구현
 - 로그아웃 기능 구현
 - 회원 탈퇴 기능 구현
+> #### 관련 코드
+> - [ProfileFragment](Mobile/app/src/main/java/com/example/ecoariumapp/fragments/ProfileFragment.kt)
+> - [sendProfileRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendProfileRequest.kt)
+> - [sendModifyRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendModifyRequest.kt)
+> - [sendChangePasswordRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendChangePasswordRequest.kt)
+> - [sendLogoutRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendLogoutRequest.kt)
+> - [sendDeleteRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendDeleteRequest.kt)
 ### 10. 기타
 - Recycler View, View Pager 등의 데이터 바인딩을 위한 Adapter 구현
 - SharedPreference를 관리하기 위한 SharedPrefManager 구현
 - 지역 및 형식에 맞게 시간을 표시하기 위한 TimeConverter 구현
 - 서버 IP를 설정하기 위한 Ipconfig 구현
 - 배달의 민족 폰트 "주아체" 사용
+> #### 관련 코드
+> - [InventoryRecyclerViewAdapter](Mobile/app/src/main/java/com/example/ecoariumapp/adapters/InventoryRecyclerViewAdapter.kt)
+> - [StampRecyclerViewAdapter](Mobile/app/src/main/java/com/example/ecoariumapp/adapters/StampRecyclerViewAdapter.kt)
+> - [StoreRecyclerViewAdapter](Mobile/app/src/main/java/com/example/ecoariumapp/adapters/StoreRecyclerViewAdapter.kt)
+> - [ViewPagerAdapter](Mobile/app/src/main/java/com/example/ecoariumapp/adapters/ViewPagerAdapter.kt)
+> - [TimeConverter](Mobile/app/src/main/java/com/example/ecoariumapp/TimeConverter.kt)
+> - [SharedPrefManager](Mobile/app/src/main/java/com/example/ecoariumapp/sharedPreferences/SharedPrefManager.kt)
+> - [Ipconfig](Mobile/app/src/main/java/com/example/ecoariumapp/Ipconfig.kt)
 ## 설치 및 실행
 > ⚠️ **경고:** 본 Application은 Android 환경의 Mobile Device에 설치 가능합니다.
 ### APK 설치 및 실행 방법
