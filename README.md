@@ -23,40 +23,43 @@
 ### 동작 화면
 
 #### 1) JT 초기 화면
-  
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/8659afbe-70d6-40ab-a3b3-36425d0a8a4f">
+
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/8659afbe-70d6-40ab-a3b3-36425d0a8a4f">
 
 #### 2) QR 로그인 버튼 누른 경우
 
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/91078dc7-bc97-4632-8709-21a5720745b0">
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/91078dc7-bc97-4632-8709-21a5720745b0">
+
+![로그인, qr인식](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f8d17f72-eb39-4d5e-b98d-e59e4da05f5d)
+
 
 #### 3) 로그인 성공
 
-  <img src="">
+<img src="">
 
 #### 4) 컵 수거 화면
     
-  <img src="">
+<img src="">
 
 #### 5) 로그인 성공
 
-  <img src="">
+<img src="">
 
 #### 6) 컵 수거 화면
     
-  <img src="">
+<img src="">
 
 #### 7) 사진 촬영 준비 화면
 
-  <img src="">
+<img src="">
 
 #### 8) 사진 촬영중 화면
 
-  <img src="">
+<img src="">
 
 #### 9) 스탬프 적립 성공
 
-  <img src="">
+<img src="">
 
 #### 11) 컵 회수 유도 화면
 
