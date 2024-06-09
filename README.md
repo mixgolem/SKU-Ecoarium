@@ -71,3 +71,10 @@
     * 일회용 플라스틱 컵 재활용 수거 여부 판별
     * Python, NumPy, Tensorflow, CNN, 이진 분류
     * 0.5 초과일 경우 수거 불능, 0.5 이하일 경우 수거 가능!
+
+
+---
+
+<p align="center">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/53ffa411-66ad-48b7-9094-9158f0eb2827" width="800">
+</p>
