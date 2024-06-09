@@ -29,10 +29,6 @@
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f5393994-810a-4ce4-b153-8fc599dc0bf0">
 </p>
 
-    * 일회용 플라스틱 컵 수거 시스템을 위한 장치
-    * 스테인리스(STS304 1.2T POLISHING) 재질, W450*D150*H300mm
-    * RaspberryPi 4B bullseye
-    * 7inch touch Display, Servo motor*2, Camera module, Webcam, Loadcell, LED
-    * JT S/W는 Python tkinter Library로 제작
-    * QR코드 인식 OpenCV2, imutils
-    * HTTP 통신
+    * 일회용 플라스틱 컵 재활용 수거 여부 판별
+    * Python, NumPy, Tensorflow, CNN, 이진 분류
+    * 0.5 초과일 경우 수거 불능, 0.5 이하일 경우 수거 가능!
