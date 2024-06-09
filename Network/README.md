@@ -16,11 +16,11 @@ System 확장성을 위해 클라우드 컴퓨팅 서비스인 Linux CentOS7 기
 ### DBMS서비스 설치 및 실행
 안정적이고 빠른 성능을 제공하면서도 오픈 소스 기반으로 비용 효율적인 RDBMS인 MySQL 8.0을 사용합니다.  <br>
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/56341387/2873dc99-0890-4d47-a482-cc039b6d16c1" alt="MySQL 설치 및 실행" style="width: 70%;"><br>
-- MySQL 8.0 설치 명령어
+- MySQL 8.0 설치 명령어 <br>
 yum install –y https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm <br>
 yum install -y mysql-community-server
-- MySQL 8.0 시작 및 부팅시 자동시작 설정 명령어
+- MySQL 8.0 시작 및 부팅시 자동시작 설정 명령어 <br>
 systemctl start mysqld <br>
 systemctl enable mysqld 
-- MySQL 8.0 진입 명령
+- MySQL 8.0 진입 명령 <br>
 mysql –u root -p <br>
