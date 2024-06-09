@@ -4,6 +4,7 @@ Ecoarium은 단순 장치 구동을 구현한 것이 아닌 Smart Recycling Syst
 - Ecoarium이 고안한 Smart Recycling System 구조는 안정성, 보안성, 성능 향상 등의 효율성 증대를 위해 AP–DB 이원화 서버를 구축하였습니다. <br>
 - DB서버와 JT, Web/Mobile Application은 각각 Client로서 AP서버의 Web서버에 접속합니다. <br>
 - JT, Web/Mobile Application은 DB로의 직접적인 통신이 불가하며, AP(Web) Server를 거쳐 통신합니다.
+<br>
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/56341387/51d32200-bd0b-4ac3-b3a5-a4711640b3ba" alt="Smart Recycling System 구성도" style="width: 70%;"><br>
 
 ## DB서버
@@ -41,6 +42,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'new_username'@'localhost' WITH GRANT OPTION; <br
 
 이후, DB서버와 AP(Web)서버의 시퀄라이즈 연동을 위해 node.js Web서버 config.json파일의 적색 부분을 다음과 같이 수정합니다. <br>
 이 때, 주의할 점으로 host의 ip(dns)주소 인스턴스의 내부ip주소인 public ip(dns)로 접속합니다.<br>
+<br>
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/56341387/27e34ee6-301f-47ee-bca8-3d160c00a65e" alt="MySQL 설치 및 실행" style="width: 70%;"><br>
 
 ## Security
