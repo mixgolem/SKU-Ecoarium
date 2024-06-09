@@ -1,1 +1,4 @@
-![ecosys_ecoarium](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/771cbbe8-66df-462c-b2a7-5c5c65a6e05c)
+# Ecoarium - Smart Recycling System
+<p align="center">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/53ffa411-66ad-48b7-9094-9158f0eb2827" width="800"
+</p>
