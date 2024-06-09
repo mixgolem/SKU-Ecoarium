@@ -7,7 +7,7 @@
 </p>
 
 # 목차
-[1. Ecoarium JT](#1.-Ecoarium-JT)
+[1. Ecoarium JT](#1-Ecoarium-JT)
 
 [2. Plastic Cup Classifier](#2)
 
