@@ -177,5 +177,13 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 - 빌드가 완료되면, 'locate' 버튼을 클릭하여 APK 파일을 찾습니다.
 - APK 파일을 Android 기기에 전송하고, 파일을 클릭하여 설치합니다. (설치 전, 기기의 설정에서 '알 수 없는 앱'에 대한 설치를 허용해야 할 수 있습니다.)
 - 설치가 완료되면 앱을 실행하여 사용을 시작합니다.
-  
+
+### ANDROID_HOME 환경 변수 설정 (Android SDK 설정이 안된 경우)
+- 시작 메뉴를 열고 "환경 변수 편집"을 검색하여 "시스템 환경 변수 편집"을 선택합니다.
+- 시스템 속성 창에서 "환경 변수..." 버튼을 클릭합니다.
+- 환경 변수 창에서 "새로 만들기..."를 클릭합니다.
+- 변수 이름에는 ANDROID_HOME을 입력하고, 변수 값에는 SDK 경로를 입력합니다.
+- 시스템 변수 목록에서 'Path' 변수를 찾아 선택하고 "편집..."을 클릭합니다.
+- 새 항목을 추가하여 '%ANDROID_HOME%\tools'와 '%ANDROID_HOME%\platform-tools' 경로를 입력합니다.
+
 ![ecosys_ecoarium](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/771cbbe8-66df-462c-b2a7-5c5c65a6e05c)
