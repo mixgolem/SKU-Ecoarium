@@ -20,6 +20,52 @@
     * JT S/W는 Python tkinter Library로 제작
     * QR코드 인식 OpenCV2, imutils
     * HTTP 통신을 사용해 AP서버, Android APP과 통신
+<img src="">
+
+#### 동작 화면
+<p align="center">
+  1) JT 초기 화면
+  
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/223ce776-3119-4551-b733-50781dbdb2bd">
+
+2) QR 로그인 버튼 누른 경우
+
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/69d7f095-e521-4778-80b0-4627f70a5604">
+
+3) 로그인 성공
+
+  <img src="">
+
+4) 컵 수거 화면
+    
+  <img src="">
+
+5) 로그인 성공
+
+  <img src="">
+
+6) 컵 수거 화면
+    
+  <img src="">
+
+7) 사진 촬영 준비 화면
+
+  <img src="">
+
+8) 사진 촬영중 화면
+
+  <img src="">
+
+9) 스탬프 적립 성공
+
+  <img src="">
+
+11) 컵 회수 유도 화면
+
+  <img src="">
+
+</p>
+
 
 
 
