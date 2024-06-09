@@ -1,6 +1,12 @@
 # Ecoarium Application
 Ecoarium Application은 Smart Recycling System 프로젝트의 일환으로 개발되었습니다.<br>
 이 저장소는 해당 프로젝트의 소스 코드와 apk 파일 등을 포함하고 있습니다.
+<p align="center">
+  <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white">
+  <img src="https://img.shields.io/badge/Android-34A853?style=flat-square&logo=android&logoColor=white">
+  <img src="https://img.shields.io/badge/Intellijidea-000000?style=flat-square&logo=intellijidea&logoColor=white">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white">
+</p>
 
 ## 소개
 Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는 과정에서 쉬운 접근과 편리한 사용감을 제공하기 위해 제작되었습니다.<br>
