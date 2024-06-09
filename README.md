@@ -26,35 +26,31 @@
 
 <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/8659afbe-70d6-40ab-a3b3-36425d0a8a4f">
 
+
 #### 2) QR 로그인
 
-![로그인, qr인식](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/33a4829b-696f-49f6-916a-95cc4324bccc)
+![qrlogin](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/cd7156d6-74b1-41a0-9aba-26478e092d73)
 
 
-#### 3) 로그인 성공 후 컵 투입
+#### 3) 로그인 성공 후 투입구 열림, 컵 투입
 
-![로그인성공](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f4fa0fc7-4d5c-453c-93fe-3f6e3f1bad2c)
+![cupin](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/dd184eb6-0a6f-40b7-aca9-f3a667ac02fb)
 
 
-#### 6) 컵 수거 화면
-    
-<img src="">
+#### 4) 투입구 닫힌 후 컵 사진 촬영
 
-#### 7) 사진 촬영 준비 화면
+![captureimg](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f983947a-3eb1-4e3c-b6af-30be5ce98a6b)
 
-<img src="">
 
-#### 8) 사진 촬영중 화면
+#### 5) 컵 수거 완료
 
-<img src="">
+여기에 이미지 추가
 
-#### 9) 스탬프 적립 성공
 
-<img src="">
+#### 6) 컵 수거 불가
 
-#### 11) 컵 회수 유도 화면
+여기에 이미지 추가
 
-  <img src="">
 
 ---
 
