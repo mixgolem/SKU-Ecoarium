@@ -32,13 +32,18 @@ CREATE DATABASE IF NOT EXISTS ecoarium; <br>
 USE ecoarium; <br>
 
 ### 주의사항
-테이블링과 실제 DB서버에 적재되는 데이터 CRUD는 Ecoarium AP(Web)서버 Back-End에서 Node.js 라이브러리인 Sequelize에 의해 실행된다. <br>
-따라서, AP서버와의 연동을 위해 root계정이 아닌 원격접속용 계정(new_username)을 만든다. <br>
+테이블링과 실제 DB서버에 적재되는 데이터 CRUD는 Ecoarium AP(Web)서버 Back-End에서 Node.js 라이브러리인 Sequelize에 의해 실행됩니다. <br>
+따라서, AP서버와의 연동을 위해 root계정이 아닌 원격접속용 계정(new_username)을 생성합니다. <br>
 
 - 원격접속용 계정 생성 및 권한부여 쿼리문 <br>
 CREATE USER 'new_username'@'localhost' IDENTIFIED BY 'new_password'; <br>
 GRANT ALL PRIVILEGES ON *.* TO 'new_username'@'localhost' WITH GRANT OPTION; <br>
 
-이후, DB서버와 AP(Web)서버의 시퀄라이즈 연동을 위해 node.js Web서버 config.json파일의 적색 부분을 다음과 같이 수정한다. <br>
-이 때, 주의할 점으로 host의 ip(dns)주소는 DB서버로 통신이 성공된(tcp/3306) 상태에서 MySQL로 접속하므로 인스턴스의 내부ip주소인 public ip(dns)로 접속해야 한다.<br>
+이후, DB서버와 AP(Web)서버의 시퀄라이즈 연동을 위해 node.js Web서버 config.json파일의 적색 부분을 다음과 같이 수정합니다. <br>
+이 때, 주의할 점으로 host의 ip(dns)주소 인스턴스의 내부ip주소인 public ip(dns)로 접속합니다.<br>
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/56341387/27e34ee6-301f-47ee-bca8-3d160c00a65e" alt="MySQL 설치 및 실행" style="width: 70%;"><br>
+
+## Security
+Ecoarium은 기밀성과 무결성이 보장되어야 하는 중요한 사용자 데이터를 안전하게 관리합니다. <br> 
+중요한 사용자 정보가 저장되는 DB서버와 DBMS(MySQL)에 보안체크리스트(정책)를 작성하고, 취약점 점검 스크립트를 실행하여 보이지 않는 위협 또한 제거합니다. <br>
+이 저장소 내의 Ecoarium DB 서버 보안점검리스트.pdf 파일은 해당 내용을 기술합니다.
