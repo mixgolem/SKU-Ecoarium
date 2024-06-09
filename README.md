@@ -221,3 +221,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 - Android Tablet
   - Model : Galaxy Tab S8+ (12.4inch Super AMOLED, 16:10, 2800x1752, 266ppi)
   - OS : Android 13.0
+
+<p align="center">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/53ffa411-66ad-48b7-9094-9158f0eb2827" width="800">
+</p>
