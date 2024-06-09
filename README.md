@@ -13,7 +13,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 ## 제작
 ### 1. 로그인 페이지
 <p align="left">
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/cbad82a6-0a5b-44d4-8bb6-770c688a0601" alt="로그인" style="width: 30%;">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/cbad82a6-0a5b-44d4-8bb6-770c688a0601" alt="로그인" style="width: 50%;">
 </p>
 
 - 로그인 기능 구현
