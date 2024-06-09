@@ -29,11 +29,11 @@
 
 #### 1) JT 초기 화면
   
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/223ce776-3119-4551-b733-50781dbdb2bd">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/8659afbe-70d6-40ab-a3b3-36425d0a8a4f">
 
 #### 2) QR 로그인 버튼 누른 경우
 
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/69d7f095-e521-4778-80b0-4627f70a5604">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/91078dc7-bc97-4632-8709-21a5720745b0">
 
 #### 3) 로그인 성공
 
