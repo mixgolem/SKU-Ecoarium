@@ -45,8 +45,8 @@ Ecoarium의 AP Server 파트는 node.js로 개발하여 사용자의 서비스 �
 ```
 COOKIE_SECRET=ecoariumsecret
 JT_SECRET=q1w2e3
-EMAIL_USER='비밀번호 찾기 시 이메일을 전송할 Gmail'
-EMAIL_PASS='앱 비밀번호'
+EMAIL_USER=비밀번호 찾기 시 이메일을 전송할 Gmail
+EMAIL_PASS=앱 비밀번호
 ```
 4. 터미널 명령어 실행<br>
 - 패키지 설치
