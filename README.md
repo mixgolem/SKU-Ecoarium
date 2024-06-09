@@ -77,6 +77,7 @@
     - [4.4.4. Android SDK 설정이 안된 경우](#444-android-sdk-설정이-안된-경우)
       - [4.4.4.1. ANDROID_HOME 환경 변수 설정](#4441-android_home-환경-변수-설정)
       - [4.4.4.2. local.properties 설정](#4442-localproperties-설정)
+  - [4.5. 개발 환경](#45-개발-환경)
 
 <br>
 
@@ -523,3 +524,12 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
   ```properties
   sdk.dir=C:\\Users\\<YourUsername>\\AppData\\Local\\Android\\Sdk
   ```
+## 4.5. 개발 환경
+- IDE : IntelliJ IDEA 2023.2.2 (Community Edition)
+- Language : Kotlin 1.9.0
+- Android Virtual Device
+  - Model : Pixel 4 XL (6.3inch flexible OLED, 19:9, 3040x1440, 537ppi)
+  - OS : Android 11.0
+- Android Tablet
+  - Model : Galaxy Tab S8+ (12.4inch Super AMOLED, 16:10, 2800x1752, 266ppi)
+  - OS : Android 13.0
