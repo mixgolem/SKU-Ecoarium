@@ -19,7 +19,7 @@
     * 7inch touch Display, Servo motor*2, Camera module, Webcam, Loadcell, LED
     * JT S/W는 Python tkinter Library로 제작
     * QR코드 인식 OpenCV2, imutils
-    * HTTP 통신을 사용해 AP서버, Android APP과 통
+    * HTTP 통신을 사용해 AP서버, Android APP과 통신
 
 
 
