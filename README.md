@@ -15,12 +15,9 @@
     - [1.1.4. 투입구 닫힌 후 컵 사진 촬영](#114-투입구-닫힌-후-컵-사진-촬영)
     - [1.1.5. 컵 수거 완료](#115-컵-수거-완료)
     - [1.1.6. 컵 수거 불가](#116-컵-수거-불가)
- 
-[2. Plastic Cup Classifier](#2-Plastic-Cup-Classifier)
-
-[3. Ecoarium AP Server, WEB Server](#3)
-
-[4. Ecoarium Application](#4)
+- [2. Plastic Cup Classifier](#2-Plastic-Cup-Classifier)
+- [3. Ecoarium AP Server, WEB Server](#3)
+- [4. Ecoarium Application](#4)
 
 # Tech Stack
 <p align="center">
