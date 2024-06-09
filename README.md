@@ -26,23 +26,15 @@
 
 <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/8659afbe-70d6-40ab-a3b3-36425d0a8a4f">
 
-#### 2) QR 로그인 버튼 누른 경우
+#### 2) QR 로그인
 
-<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/91078dc7-bc97-4632-8709-21a5720745b0">
+![로그인, qr인식](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/33a4829b-696f-49f6-916a-95cc4324bccc)
 
-![로그인, qr인식 (1)](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/2defecf8-0d55-4884-87d6-0e8c1980be16)
 
-#### 3) 로그인 성공
+#### 3) 로그인 성공 후 컵 투입
 
-<img src="">
+![로그인성공](https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f4fa0fc7-4d5c-453c-93fe-3f6e3f1bad2c)
 
-#### 4) 컵 수거 화면
-    
-<img src="">
-
-#### 5) 로그인 성공
-
-<img src="">
 
 #### 6) 컵 수거 화면
     
