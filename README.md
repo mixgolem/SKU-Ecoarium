@@ -49,3 +49,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'new_username'@'localhost' WITH GRANT OPTION; <br
 Ecoarium은 기밀성과 무결성이 보장되어야 하는 중요한 사용자 데이터를 안전하게 관리합니다. <br> 
 중요한 사용자 정보가 저장되는 DB서버와 DBMS(MySQL)에 보안체크리스트(정책)를 작성하고, 취약점 점검 스크립트를 실행하여 보이지 않는 위협 또한 제거합니다. <br>
 이 저장소 내의 Ecoarium DB 서버 보안점검리스트.pdf 파일은 해당 내용을 기술합니다.
+
+<p align="center">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/53ffa411-66ad-48b7-9094-9158f0eb2827" width="800">
+</p>
