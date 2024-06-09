@@ -14,7 +14,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 
 ## 주요 구성
 ### 1. 로그인 페이지
-<p align="left">
+<p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/cbad82a6-0a5b-44d4-8bb6-770c688a0601" alt="로그인" style="width: 40%;">
 </p>
 
@@ -27,7 +27,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > - [sendLoginRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendLoginRequest.kt)
 
 ### 2. 회원가입 페이지
-<p align="left">
+<p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/b4ff81a0-3108-4cc2-ae37-b10a973c513d" alt="회원가입" style="width: 40%;">
 </p>
 
@@ -45,7 +45,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > - [MainActivity](Mobile/app/src/main/java/com/example/ecoariumapp/activities/MainActivity.kt)
 
 ### 4. 홈 페이지
-<p align="left">
+<p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/f750e42f-a2f5-4e60-b72b-adb222c5f930" alt="홈" style="width: 40%;">
 </p>
 
@@ -58,7 +58,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > - [sendStacksRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendStacksRequest.kt)
 
 ### 5. 스토어 페이지
-<p align="left">
+<p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/8a8e5452-f35f-4520-8d5c-9ac5fa1c6908" alt="스토어" style="width: 40%;">
 </p>
 
@@ -70,7 +70,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > - [sendExchangeRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendExchangeRequest.kt)
 
 ### 6. QR 페이지
-<p align="left">
+<p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/608d242c-9fa9-4430-a588-271aeccbe7de" alt="QR" style="width: 40%;">
 </p>
 
@@ -81,7 +81,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > - [sendQRcodeRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendQRcodeRequest.kt)
 
 ### 7. 보관함 페이지
-<p align="left">
+<p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/98a6d1e3-a03b-4b1b-83cb-89d3746ad4ba" alt="보관함" style="width: 40%;">
 </p>
 
@@ -93,7 +93,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > - [sendInventoryRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendInventoryRequest.kt)
 
 ### 8. 마이 페이지
-<p align="left">
+<p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/748c366b-bb32-43f2-bffd-c2b3a5b32449" alt="마이페이지" style="width: 40%;">
 </p>
 
@@ -108,7 +108,7 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 > - [sendStampLogsRequest](Mobile/app/src/main/java/com/example/ecoariumapp/sendRequests/sendStampLogsRequest.kt)
 
 ### 9. 회원 관리 페이지
-<p align="left">
+<p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/78ffd892-7407-4982-ac57-3b20f47efd8a" alt="회원 정보 수정" style="width: 40%;">
 </p>
 
