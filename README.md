@@ -14,13 +14,13 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 
 ## 주요 구성
 ### 0. 기능 블록도
-<p align="left">
+<p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/f94d3ea3-e877-4cae-b073-a98769a674f0" alt="Ecoarium 네트워크 구성도" style="width: 70%;"><br>
   <em>Ecoarium 네트워크 구성도</em>
 </p>
 
 
-<p align="left">
+<p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/3dad1f6a-fd9f-4386-959a-4eae6ec4615c" alt="Mobile App 기능 블록도" style="width: 70%;"><br>
   <em>Mobile App 기능 블록도</em>
 </p>
