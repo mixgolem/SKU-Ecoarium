@@ -13,6 +13,18 @@ Ecoarium App은 사용자가 JT를 통해 플라스틱 폐기물을 반납하는
 - 환경 정보 : 현재 진행중인 환경 관련 캠페인, 이벤트 등을 확인할 수 있고 폐기물 수거 현황 등을 모니터링할 수 있습니다.
 
 ## 주요 구성
+### 0. 기능 블록도
+<p align="center">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/f94d3ea3-e877-4cae-b073-a98769a674f0" alt="Ecoarium 네트워크 구성도" style="width: 70%;"><br>
+  <em>Ecoarium 네트워크 구성도</em>
+</p>
+
+
+<p align="center">
+  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/3dad1f6a-fd9f-4386-959a-4eae6ec4615c" alt="Mobile App 기능 블록도" style="width: 70%;"><br>
+  <em>Mobile App 기능 블록도</em>
+</p>
+
 ### 1. 로그인 페이지
 <p align="center">
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/153111259/cbad82a6-0a5b-44d4-8bb6-770c688a0601" alt="로그인" style="width: 40%;">
