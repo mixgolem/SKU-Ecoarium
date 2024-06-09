@@ -37,7 +37,7 @@
     - [4.4.2. 가상머신 사용 방법 (Android 환경이 아닌 경우)](#442-가상머신-사용-방법-android-환경이-아닌-경우)
     - [4.4.3. APK 생성 및 실행 방법 (APK 설치 과정에서 오류가 발생한 경우)](#443-apk-생성-및-실행-방법-apk-설치-과정에서-오류가-발생한-경우)
     - [4.4.4. Android SDK 설정이 안된 경우](#444-android-sdk-설정이-안된-경우)
-      - [4.4.4.1. ANDROID_HOME 환경 변수 설정](##4441-android_home-환경-변수-설정)
+      - [4.4.4.1. ANDROID_HOME 환경 변수 설정](#4441-android_home-환경-변수-설정)
       - [4.4.4.2. local.properties 설정](#4442-localproperties-설정)
 # Tech Stack
 <p align="center">
