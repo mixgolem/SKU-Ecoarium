@@ -9,7 +9,7 @@
 # 목차
 [1. Ecoarium JT](#1-Ecoarium-JT)
 
-[2. Plastic Cup Classifier](#2)
+[2. Plastic Cup Classifier](#2-Plastic-Cup-Classifier)
 
 [3. Ecoarium AP Server, WEB Server](#3)
 
