@@ -39,14 +39,16 @@ Smart Recycling System은 카페에서 흔히 사용되는 일회용 플라스�
     - [1.1.3. ecoarium 스키마 생성](#113-ecoarium-스키마-생성)
     - [1.1.4. 주의사항](#114-주의사항)
   - [1.2. Security](#12-Security)
-- [2. Ecoarium JT](#2-Ecoarium-JT)
-  - [2.1. JT - 플라스틱 컵 수거 장치](#21-jt---플라스틱-컵-수거-장치)
-    - [2.1.1. JT 초기 화면](#211-jt-초기-화면)
-    - [2.1.2. QR 로그인](#212-qr-로그인)
-    - [2.1.3. 로그인 성공 후 투입구 열림, 컵 투입](#213-로그인-성공-후-투입구-열림-컵-투입)
-    - [2.1.4. 투입구 닫힌 후 컵 사진 촬영](#214-투입구-닫힌-후-컵-사진-촬영)
-    - [2.1.5. 컵 수거 완료](#215-컵-수거-완료)
-    - [2.1.6. 컵 수거 불가](#216-컵-수거-불가)
+- [2. Ecoarium JT - 플라스틱 컵 수거 장치](#2-Ecoarium-JT-플라스틱-컵-수거-장치)
+  - [2.1. 기술스택&개발환경](#21-기술스택개발환경)
+  - [2.2. 설계](#22-설계)
+  - [2.3. 동작 과정](#23-동작-과정)
+    - [2.3.1. JT 초기 화면](#231-jt-초기-화면)
+    - [2.3.2. QR 로그인](#232-qr-로그인)
+    - [2.3.3. 로그인 성공 후 컵 투입](#233-로그인-성공-후-컵-투입)
+    - [2.3.4. 무게 측정, 사진 촬영해서 검사](#234-무게-측정-사진-촬영해서-검사)
+    - [2.3.5. 컵 수거 완료](#235-컵-수거-완료)
+    - [2.3.6. 컵 수거 불가능](#236-컵-수거-불가능)
 - [3. Plastic Cup Classifier](#3-Plastic-Cup-Classifier)
 - [4. Ecoarium AP Server, WEB Server](#4-ecoarium-ap-server-web-server)
   - [4.1. 요약](#41-요약)
@@ -107,28 +109,36 @@ System 확장성을 위해 클라우드 컴퓨팅 서비스인 Linux CentOS7 기
 안정적이고 빠른 성능을 제공하면서도 오픈 소스 기반으로 비용 효율적인 RDBMS인 MySQL 8.0을 사용합니다.  <br>
 
 - MySQL 8.0 설치 명령어 <br>
-yum install –y https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm <br>
-yum install -y mysql-community-server <br>
+~~~
+yum install –y https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+yum install -y mysql-community-server
+~~~
 - MySQL 8.0 시작 및 부팅시 자동시작 설정 명령어 <br>
-systemctl start mysqld <br>
-systemctl enable mysqld <br>
+~~~
+systemctl start mysqld
+systemctl enable mysqld
+~~~
 - MySQL 8.0 진입 명령 <br>
-mysql –u root -p <br>
+~~~
+mysql –u root -p
+~~~
   <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/56341387/b674475c-4130-475d-a25d-ae20cf860fcf" alt="MySQL 설치 및 실행" style="width: 70%;"><br>
 
 ### 1.1.3. ecoarium 스키마 생성
 - 쿼리문 <br>
-CREATE DATABASE IF NOT EXISTS ecoarium; <br>
-USE ecoarium; <br>
-
+~~~
+CREATE DATABASE IF NOT EXISTS ecoarium;
+USE ecoarium;
+~~~
 ### 1.1.4. 주의사항
 테이블링과 실제 DB서버에 적재되는 데이터 CRUD는 Ecoarium AP(Web)서버 Back-End에서 Node.js 라이브러리인 Sequelize에 의해 실행됩니다. <br>
 따라서, AP서버와의 연동을 위해 root계정이 아닌 원격접속용 계정(new_username)을 생성합니다. <br>
 
 - 원격접속용 계정 생성 및 권한부여 쿼리문 <br>
-CREATE USER 'new_username'@'localhost' IDENTIFIED BY 'new_password'; <br>
-GRANT ALL PRIVILEGES ON *.* TO 'new_username'@'localhost' WITH GRANT OPTION; <br>
-
+~~~
+CREATE USER 'new_username'@'localhost' IDENTIFIED BY 'new_password';
+GRANT ALL PRIVILEGES ON *.* TO 'new_username'@'localhost' WITH GRANT OPTION;
+~~~
 이후, DB서버와 AP(Web)서버의 시퀄라이즈 연동을 위해 node.js Web서버 config.json파일의 적색 부분을 다음과 같이 수정합니다. <br>
 이 때, 주의할 점으로 host의 ip(dns)주소 인스턴스의 내부ip주소인 public ip(dns)로 접속합니다.<br>
 <br>
@@ -139,7 +149,11 @@ Ecoarium은 기밀성과 무결성이 보장되어야 하는 중요한 사용자
 중요한 사용자 정보가 저장되는 DB서버와 DBMS(MySQL)에 보안체크리스트(정책)를 작성하고, 취약점 점검 스크립트를 실행하여 보이지 않는 위협 또한 제거합니다. <br>
 이 저장소 내의 Ecoarium DB 서버 보안점검리스트.pdf 파일은 해당 내용을 기술합니다.
 
-# 2. Ecoarium JT
+# 2. Ecoarium JT - 플라스틱 컵 수거 장치
+에코아리움의 플라스틱 컵 수거 장치인 JT로 손쉽게 플라스틱 컵을 재활용 할 수 있습니다. 손쉽게 로그인하고, 컵을 투입한 뒤, 스탬프를 획득하세요!
+<br>
+
+## 2.1. 기술스택&개발환경
 <p align="center">
   <img src="https://img.shields.io/badge/Tensorflow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white">
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white">
@@ -149,66 +163,69 @@ Ecoarium은 기밀성과 무결성이 보장되어야 하는 중요한 사용자
   <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white">
 </p>
 
-    * IDE : Visual Studio Code 1.90
-    * Python: 3.11.9
-    * Tensorflow: 2.16.1
-    * gcc: 6.3.0
-    * Raspberry Pi 4B Bullseye
+- IDE : Visual Studio Code 1.90
+- Python: 3.11.9
+- Tensorflow: 2.16.1
+- gcc: 6.3.0
+- Raspberry Pi 4B Bullseye
+<br>
 
-## 2.1. JT - 플라스틱 컵 수거 장치
-<p align="center">
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/b47ee6d1-2bfd-4b1f-85a5-75f385b62bc2">
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/6410845f-b612-4088-aea9-a8d835407e3d">
-</p>
+## 2.2. 설계
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/b47ee6d1-2bfd-4b1f-85a5-75f385b62bc2" width="800"><br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/6410845f-b612-4088-aea9-a8d835407e3d" width="800"><br>
 
-    * 일회용 플라스틱 컵 수거 시스템을 위한 장치
-    * 스테인리스(STS304 1.2T POLISHING) 재질, W450*D150*H300mm
-    * RaspberryPi 4B bullseye
-    * 7inch touch Display, Servo motor*2, Camera module, Webcam, Loadcell, LED
-    * JT S/W는 Python tkinter Library로 제작
-    * QR코드 인식 OpenCV2, imutils
-    * HTTP 통신을 사용해 AP서버, Android APP과 통신
+- 일회용 플라스틱 컵 수거 시스템을 위한 장치
+- 스테인리스(STS304 1.2T POLISHING) 재질, W450*D150*H300mm
+- RaspberryPi 4B bullseye
+- 7inch touch Display, Servo motor*2, Camera module, Webcam, Loadcell, LED
+- JT S/W는 Python tkinter Library로 제작
+- QR코드 인식 OpenCV2, imutils
+- HTTP 통신을 사용해 AP서버, Android APP과 통신
+<br>
 
-#### 2.1.1. JT 초기 화면
+## 2.3. 동작 과정
+### 2.3.1. JT 초기 화면
+- 기기의 첫 화면입니다.<br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/8659afbe-70d6-40ab-a3b3-36425d0a8a4f" width="600"><br>
 
-<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/8659afbe-70d6-40ab-a3b3-36425d0a8a4f" width="600">
+### 2.3.2. QR 로그인
+- APP에서 여러분의 QR코드를 기기에 인식시켜 주세요!<br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/c37ef1be-d91e-4f1b-b263-4f9955cb3085" width="600"><br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/5515f342-600f-4cb1-8b00-2866b2423f7a" width="600"><br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/85ae953f-8a82-4252-a34d-ce96eff280cb" width="600"><br>
 
-#### 2.1.2. QR 로그인
+### 2.3.3. 로그인 성공 후 컵 투입
+- JT는 재활용이 가능한 깨끗한 컵만을 수거합니다.<br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/61940e86-b820-46c9-9c41-4768527efe57" width="600"><br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/203053cd-fdea-4567-bd5e-e7c6cb32ed5a" width="600"><br>
 
-<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/cd7156d6-74b1-41a0-9aba-26478e092d73" width="600">
+### 2.3.4. 무게 측정, 사진 촬영해서 검사
+- 2가지 방식을 사용하여 검사합니다.<br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/897597a6-3726-4c2a-a0df-4f2a321349e4" width="300">
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/3f8e58df-bb6d-4bf6-9cf2-af68b56f921b" width="300">
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/481eb6d7-0227-4e25-bff8-e2e589fd3121" width="600"><br>
 
-#### 2.1.3. 로그인 성공 후 투입구 열림, 컵 투입
+### 2.3.5. 컵 수거 완료
+- 성공적으로 스탬프를 저장했습니다.<br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/59c86379-ef7b-4c6d-8f28-c1b343ba31cd" width="600"><br>
 
-<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/dd184eb6-0a6f-40b7-aca9-f3a667ac02fb" width="600">
-
-#### 2.1.4. 투입구 닫힌 후 컵 사진 촬영
-
-<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f983947a-3eb1-4e3c-b6af-30be5ce98a6b" width="600">
-
-#### 2.1.5. 컵 수거 완료
-
-<img src="" width="600">
-
-#### 2.1.6. 컵 수거 불가
-
-<img src="" width="600">
-
----
-
-<br><br><br>
+### 2.3.6. 컵 수거 불가능
+- 음료가 묻어있는 컵을 넣어보겠습니다.<br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/d44996db-998b-4f3c-9d1e-246446942db6" width="600"><br>
+- 무게 센서는 통과했지만 모델 판정 결과 수거할 수 없는 컵이기에, 사용자가 직접 수거합니다.<br> 
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/9c56563e-4946-4918-8bd6-b34062170f72" width="600"><br>
+- 다음은 얼음이 담긴 컵입니다.<br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/afe5112a-7290-47c6-ae88-7dcec2ab212b" width="600"><br>
+- 무게센서에 걸려서 사진 촬영 없이 바로 사용자가 직접 수거합니다.<br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/06c1398e-bf21-4eb9-a992-5aa317465ef7" width="600"><br>
 
 # 3. Plastic Cup Classifier
-<p align="center">
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/e37e3a87-ad66-4896-ae78-6595e3ede64e">
-  <img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f5393994-810a-4ce4-b153-8fc599dc0bf0">
-</p>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/e37e3a87-ad66-4896-ae78-6595e3ede64e" width="800"><br>
+<img src="https://github.com/mixgolem/SKU-Ecoarium/assets/130221911/f5393994-810a-4ce4-b153-8fc599dc0bf0" width="800"><br>
 
-    * 일회용 플라스틱 컵 재활용 수거 여부 판별
-    * Python, NumPy, Tensorflow, CNN, 이진 분류
-    * 0.5 초과일 경우 수거 불능, 0.5 이하일 경우 수거 가능!
-
----
-<br><br><br>
+- 일회용 플라스틱 컵 재활용 수거 여부 판별
+- Python, NumPy, Tensorflow, CNN, 이진 분류
+- 0.5 초과일 경우 수거 불능, 0.5 이하일 경우 수거 가능!
 
 # 4. Ecoarium AP Server, WEB Server
 <p align="center">
