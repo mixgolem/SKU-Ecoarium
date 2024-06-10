@@ -39,7 +39,6 @@ int main(int argc, char *argv[])
 
         for (int i = 0; i < 10; i++)
         {
-            fprintf(stdout, "\n%d , %d\n", degree1, degree2);
             degree1 -= 1;
             degree2 += 1;
             softPwmWrite(SERVO1, degree1);
@@ -57,7 +56,6 @@ int main(int argc, char *argv[])
 
         for (int i = 0; i < 10; i++)
         {
-            fprintf(stdout, "\n%d , %d\n", degree1, degree2);
             degree1 += 1;
             degree2 -= 1;
             softPwmWrite(SERVO1, degree1);
