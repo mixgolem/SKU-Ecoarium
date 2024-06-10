@@ -1,5 +1,6 @@
 # Ecoarium - Smart Recycling System
-에코아리움 설명~~
+에코아리움 - 스마트 리사이클링 시스템은 카페에서 흔히 사용되는 일회용 플라스틱 컵의 재활용률을 높이기 위한 시스템 설계 프로젝트입니다.<br>
+ㅁㄴㅇ
 
 # Member
 <p align="center">
