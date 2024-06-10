@@ -8,6 +8,9 @@ import subprocess
 from requests.exceptions import Timeout
 from imutils.video import VideoStream
 from pyzbar import pyzbar
+import sys
+sys.path.append("../..")
+from DFRobot_HX711_I2C import *
 
 # Location INFO
 # 위치정보
@@ -23,10 +26,17 @@ server_addr_qrcode = server_addr + "/jt/QRCode"
 server_addr_img = server_addr + "/jt/determine"
 server_pw = "q1w2e3"
 
-# USER INFO
+# 각종 INFO
 userId = "NaN"
 nickname = "NaN"
 userpoint = -1
+cup_weight = 0.0
+REFERENCE_WEIGHT = 30   # 빈 컵의 중량 약 14g-15g 사이. 기준 30g 이상이면 이물질 담긴 컵
+
+# I2C connection(LOADCELL)
+IIC_MODE         = 0x01            # default use IIC1
+IIC_ADDRESS      = 0x64        # default i2c device address
+hx711 = DFRobot_HX711_I2C(IIC_MODE ,IIC_ADDRESS)
 
 # DEF: Send QRCODE
 def req_qr(qrcode):
@@ -71,7 +81,7 @@ def req_image(img_path):
         return None
     
 
-# 프로그램 실행 시 각 단계를 출력하기 위한 함수
+# DEF: 프로그램 실행 시 각 단계를 출력하기 위한 함수
 def show_msg_window(message, callback=None):
     # Create the message window
     msg_window = tk.Toplevel()
@@ -104,7 +114,9 @@ def show_msg_window(message, callback=None):
         ok_button = tk.Button(msg_window, image=ok_button_photo, command=lambda: on_window_close(msg_window, callback), width=200, height=100)
     else:
         ok_button = tk.Button(msg_window, image=ok_button_photo, command=msg_window.destroy, width=200, height=100)
-    ok_button.place(relx=0.5, rely=0.7, anchor="center")  # Adjusted y-position for the button
+    
+    if callback != -1:
+        ok_button.place(relx=0.5, rely=0.7, anchor="center")  # Adjusted y-position for the button
 
     # Make sure the window is above the main window
     msg_window.transient()
@@ -119,15 +131,13 @@ def show_msg_window(message, callback=None):
     # Start the event loop for the message window
     msg_window.mainloop()
 
-
-
 # DEF: WINDOW CLOSE
 def on_window_close(window, callback):
     window.destroy()
     if callback:
         callback()
 
-# DEF: IMG CAPTURE
+# DEF: LED를 ON한 다음, 사진을 촬영하고 LED를 다시 OFF
 def capture_image():
     #LED ON
     command = f"sudo python3 {ecosys_path}/led.py 1"
@@ -150,6 +160,7 @@ def capture_image():
     # 이미지 파일의 전체 경로 반환
     return f"{ecosys_path}/img/{image_name}"
 
+# DEF: QR코드 데이터 읽기
 def read_qr():
     # Function to handle QR code login
     print("[INFO] Trying to login...")
@@ -200,7 +211,7 @@ def read_qr():
             vs.stop()
             return 5  # 반환값이 5일 경우, QR 인식시간 초과 에러
 
-# DEF: LOGIN
+# DEF: LOGIN 기능 구현
 def login():
     global nickname, userId, userpoint, login_button
     barcodeData = read_qr()
@@ -231,11 +242,13 @@ def login():
                 print("[ERROR] Invalid JSON format received from the server.")
                 return 4
 
+# DEF: 문 열림
 def door_open():
     time.sleep(0.5)
     command = f"sudo {ecosys_path}/ecosys_door o"
     subprocess.run(command, shell=True)
 
+# DEF: 문 닫힘
 def door_close():
     time.sleep(0.5)
     command = f"sudo {ecosys_path}/ecosys_door c"
@@ -243,41 +256,76 @@ def door_close():
 
 # DEF: After Login, Open the door
 def place_cup_open():
-    ### DOOR OPEN 작업 필요###### DOOR OPEN 작업 필요###### DOOR OPEN 작업 필요###### DOOR OPEN 작업 필요###### DOOR OPEN 작업 필요###### DOOR OPEN 작업 필요###### DOOR OPEN 작업 필요###
-    door_open()
-    show_msg_window("[INFO] 열린 문 내부로 플라스틱 컵을 놓아주세요.", place_cup_close)
+    global cup_weight
+    cup_weight = 0.0 #무게 0으로 초기화
+    startHX711() #무게센서 start
+    door_open() #문열림
+    show_msg_window("[INFO] 표시된 위치에 플라스틱 컵을 놓은 뒤 확인을 눌러주세요.", place_cup_close)
     pass
 
 # DEF: After placing the cup in machine, Close the door and capture img
 def place_cup_close():
     door_close()
-    show_msg_window("[INFO] 플라스틱 컵의 사진을 촬영합니다.", capture_send_img)
+    show_msg_window("[INFO] JT에서 수거가 가능한 컵인지 판별을 진행합니다!", check_cup)
     pass
 
-# DEF:
+# DEF: 컵 수거를 위해 문을 오픈
 def bring_cup_open():
+    global cup_weight
     door_open()
-    show_msg_window("[INFO] 플라스틱 컵을 다시 회수해 주세요.", door_close)
+    while True:
+        # 컵을 회수하지 않으면 문이 닫히지 않음
+        cup_weight = hx711.read_weight(10)
+        print('weight is %.1f g' % cup_weight)
+        time.sleep(0.2)
+        if abs(0 - cup_weight) < 3:  # 컵을 회수한 경우 반복문 종료
+            time.sleep(2.0) # 2초 정도 컵을 수거하는 시간을 부여
+            break
+    door_close()
     pass
 
-# DEF: capture img and send img
-def capture_send_img():
-    global userpoint
+# DEF: 로드셀 setup
+def startHX711():
+    global hx711
+    hx711.begin()
+    print("weight start\r\n")
+    # Manually set the calibration values
+    hx711.set_calibration(2210.0)
+    # Peel (tare) the scale
+    hx711.peel()
+
+# DEF: 컵이 수거 가능한 컵인지 판별하는 함수
+def check_cup():
+    global userpoint, cup_weight, hx711
+    while True:
+        # Get the weight of the object
+        cup_weight = hx711.read_weight(10)
+        print('weight is %.1f g' % cup_weight)
+        time.sleep(0.2)
+        
+        if abs(hx711.read_weight(10) - cup_weight) < 3:  # 컵의 무게 변동이 없을 경우 무게 확정
+            break
+
+    if cup_weight > REFERENCE_WEIGHT:  # 컵 무게가 기준값 이상일 경우
+        print("[INFO] over weight: %f g" % cup_weight)
+        show_msg_window("[INFO] 수거 불가능한 컵입니다!\n컵을 회수하면 문이 자동으로 닫힙니다.\n무게: %.1f g" % cup_weight, bring_cup_open)
+
     img_path = capture_image()
     response = req_image(img_path)
     if response:
         score = float(response.strip())
-        if score > 0.5:
-            show_msg_window("[INFO] 수거가 불가능한 플라스틱 컵입니다.", bring_cup_open)
+        if score > 0.5: # 모델 판정 결과 더러운 컵일 경우!
+            show_msg_window("[INFO] 모델 판정 결과 수거가 불가능한 플라스틱 컵입니다!\n컵을 회수하면 문이 자동으로 닫힙니다.", bring_cup_open)
             print("[INFO] Image Uploaded. RESPONSE:", response)
-        else:
+        else: # 깨끗한 컵일 경우
             show_msg_window(f"[INFO] 스탬프 저장이 완료되었습니다!\n현재 {userpoint+1}개의 스탬프를 모았어요.")
             print("[INFO] Image Uploaded. RESPONSE:", response)
-    else:
+    else: # 에러처리
         show_msg_window("[ERROR] 이미지 업로드 실패. 관리자 확인 요망")
         print("[ERROR] Failed to upload image.")
     pass
 
+# DEF: 모든 창 닫기 버튼
 def close_all_toplevels():
     global root
     # Tkinter에서 열려진 모든 Toplevel 창을 닫는 함수
@@ -285,6 +333,7 @@ def close_all_toplevels():
         if isinstance(window, tk.Toplevel):
             window.destroy()
 
+# DEF: 프로그램 오류 시 새로고침 전용 버튼
 def refresh():
     global root
     # 현재 윈도우를 닫고 프로그램을 다시 실행
@@ -292,6 +341,7 @@ def refresh():
     root.destroy()
     main()
 
+# DEF: 문을 열거나 닫을 수 있도록 관리자 전용 버튼
 def show_admin_buttons():
     global open_button, close_button
 
@@ -317,6 +367,7 @@ def show_admin_buttons():
     close_button.image = close_photo  # 참조 유지
     canvas.create_window(screen_width * 0.9, screen_height * 0.75, window=close_button)
 
+# DEF: 에코아리움 멤버 소개
 def aboutEcoarium():
     # Create a new window
     ecoarium_window = tk.Toplevel()
@@ -352,6 +403,7 @@ def aboutEcoarium():
     # Start the event loop for the Ecoarium window
     ecoarium_window.mainloop()
 
+# DEF: 메인함수
 def main():
     global root, login_button, canvas, screen_height, screen_width
 
