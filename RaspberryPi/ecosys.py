@@ -14,14 +14,14 @@ from DFRobot_HX711_I2C import *
 
 # Location INFO
 # 위치정보
-location = "JT_0"
+location = "성결관207호점"
 
 # Ecoarium file Installation path
 # 에코아리움 파일 설치 경로
 ecosys_path = "/home/pi/Ecoarium"
 
 # Server INFO
-server_addr = "http://172.20.10.10:8000"
+server_addr = "http://192.168.226.42:8000"
 server_addr_qrcode = server_addr + "/jt/QRCode"
 server_addr_img = server_addr + "/jt/determine"
 server_pw = "q1w2e3"
@@ -306,7 +306,7 @@ def check_cup():
         if abs(hx711.read_weight(10) - cup_weight) < 3:  # 컵의 무게 변동이 없을 경우 무게 확정
             break
 
-    if cup_weight > REFERENCE_WEIGHT:  # 컵 무게가 기준값 이상일 경우
+    if ((cup_weight > REFERENCE_WEIGHT) | (cup_weight < 10)):  # 컵 무게가 기준값 이상이거나 올려지지 않았다고 판단할 경우
         print("[INFO] over weight: %f g" % cup_weight)
         show_msg_window("[INFO] 수거 불가능한 컵입니다!\n컵을 회수하면 문이 자동으로 닫힙니다.\n무게: %.1f g" % cup_weight, bring_cup_open)
 
