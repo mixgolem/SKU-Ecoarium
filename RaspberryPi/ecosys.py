@@ -1,3 +1,4 @@
+#241021수정
 import tkinter as tk
 from PIL import Image, ImageTk
 import imutils
@@ -21,7 +22,7 @@ location = "성결관207호점"
 ecosys_path = "/home/pi/Ecoarium"
 
 # Server INFO
-server_addr = "http://192.168.226.42:8000"
+server_addr = "http://222.101.3.165:8000"
 server_addr_qrcode = server_addr + "/jt/QRCode"
 server_addr_img = server_addr + "/jt/determine"
 server_pw = "q1w2e3"
@@ -315,11 +316,11 @@ def check_cup():
     if response:
         score = float(response.strip())
         if score > 0.5: # 모델 판정 결과 더러운 컵일 경우!
-            show_msg_window("[INFO] 모델 판정 결과 수거가 불가능한 플라스틱 컵입니다!\n컵을 회수하면 문이 자동으로 닫힙니다.", bring_cup_open)
-            print("[INFO] Image Uploaded. RESPONSE:", response)
+            show_msg_window("[INFO] 모델 판정 결과 수거가 불가능한 플라스틱 컵입니다!\n컵을 회수하면 문이 자동으로 닫힙니다.\nscore: %.1f" % score, bring_cup_open)
+            print("[INFO] Image Uploaded. RESPONSE:", score)
         else: # 깨끗한 컵일 경우
             show_msg_window(f"[INFO] 스탬프 저장이 완료되었습니다!\n현재 {userpoint+1}개의 스탬프를 모았어요.")
-            print("[INFO] Image Uploaded. RESPONSE:", response)
+            print("[INFO] Image Uploaded. RESPONSE:", score)
     else: # 에러처리
         show_msg_window("[ERROR] 이미지 업로드 실패. 관리자 확인 요망")
         print("[ERROR] Failed to upload image.")
